@@ -76,6 +76,18 @@
     <Filter Include="Source Files\Main">
       <UniqueIdentifier>{f3d05554-7578-4bcd-a51c-1e57d450ab89}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\UI">
+      <UniqueIdentifier>{ca272146-7869-4076-a66e-597694022b3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI">
+      <UniqueIdentifier>{e9bb5a81-f8c5-478c-9d8b-5756667ee6c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\World">
+      <UniqueIdentifier>{c6b17530-5293-41e5-9bb0-500c658e6a66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\World">
+      <UniqueIdentifier>{d8718ee7-e104-4851-806c-00d08f725304}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bitmap.cpp">
@@ -120,9 +132,6 @@
     <ClCompile Include="IRenderable.cpp">
       <Filter>Source Files\Interfaces</Filter>
     </ClCompile>
-    <ClCompile Include="InputHandler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="IMouseListener.cpp">
       <Filter>Source Files\Interfaces\Mouse</Filter>
     </ClCompile>
@@ -135,8 +144,41 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files\Main</Filter>
     </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="InputHandler.cpp">
+      <Filter>Source Files\Input</Filter>
+    </ClCompile>
     <ClCompile Include="Scene.cpp">
-      <Filter>Source Files\Main</Filter>
+      <Filter>Source Files\World</Filter>
+    </ClCompile>
+    <ClCompile Include="IKeyDownListener.cpp">
+      <Filter>Source Files\Interfaces\Keyboard</Filter>
+    </ClCompile>
+    <ClCompile Include="IKeyUpListener.cpp">
+      <Filter>Source Files\Interfaces\Keyboard</Filter>
+    </ClCompile>
+    <ClCompile Include="ILeftMouseButtonDownListener.cpp">
+      <Filter>Source Files\Interfaces\Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="ILeftMouseButtonUpListener.cpp">
+      <Filter>Source Files\Interfaces\Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="IMiddleMouseButtonDownListener.cpp">
+      <Filter>Source Files\Interfaces\Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="IMiddleMouseButtonUpListener.cpp">
+      <Filter>Source Files\Interfaces\Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="IMouseWheelUpdateListener.cpp">
+      <Filter>Source Files\Interfaces\Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="IRightMouseButtonDownListener.cpp">
+      <Filter>Source Files\Interfaces\Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="IRightMouseButtonUpListener.cpp">
+      <Filter>Source Files\Interfaces\Mouse</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -148,9 +190,6 @@
     </ClInclude>
     <ClInclude Include="Canvas2D.h">
       <Filter>Header Files\Canvas2D</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BGR24.h">
       <Filter>Header Files\Color</Filter>
@@ -197,9 +236,6 @@
     <ClInclude Include="FileDialog.h">
       <Filter>Header Files\FileDialog</Filter>
     </ClInclude>
-    <ClInclude Include="InputHandler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="IAnyKeyDownListener.h">
       <Filter>Header Files\Interfaces\Keyboard</Filter>
     </ClInclude>
@@ -207,6 +243,42 @@
       <Filter>Header Files\Interfaces\Keyboard</Filter>
     </ClInclude>
     <ClInclude Include="IMouseListener.h">
+      <Filter>Header Files\Interfaces\Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="IKeyDownListener.h">
+      <Filter>Header Files\Interfaces\Keyboard</Filter>
+    </ClInclude>
+    <ClInclude Include="IKeyUpListener.h">
+      <Filter>Header Files\Interfaces\Keyboard</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="InputHandler.h">
+      <Filter>Header Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Header Files\World</Filter>
+    </ClInclude>
+    <ClInclude Include="IMiddleMouseButtonDownListener.h">
+      <Filter>Header Files\Interfaces\Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="IRightMouseButtonUpListener.h">
+      <Filter>Header Files\Interfaces\Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="IRightMouseButtonDownListener.h">
+      <Filter>Header Files\Interfaces\Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="IMiddleMouseButtonUpListener.h">
+      <Filter>Header Files\Interfaces\Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="ILeftMouseButtonUpListener.h">
+      <Filter>Header Files\Interfaces\Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="ILeftMouseButtonDownListener.h">
+      <Filter>Header Files\Interfaces\Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="IMouseWheelUpdateListener.h">
       <Filter>Header Files\Interfaces\Mouse</Filter>
     </ClInclude>
   </ItemGroup>

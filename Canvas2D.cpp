@@ -66,7 +66,7 @@ Canvas2D::Canvas2D(int* h, int* w, std::string title,
 	glutMotionFunc(OnMouseMotion);
 	glutMouseWheelFunc(OnMouseWheel);
 
-	printf("GL Version: %s", glGetString(GL_VERSION));
+	printf("GL Version: %s\n", glGetString(GL_VERSION));
 	RunCanvas();
 }
 

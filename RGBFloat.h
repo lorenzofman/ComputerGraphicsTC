@@ -6,6 +6,7 @@ struct RGBFloat
 	float g;
 	float b;
 
+	RGBFloat();
 	RGBFloat(float, float, float);
 };
 #pragma pack (pop)
