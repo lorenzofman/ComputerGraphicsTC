@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Bitmap">
+      <UniqueIdentifier>{bfa29733-965e-43ba-a393-6ee4a71e929c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Bitmap">
+      <UniqueIdentifier>{0dbac902-a519-43c2-9c29-1acc7e5dd622}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Canvas2D">
+      <UniqueIdentifier>{07dc5b02-63e9-47ac-b47f-579def840530}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Canvas2D">
+      <UniqueIdentifier>{580be466-5811-4d2e-9922-c51e30dbcc61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Color">
+      <UniqueIdentifier>{a35d308e-5fa9-424a-b334-2c3378af14ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FileDialog">
+      <UniqueIdentifier>{01142632-0519-45e8-ac40-0892de790efe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Image">
+      <UniqueIdentifier>{63ed1f6a-af0d-4e01-b998-3a646534170a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Color">
+      <UniqueIdentifier>{49aa7824-d2a4-43c1-9043-61e03efa39d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\FileDialog">
+      <UniqueIdentifier>{7f955dad-a083-4287-96d8-85b96c7c8288}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Image">
+      <UniqueIdentifier>{146e104a-b26c-49a3-8d2b-97fc48401811}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Primitive">
+      <UniqueIdentifier>{c80046fc-e741-4ae3-a9ef-8e1a6386162c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Primitive">
+      <UniqueIdentifier>{4685b989-155e-43b7-b5d3-20e62b1b17ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interfaces">
+      <UniqueIdentifier>{a0723f90-3998-41a3-91dc-5d0bb454119b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Interfaces">
+      <UniqueIdentifier>{8b1a89c2-f393-4f16-a25b-1d60c0804f26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Interfaces\Mouse">
+      <UniqueIdentifier>{a0e907ae-b0d2-4d53-995f-515bec1a2955}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Interfaces\Keyboard">
+      <UniqueIdentifier>{78a3e3af-2cda-4872-85b1-9ecd5d30c075}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interfaces\Mouse">
+      <UniqueIdentifier>{87ba288a-3abb-41fa-8528-5e59c0c2983b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interfaces\Keyboard">
+      <UniqueIdentifier>{7304727f-6868-406a-a47b-bd9149140443}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Input">
+      <UniqueIdentifier>{316f67b4-b98f-4e8d-a90d-9f207eaf663c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Input">
+      <UniqueIdentifier>{bf29e0df-5444-4126-be0f-ef97737db254}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Main">
+      <UniqueIdentifier>{f3d05554-7578-4bcd-a51c-1e57d450ab89}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Bitmap.cpp">
+      <Filter>Source Files\Bitmap</Filter>
+    </ClCompile>
+    <ClCompile Include="Canvas2D.cpp">
+      <Filter>Source Files\Canvas2D</Filter>
+    </ClCompile>
+    <ClCompile Include="BGR24.cpp">
+      <Filter>Source Files\Color</Filter>
+    </ClCompile>
+    <ClCompile Include="RGB24.cpp">
+      <Filter>Source Files\Color</Filter>
+    </ClCompile>
+    <ClCompile Include="RGBFloat.cpp">
+      <Filter>Source Files\Color</Filter>
+    </ClCompile>
+    <ClCompile Include="FileDialog.cpp">
+      <Filter>Source Files\FileDialog</Filter>
+    </ClCompile>
+    <ClCompile Include="ColorConversions.cpp">
+      <Filter>Source Files\Color</Filter>
+    </ClCompile>
+    <ClCompile Include="Image.cpp">
+      <Filter>Source Files\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageConverter.cpp">
+      <Filter>Source Files\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageType.cpp">
+      <Filter>Source Files\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="Canvas2DExtensions.cpp">
+      <Filter>Source Files\Canvas2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Float2.cpp">
+      <Filter>Source Files\Primitive</Filter>
+    </ClCompile>
+    <ClCompile Include="Rect.cpp">
+      <Filter>Source Files\Primitive</Filter>
+    </ClCompile>
+    <ClCompile Include="IRenderable.cpp">
+      <Filter>Source Files\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="InputHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IMouseListener.cpp">
+      <Filter>Source Files\Interfaces\Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="IAnyKeyDownListener.cpp">
+      <Filter>Source Files\Interfaces\Keyboard</Filter>
+    </ClCompile>
+    <ClCompile Include="IAnyKeyUpListener.cpp">
+      <Filter>Source Files\Interfaces\Keyboard</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Source Files\Main</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Bitmap.h">
+      <Filter>Header Files\Bitmap</Filter>
+    </ClInclude>
+    <ClInclude Include="BitmapHeader.h">
+      <Filter>Header Files\Bitmap</Filter>
+    </ClInclude>
+    <ClInclude Include="Canvas2D.h">
+      <Filter>Header Files\Canvas2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BGR24.h">
+      <Filter>Header Files\Color</Filter>
+    </ClInclude>
+    <ClInclude Include="RGBFloat.h">
+      <Filter>Header Files\Color</Filter>
+    </ClInclude>
+    <ClInclude Include="RGB24.h">
+      <Filter>Header Files\Color</Filter>
+    </ClInclude>
+    <ClInclude Include="Canvas2DExtensions.h">
+      <Filter>Header Files\Canvas2D</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorConversions.h">
+      <Filter>Header Files\Color</Filter>
+    </ClInclude>
+    <ClInclude Include="Image.h">
+      <Filter>Header Files\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageType.h">
+      <Filter>Header Files\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageConverter.h">
+      <Filter>Header Files\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="Types.h">
+      <Filter>Header Files\Primitive</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorSpace.h">
+      <Filter>Header Files\Color</Filter>
+    </ClInclude>
+    <ClInclude Include="Constants.h">
+      <Filter>Header Files\Primitive</Filter>
+    </ClInclude>
+    <ClInclude Include="Float2.h">
+      <Filter>Header Files\Primitive</Filter>
+    </ClInclude>
+    <ClInclude Include="Rect.h">
+      <Filter>Header Files\Primitive</Filter>
+    </ClInclude>
+    <ClInclude Include="IRenderable.h">
+      <Filter>Header Files\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="FileDialog.h">
+      <Filter>Header Files\FileDialog</Filter>
+    </ClInclude>
+    <ClInclude Include="InputHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IAnyKeyDownListener.h">
+      <Filter>Header Files\Interfaces\Keyboard</Filter>
+    </ClInclude>
+    <ClInclude Include="IAnyKeyUpListener.h">
+      <Filter>Header Files\Interfaces\Keyboard</Filter>
+    </ClInclude>
+    <ClInclude Include="IMouseListener.h">
+      <Filter>Header Files\Interfaces\Mouse</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="freeglut.dll" />
+    <None Include="glfw3.dll" />
+  </ItemGroup>
+</Project>
