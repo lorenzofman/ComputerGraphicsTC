@@ -6,4 +6,6 @@ class IMiddleMouseButtonDownListener
 	public:
 	virtual void OnMiddleMouseButtonDown(Float2 pos) = 0;
 	IMiddleMouseButtonDownListener(InputHandler* input);
+	~IMiddleMouseButtonDownListener();
+	InputHandler* input;
 };

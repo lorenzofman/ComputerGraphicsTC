@@ -4,24 +4,24 @@
 #include "ILeftMouseButtonUpListener.h"
 #include "Rect.h"
 #include "RGBFloat.h"
-class Button : public ILeftMouseButtonUpListener, public IRenderable
+class Button : public ILeftMouseButtonUpListener, public ILeftMouseButtonDownListener
 {
 	public:
 	
-	Button(Scene*, InputHandler*, Rect2D, RGBFloat);
+	Button(Scene*, InputHandler*);
 	
 	protected:
 	
-	virtual void OnButtonClicked();
-
-	private:
+	virtual void OnButtonDown();
+	virtual void OnButtonUp();
 	Rect2D rect;
+	private:
 	RGBFloat color;
 
 	// Inherited via ILeftMouseButtonUpListener
 	virtual void OnLeftMouseButtonUp(Float2 pos) override;
 
-	// Inherited via IRenderable
-	virtual void Render() override;
+	// Inherited via ILeftMouseButtonDownListener
+	virtual void OnLeftMouseButtonDown(Float2 pos) override;
 };
 

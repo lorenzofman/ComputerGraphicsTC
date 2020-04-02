@@ -71,6 +71,17 @@ class InputHandler : public IAnyKeyDownListener, public IAnyKeyUpListener, publi
 	
 	void RegisterMouseWheelUpdateListener(IMouseWheelUpdateListener*);
 
+	void DeregisterLeftMouseButtonDownListener(ILeftMouseButtonDownListener*);
+	void DeregisterLeftMouseButtonUpListener(ILeftMouseButtonUpListener*);
+
+	void DeregisterRightMouseButtonDownListener(IRightMouseButtonDownListener*);
+	void DeregisterRightMouseButtonUpListener(IRightMouseButtonUpListener*);
+
+	void DeregisterMiddleMouseButtonDownListener(IMiddleMouseButtonDownListener*);
+	void DeregisterMiddleMouseButtonUpListener(IMiddleMouseButtonUpListener*);
+
+	void DeregisterMouseWheelUpdateListener(IMouseWheelUpdateListener*);
+
 	private:
 
 	void MouseButtonsCallbacks(int button, int state);

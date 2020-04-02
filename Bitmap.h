@@ -6,7 +6,9 @@
 #include "BitmapHeader.h"
 #include "Types.h"
 #include "Scene.h"
+#include "InputHandler.h"
 constexpr int MagicIdentifier = 19778;
+constexpr int BaseHeaderSize = 14;
 
 class Bitmap : public ImageType
 {
@@ -17,7 +19,7 @@ class Bitmap : public ImageType
 
 	public:
 
-		Image* Read(std::ifstream*, Scene* scene);
+		Image* Read(std::ifstream*, Scene* scene, InputHandler* input);
 		void Write(Image* image, std::ofstream*);
 };
 

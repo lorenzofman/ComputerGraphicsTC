@@ -6,4 +6,6 @@ class IMouseListener
 	public:
 	virtual void OnMouseUpdate(int, int, int, int, int, int) = 0;
 	IMouseListener(Scene* scene);
+	~IMouseListener();
+	Scene* scene;
 };

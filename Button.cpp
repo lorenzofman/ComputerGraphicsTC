@@ -1,6 +1,6 @@
 #include "Button.h"
 #include "Canvas2D.h"
-Button::Button(Scene *sc, InputHandler* input, Rect2D rect, RGBFloat color) : ILeftMouseButtonUpListener(input), IRenderable(sc)
+Button::Button(Scene *sc, InputHandler* input) : ILeftMouseButtonDownListener(input), ILeftMouseButtonUpListener(input)
 {
 	this->rect = rect;
 	this->color = color;
@@ -10,18 +10,17 @@ void Button::OnLeftMouseButtonUp(Float2 pos)
 {
 	if (rect.IsPointInside(pos))
 	{
-		OnButtonClicked();
+		OnButtonUp();
 	}
 }
 
-void Button::Render()
+void Button::OnLeftMouseButtonDown(Float2 pos)
 {
-	Canvas2D::SetColor(color.r, color.g, color.b);
-	Canvas2D::DrawFilledRect(
-		(int)rect.BottomLeft.x, (int)rect.BottomLeft.y, 
-		(int)rect.TopRight.x, (int)rect.TopRight.y);
+	if (rect.IsPointInside(pos))
+	{
+		OnButtonDown();
+	}
 }
 
-void Button::OnButtonClicked()
-{
-}
+void Button::OnButtonDown() { } // virtual
+void Button::OnButtonUp() { } // virtual

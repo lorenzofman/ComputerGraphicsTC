@@ -88,6 +88,18 @@
     <Filter Include="Source Files\World">
       <UniqueIdentifier>{d8718ee7-e104-4851-806c-00d08f725304}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\ImageManipulation">
+      <UniqueIdentifier>{a599e7a1-b21a-4622-8193-36977891c82c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ImageAnalysis">
+      <UniqueIdentifier>{d2d0e3c5-5467-42d6-8979-59efb643696d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ImageAnalysis">
+      <UniqueIdentifier>{293e3fe1-1b38-4d6a-8536-dae86265f2c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ImageManipulation">
+      <UniqueIdentifier>{9e29a809-6f66-418d-951a-e94b11496289}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bitmap.cpp">
@@ -96,20 +108,11 @@
     <ClCompile Include="Canvas2D.cpp">
       <Filter>Source Files\Canvas2D</Filter>
     </ClCompile>
-    <ClCompile Include="BGR24.cpp">
-      <Filter>Source Files\Color</Filter>
-    </ClCompile>
-    <ClCompile Include="RGB24.cpp">
-      <Filter>Source Files\Color</Filter>
-    </ClCompile>
     <ClCompile Include="RGBFloat.cpp">
       <Filter>Source Files\Color</Filter>
     </ClCompile>
     <ClCompile Include="FileDialog.cpp">
       <Filter>Source Files\FileDialog</Filter>
-    </ClCompile>
-    <ClCompile Include="ColorConversions.cpp">
-      <Filter>Source Files\Color</Filter>
     </ClCompile>
     <ClCompile Include="Image.cpp">
       <Filter>Source Files\Image</Filter>
@@ -180,6 +183,18 @@
     <ClCompile Include="IRightMouseButtonUpListener.cpp">
       <Filter>Source Files\Interfaces\Mouse</Filter>
     </ClCompile>
+    <ClCompile Include="Grayscale.cpp">
+      <Filter>Source Files\ImageManipulation</Filter>
+    </ClCompile>
+    <ClCompile Include="ExtractChannel.cpp">
+      <Filter>Source Files\ImageManipulation</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageHistogram.cpp">
+      <Filter>Source Files\ImageAnalysis</Filter>
+    </ClCompile>
+    <ClCompile Include="Int2.cpp">
+      <Filter>Source Files\Primitive</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bitmap.h">
@@ -191,20 +206,11 @@
     <ClInclude Include="Canvas2D.h">
       <Filter>Header Files\Canvas2D</Filter>
     </ClInclude>
-    <ClInclude Include="BGR24.h">
-      <Filter>Header Files\Color</Filter>
-    </ClInclude>
     <ClInclude Include="RGBFloat.h">
-      <Filter>Header Files\Color</Filter>
-    </ClInclude>
-    <ClInclude Include="RGB24.h">
       <Filter>Header Files\Color</Filter>
     </ClInclude>
     <ClInclude Include="Canvas2DExtensions.h">
       <Filter>Header Files\Canvas2D</Filter>
-    </ClInclude>
-    <ClInclude Include="ColorConversions.h">
-      <Filter>Header Files\Color</Filter>
     </ClInclude>
     <ClInclude Include="Image.h">
       <Filter>Header Files\Image</Filter>
@@ -217,9 +223,6 @@
     </ClInclude>
     <ClInclude Include="Types.h">
       <Filter>Header Files\Primitive</Filter>
-    </ClInclude>
-    <ClInclude Include="ColorSpace.h">
-      <Filter>Header Files\Color</Filter>
     </ClInclude>
     <ClInclude Include="Constants.h">
       <Filter>Header Files\Primitive</Filter>
@@ -280,6 +283,24 @@
     </ClInclude>
     <ClInclude Include="IMouseWheelUpdateListener.h">
       <Filter>Header Files\Interfaces\Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter.h">
+      <Filter>Header Files\ImageManipulation</Filter>
+    </ClInclude>
+    <ClInclude Include="ExtractChannel.h">
+      <Filter>Header Files\ImageManipulation</Filter>
+    </ClInclude>
+    <ClInclude Include="Grayscale.h">
+      <Filter>Header Files\ImageManipulation</Filter>
+    </ClInclude>
+    <ClInclude Include="Channel.h">
+      <Filter>Header Files\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageHistogram.h">
+      <Filter>Header Files\ImageAnalysis</Filter>
+    </ClInclude>
+    <ClInclude Include="Int2.h">
+      <Filter>Header Files\Primitive</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

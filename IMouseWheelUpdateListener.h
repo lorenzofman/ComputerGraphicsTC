@@ -7,4 +7,6 @@ class IMouseWheelUpdateListener
 	public:
 	virtual void OnMouseWheelUpdate(MouseWheelDirection dir) = 0;
 	IMouseWheelUpdateListener(InputHandler* input);
+	~IMouseWheelUpdateListener();
+	InputHandler* input;
 };

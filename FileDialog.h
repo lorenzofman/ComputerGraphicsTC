@@ -4,9 +4,9 @@
 class FileDialog
 {
 	private:
-		static OPENFILENAME CreateOfn(std::string filter);
+		static OPENFILENAME CreateOfn(DWORD flags);
 	public:
-		static std::string Open(std::string filter);
-		static std::string Save(std::string filter);
+		static std::string Open();
+		static std::string Save();
 };
 

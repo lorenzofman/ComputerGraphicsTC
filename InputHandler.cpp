@@ -177,6 +177,44 @@ void InputHandler::RegisterMouseWheelUpdateListener(IMouseWheelUpdateListener* l
 	mouseWheelUpdateListeners.push_back(listener);
 }
 
+void InputHandler::DeregisterLeftMouseButtonDownListener(ILeftMouseButtonDownListener* listener)
+{
+	leftMouseButtonDownListeners.erase(std::find(leftMouseButtonDownListeners.begin(), leftMouseButtonDownListeners.end(), listener));
+}
+
+void InputHandler::DeregisterLeftMouseButtonUpListener(ILeftMouseButtonUpListener* listener)
+{
+	leftMouseButtonUpListeners.erase(std::find(leftMouseButtonUpListeners.begin(), leftMouseButtonUpListeners.end(), listener));
+
+}
+
+void InputHandler::DeregisterRightMouseButtonDownListener(IRightMouseButtonDownListener* listener)
+{
+	rightMouseButtonDownListeners.erase(std::find(rightMouseButtonDownListeners.begin(), rightMouseButtonDownListeners.end(), listener));
+
+}
+
+void InputHandler::DeregisterRightMouseButtonUpListener(IRightMouseButtonUpListener* listener)
+{
+	rightMouseButtonUpListeners.erase(std::find(rightMouseButtonUpListeners.begin(), rightMouseButtonUpListeners.end(), listener));
+
+}
+
+void InputHandler::DeregisterMiddleMouseButtonDownListener(IMiddleMouseButtonDownListener* listener)
+{
+	middleMouseButtonDownListeners.erase(std::find(middleMouseButtonDownListeners.begin(), middleMouseButtonDownListeners.end(), listener));
+}
+
+void InputHandler::DeregisterMiddleMouseButtonUpListener(IMiddleMouseButtonUpListener* listener)
+{
+	middleMouseButtonUpListeners.erase(std::find(middleMouseButtonUpListeners.begin(), middleMouseButtonUpListeners.end(), listener));
+}
+
+void InputHandler::DeregisterMouseWheelUpdateListener(IMouseWheelUpdateListener* listener)
+{
+	mouseWheelUpdateListeners.erase(std::find(mouseWheelUpdateListeners.begin(), mouseWheelUpdateListeners.end(), listener));
+}
+
 Float2 InputHandler::GetMousePosition()
 {
 	return mousePosition;

@@ -18,10 +18,11 @@ class Scene
 	void OnKeyUpCallback(int);
 	void OnMouseUpdateCallback(int, int, int, int, int, int);
 	
-	void RegisterToOnRenderCallback(IRenderable* renderable);
-	void RegisterToOnKeyDownCallback(IAnyKeyDownListener* keyDownListener);
-	void RegisterToOnKeyUpCallback(IAnyKeyUpListener* keyUpListener);
-	void RegisterToOnMouseUpdateCallback(IMouseListener* mouseListener);
+	void RegisterToOnRenderCallback(IRenderable*);
+	void DeRegisterToOnRenderCallback(IRenderable*);
+	void RegisterToOnKeyDownCallback(IAnyKeyDownListener*);
+	void RegisterToOnKeyUpCallback(IAnyKeyUpListener*);
+	void RegisterToOnMouseUpdateCallback(IMouseListener*);
 
 	private:
 	std::vector<IRenderable*> renderableObjects = std::vector<IRenderable*>();

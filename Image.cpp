@@ -1,24 +1,195 @@
+#include <iostream>
+
 #include "Image.h"
 #include "Scene.h"
 #include "Canvas2DExtensions.h"
 
-Image::Image(byte* data, uint bytesSize, ColorSpace colorSpace, int width, int height, Scene* scene) : IRenderable(scene)
+Image::Image(RGBFloat* pixels, int width, int height, Scene* scene, InputHandler* input) :
+	IRenderable(scene),
+	Button(scene, input),
+	IAnyKeyUpListener(scene),
+	IMouseListener(scene)
 {
-	this->data = data;
-	this->bytesSize = bytesSize;
-	this->colorSpace = colorSpace;
+	this->pixels = pixels;
 	this->width = width;
 	this->height = height;
+	this->size = width * height;
+	this->sizeInBytes = this->size * sizeof(RGBFloat);
 	this->rotation = 0;
 	this->scale = 1;
+	this->input = input;
+	active = true;
+
+	currentTransformation = InterfaceTransformation::None;
+	lastMousePosition = Float2();
+
+	RecalculateButtonRect();
 }
 
 Image::~Image()
 {
-	delete data;
+	delete pixels;
+}
+
+void Image::ApplyInterfaceTransfomation()
+{
+	switch (currentTransformation)
+	{
+		case InterfaceTransformation::Translating:
+		{
+			Float2 translationDelta = input->GetMousePosition() - lastMousePosition;
+			Translate(translationDelta);
+			break;
+		}
+		case InterfaceTransformation::Rotating:
+		{
+			Float2 dif = input->GetMousePosition() - position;
+			Float2 previousDif = lastMousePosition - position;
+			double angleToCenter = atan2f(dif.x, dif.y);
+			double previousAngleToCenter = atan2f(previousDif.x, previousDif.y);
+			double rotationDelta = previousAngleToCenter - angleToCenter;
+			Rotate(rotationDelta);
+			break;
+		}
+		case InterfaceTransformation::Scaling:
+		{
+			float distance = Float2::Distance(input->GetMousePosition(), position);
+			float previousDistance = Float2::Distance(lastMousePosition, position);
+			float scaleDelta = distance / previousDistance;
+			SetScale(scale * scaleDelta);
+			break;
+		}
+		default:
+			break;
+	}
+	lastMousePosition = input->GetMousePosition();
 }
 
 void Image::Render()
 {
-	Canvas2DExtensions::DrawImage(this);
+	if (active) 
+	{
+		Canvas2DExtensions::DrawImage(this);
+		ApplyInterfaceTransfomation();
+	}
+}
+
+void Image::SetPosition(Float2 position)
+{
+	this->position = position;
+	RecalculateButtonRect();
+}
+
+void Image::SetScale(double scale)
+{
+	this->scale = scale;
+	RecalculateButtonRect();
+}
+
+void Image::SetRotation(double rotation)
+{
+	this->rotation = rotation;
+	RecalculateButtonRect();
+}
+
+void Image::Translate(Float2 pos)
+{
+	SetPosition(position + pos);
+}
+
+void Image::Rotate(double rot)
+{
+	SetRotation (rotation + rot);
+}
+
+Float2 Image::GetPosition()
+{
+	return position;
+}
+
+double Image::GetScale()
+{
+	return scale;
+}
+
+double Image::GetRotation()
+{
+	return rotation;
+}
+
+void Image::RecalculateButtonRect()
+{
+	rect = Rect2D(-width / 2.0f, -height / 2.0f, width / 2.0f, height / 2.0f);
+	rect.Rotate(rotation);
+	rect.Scale(scale);
+	rect.Translate(position);
+}
+
+void Image::Show()
+{
+	this->active = true;
+}
+
+void Image::Hide()
+{
+	this->active = false;
+}
+
+void Image::OnButtonDown()
+{
+	if (currentTransformation == InterfaceTransformation::None)
+	{
+		currentTransformation = InterfaceTransformation::Translating;
+	}
+	else 
+	{
+		currentTransformation = InterfaceTransformation::None;
+	}
+}
+
+void Image::OnButtonUp()
+{
+	if (currentTransformation == InterfaceTransformation::Translating)
+	{
+		currentTransformation = InterfaceTransformation::None;
+	}
+}
+
+void Image::CopyTransformFrom(Image* from)
+{
+	this->position = from->position;
+	this->rotation = from->rotation;
+	this->scale = from->scale;
+}
+
+void Image::OnKeyUp(int key)
+{
+	if (key == 13)
+	{
+		currentTransformation = InterfaceTransformation::None;
+		return;
+	}
+	if (currentTransformation == InterfaceTransformation::None)
+	{
+		switch (key)
+		{
+			case 'g':
+				currentTransformation = InterfaceTransformation::Translating;
+				break;
+			case 's':
+				currentTransformation = InterfaceTransformation::Scaling;
+				break;
+			case 'r':
+				currentTransformation = InterfaceTransformation::Rotating;
+				break;
+		}
+	}
+}
+
+void Image::OnMouseUpdate(int button, int state, int wheel, int direction, int x, int y)
+{
+	if (button == 0 && state == 1)
+	{
+		currentTransformation = InterfaceTransformation::None;
+	}
 }

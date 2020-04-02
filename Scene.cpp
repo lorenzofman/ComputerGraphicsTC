@@ -39,6 +39,12 @@ void Scene::RegisterToOnRenderCallback(IRenderable* renderable)
 	renderableObjects.push_back(renderable);
 }
 
+void Scene::DeRegisterToOnRenderCallback(IRenderable* renderable)
+{
+	auto at = std::find(renderableObjects.begin(), renderableObjects.end(), renderable);
+	renderableObjects.erase(at);
+}
+
 void Scene::RegisterToOnKeyDownCallback(IAnyKeyDownListener* keyDownListener)
 {
 	keyDownListeners.push_back(keyDownListener);

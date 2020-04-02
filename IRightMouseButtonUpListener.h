@@ -6,4 +6,6 @@ class IRightMouseButtonUpListener
 	public:
 	virtual void OnRightMouseButtonUp(Float2 pos) = 0;
 	IRightMouseButtonUpListener(InputHandler* input);
+	~IRightMouseButtonUpListener();
+	InputHandler* input;
 };

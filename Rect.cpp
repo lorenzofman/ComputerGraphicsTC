@@ -8,6 +8,13 @@ Rect2D::Rect2D()
 	rotation = 0;
 }
 
+Rect2D::Rect2D(float x1, float y1, float x2, float y2)
+{
+	BottomLeft = Float2(x1,y1);
+	TopRight = Float2(x2,y2);
+	rotation = 0;
+}
+
 Rect2D::Rect2D(Float2 bottomLeft, Float2 topRight)
 {
 	this->BottomLeft = bottomLeft;
@@ -29,10 +36,10 @@ void Rect2D::Rotate(double rotation)
 	this->rotation = fmod(this->rotation, 2 * PI);
 }
 
-void Rect2D::Scale(float scale)
+void Rect2D::Scale(double scale)
 {
-	BottomLeft *= scale;
-	TopRight *= scale;
+	BottomLeft *= (float) scale;
+	TopRight *= (float) scale;
 }
 
 bool Rect2D::IsPointInside(Float2 point)
