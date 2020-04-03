@@ -8,5 +8,5 @@ IRenderable::IRenderable(Scene* scene)
 
 IRenderable::~IRenderable()
 {
-	scene->DeRegisterToOnRenderCallback(this);
+	scene->DeregisterToOnRenderCallback(this);
 }

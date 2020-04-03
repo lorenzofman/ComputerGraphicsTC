@@ -21,8 +21,8 @@ Rect2D ApplyTransformations(int x, int y, Image* image)
 
 Rect2D ApplyRotationAndScale(int x, int y, Image* image)
 {
-	float fx = (float)x;
-	float fy = (float)y;
+	float fx = (float)x - image->width / 2;
+	float fy = (float)y - image->height / 2;
 	Rect2D pixel = Rect2D(Float2(fx, fy), Float2(fx + 1, fy + 1));
 	pixel.Rotate(image->GetRotation());
 	pixel.Scale((float)image->GetScale());
@@ -235,7 +235,7 @@ void ScanLine(std::vector<Int2>& points, int yMin, int yMax)
 	delete[] min, max;
 }
 
-std::vector<Int2> RasterizeTriangle(const Int2& a, const Int2& b, const Int2& c, const Rect2D& bounds)
+std::vector<Int2> RasterizeTriangle(const Int2& a, const Int2& b, const Int2& c)
 {
 	std::vector<Int2> points = std::vector<Int2>();
 
@@ -251,16 +251,18 @@ std::vector<Int2> RasterizeTriangle(const Int2& a, const Int2& b, const Int2& c,
 	return points;
 }
 
-void PaintBuffer(RGBFloat* buffer, RGBFloat color, int w, int h, const std::vector<Int2>& points)
+void PaintBuffer(RGBFloat* buffer, RGBFloat color, int w, int h, const std::vector<Int2>& points, Image* img)
 {
 	int size = w * h;
 	for (auto&& point : points)
 	{
-		if (point.y < 0 || point.y >= h || point.x < 0 || point.x >= w)
+		int x = point.x + w/2;
+		int y = point.y + h/2;
+		if (y < 0 || y >= h || x < 0 || x >= w)
 		{
 			continue;
 		}
-		int idx = point.y * w + point.x;
+		int idx = y * w + x;
 		if (idx >= 0 && idx < size) 
 		{
 			buffer[idx] = color;
@@ -268,19 +270,17 @@ void PaintBuffer(RGBFloat* buffer, RGBFloat color, int w, int h, const std::vect
 	}
 }
 
-void RasterizeRect(RGBFloat* buffer, Rect2D px, Rect2D rect, RGBFloat color)
+void RasterizeRect(RGBFloat* buffer, Rect2D px, int w, int h, RGBFloat color, Image* srcImg)
 {
 	float* xys = CalculatePoints(px);
 	Float2 a = Float2(xys[0], xys[4]);
 	Float2 b = Float2(xys[1], xys[5]);
 	Float2 c = Float2(xys[2], xys[6]);
 	Float2 d = Float2(xys[3], xys[7]);
-	auto abc = RasterizeTriangle(a, b, c, rect);
-	auto abd = RasterizeTriangle(a, d, c, rect);
-	int w = (int)(rect.TopRight.x - rect.BottomLeft.x);
-	int h = (int)(rect.TopRight.y - rect.BottomLeft.y);
-	PaintBuffer(buffer, color, w, h, abc);
-	PaintBuffer(buffer, color, w, h, abd);
+	auto abc = RasterizeTriangle(a, b, c);
+	auto abd = RasterizeTriangle(a, d, c);
+	PaintBuffer(buffer, color, w, h, abc, srcImg);
+	PaintBuffer(buffer, color, w, h, abd, srcImg);
 	delete[] xys;
 }
 
@@ -291,19 +291,17 @@ Image* Canvas2DExtensions::RasterizeImageTransformations(Image* src, Scene* sc)
 	Int2 topRight = Int2((int)ceilf(rect.TopRight.x), (int)ceilf(rect.TopRight.y));
 	Int2 bottomLeft = Int2((int)ceilf(rect.BottomLeft.x), (int)ceilf(rect.BottomLeft.y));
 	int w = topRight.x - bottomLeft.x;
-	int h = topRight.x - bottomLeft.x;
+	int h = topRight.y - bottomLeft.y;
 	int size = w * h;
 	RGBFloat* pixels = new RGBFloat[size];
 	memset(pixels, 0, size * sizeof(RGBFloat));
-	for (int y = 0; y < src->width; y++)
+	for (int y = 0; y < src->height; y++)
 	{
-		for (int x = 0; x < src->height; x++)
+		for (int x = 0; x < src->width; x++)
 		{
 			int idx = y * src->width + x;
 			Rect2D px = ApplyRotationAndScale(x, y, src);
-			printf("Drawing rect -> (%f, %f, %f, %f)", px.BottomLeft.x, px.BottomLeft.y, px.TopRight.x, px.TopRight.y);
-			std::cout << std::endl;
-			RasterizeRect(pixels, px, rect, src->pixels[idx]);
+			RasterizeRect(pixels, px, w, h, src->pixels[idx], src);
 		}
 	}
 	Image* dst = new Image(pixels, w, h, sc, src->input);

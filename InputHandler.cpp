@@ -56,59 +56,61 @@ void InputHandler::RegisterOnKeyUp(int key, IKeyUpListener* listener)
 
 #pragma region Specific Mouse Callbacks
 
+/* Iterations need to be done with indexed loops because callbacks might create new instances that register to this class */
+/* When an instance register it changes the collection invalidating the iterator and throwing an exception */
 void InputHandler::OnLeftMouseButtonDown()
 {
-	for (auto&& listener : leftMouseButtonDownListeners)
+	for (auto i = 0; i < leftMouseButtonDownListeners.size(); i++)
 	{
-		listener->OnLeftMouseButtonDown(mousePosition);
+		leftMouseButtonDownListeners[i]->OnLeftMouseButtonDown(mousePosition);
 	}
 }
 
 void InputHandler::OnLeftMouseButtonUp()
 {
-	for (auto&& listener : leftMouseButtonUpListeners)
+	for (auto i = 0; i < leftMouseButtonDownListeners.size(); i++)
 	{
-		listener->OnLeftMouseButtonUp(mousePosition);
+		leftMouseButtonDownListeners[i]->OnLeftMouseButtonDown(mousePosition);
 	}
 }
 
 void InputHandler::OnMiddleMouseButtonDown()
 {
-	for (auto&& listener : middleMouseButtonDownListeners)
+	for (auto i = 0; i < middleMouseButtonDownListeners.size(); i++)
 	{
-		listener->OnMiddleMouseButtonDown(mousePosition);
+		middleMouseButtonDownListeners[i]->OnMiddleMouseButtonDown(mousePosition);
 	}
 }
 
 void InputHandler::OnMiddleMouseButtonUp()
 {
-	for (auto&& listener : middleMouseButtonUpListeners)
+	for (auto i = 0; i < middleMouseButtonUpListeners.size(); i++)
 	{
-		listener->OnMiddleMouseButtonUp(mousePosition);
+		middleMouseButtonUpListeners[i]->OnMiddleMouseButtonUp(mousePosition);
 	}
 }
 
 void InputHandler::OnRightMouseButtonDown()
 {
-	for (auto&& listener : rightMouseButtonDownListeners)
+	for (auto i = 0; i < rightMouseButtonDownListeners.size(); i++)
 	{
-		listener->OnRightMouseButtonDown(mousePosition);
+		rightMouseButtonDownListeners[i]->OnRightMouseButtonDown(mousePosition);
 	}
 }
 
 void InputHandler::OnRightMouseButtonUp()
 {
-	for (auto&& listener : rightMouseButtonUpListeners)
+	for (auto i = 0; i < rightMouseButtonUpListeners.size(); i++)
 	{
-		listener->OnRightMouseButtonUp(mousePosition);
+		rightMouseButtonUpListeners[i]->OnRightMouseButtonUp(mousePosition);
 	}
 }
 
 void InputHandler::OnMouseWheelUpdate(MouseWheelDirection dir)
 {
-	for (auto&& listener : mouseWheelUpdateListeners)
+	for (auto i = 0; i < mouseWheelUpdateListeners.size(); i++)
 	{
-		listener->OnMouseWheelUpdate(dir);
+		mouseWheelUpdateListeners[i]->OnMouseWheelUpdate(dir);
 	}
 }
 

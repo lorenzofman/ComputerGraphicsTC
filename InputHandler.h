@@ -110,16 +110,16 @@ class InputHandler : public IAnyKeyDownListener, public IAnyKeyUpListener, publi
 	std::unordered_map<int, std::vector<IKeyDownListener*>> keyDownListeners;
 	std::unordered_map<int, std::vector<IKeyUpListener*>> keyUpListeners;
 
-	std::vector<ILeftMouseButtonDownListener*> leftMouseButtonDownListeners;
-	std::vector<ILeftMouseButtonUpListener*> leftMouseButtonUpListeners;
+	std::vector<ILeftMouseButtonDownListener*> leftMouseButtonDownListeners = std::vector<ILeftMouseButtonDownListener*>();
+	std::vector<ILeftMouseButtonUpListener*> leftMouseButtonUpListeners = std::vector<ILeftMouseButtonUpListener*>();
 
-	std::vector<IRightMouseButtonDownListener*> rightMouseButtonDownListeners;
-	std::vector<IRightMouseButtonUpListener*> rightMouseButtonUpListeners;
+	std::vector<IRightMouseButtonDownListener*> rightMouseButtonDownListeners = std::vector < IRightMouseButtonDownListener*>();
+	std::vector<IRightMouseButtonUpListener*> rightMouseButtonUpListeners = std::vector<IRightMouseButtonUpListener*>();
 
-	std::vector<IMiddleMouseButtonDownListener*> middleMouseButtonDownListeners;
-	std::vector<IMiddleMouseButtonUpListener*> middleMouseButtonUpListeners;
+	std::vector<IMiddleMouseButtonDownListener*> middleMouseButtonDownListeners = std::vector<IMiddleMouseButtonDownListener*>();
+	std::vector<IMiddleMouseButtonUpListener*> middleMouseButtonUpListeners = std::vector<IMiddleMouseButtonUpListener*>();
 
-	std::vector<IMouseWheelUpdateListener*> mouseWheelUpdateListeners;
+	std::vector<IMouseWheelUpdateListener*> mouseWheelUpdateListeners = std::vector<IMouseWheelUpdateListener*>();
 
 	Float2 mousePosition;
 };

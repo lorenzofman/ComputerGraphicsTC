@@ -51,20 +51,27 @@ void ValidateFile(BitmapHeader* bmpHeader)
 
 byte* Bitmap::ReadData(std::ifstream*& stream, BitmapHeader*& bmpHeader)
 {
+	int bytesPerLine = (3 * (bmpHeader->width + 1) / 4) * 4;
 	int size = bmpHeader->width * bmpHeader->height * 3;
-	byte* data = new byte[bmpHeader->width * bmpHeader->height * 3];
+	byte* data = new byte[bytesPerLine * bmpHeader->height];
 	stream->read((char*)data, size);
 	return data;
 }
-RGBFloat* ConvertBGR24ToRGBFloat(byte* arr, int size)
+RGBFloat* ConvertBGR24ToPadLessRGBFloat(byte* arr, int w, int h, int bytesPerLine)
 {
+	int size = bytesPerLine * h;
 	RGBFloat* buffer = new RGBFloat[size];
-	for (int i = 0; i < size; i++)
+	for (int y = 0; y < h; y++)
 	{
-		float b = arr[i * 3 + 0] / 255.0f;
-		float g = arr[i * 3 + 1] / 255.0f;
-		float r = arr[i * 3 + 2] / 255.0f;
-		buffer[i] = RGBFloat(r, g, b);
+		for (int x = 0; x < h; x++)
+		{
+			int srcIdx = y * bytesPerLine + x * 3;
+			int dstIdx = y * w + x;
+			float b = arr[srcIdx + 0] / 255.0f;
+			float g = arr[srcIdx + 1] / 255.0f;
+			float r = arr[srcIdx + 2] / 255.0f;
+			buffer[dstIdx] = RGBFloat(r, g, b);
+		}
 	}
 	return buffer;
 }
@@ -74,8 +81,27 @@ Image* Bitmap::Read(std::ifstream* stream, Scene* scene, InputHandler* input)
 	ReadHeader(stream, bmpHeader);
 	ValidateFile(bmpHeader);
 	byte* data = ReadData(stream, bmpHeader);
-	RGBFloat* fData = ConvertBGR24ToRGBFloat(data, bmpHeader->width * bmpHeader->height);
-	return new Image(fData, bmpHeader->width, bmpHeader->height, scene, input);
+	int bytesPerLine = (3 * (bmpHeader->width + 1) / 4) * 4;
+	RGBFloat* fDataPadLess = ConvertBGR24ToPadLessRGBFloat(data, bmpHeader->width, bmpHeader->height, bytesPerLine);
+	return new Image(fDataPadLess, bmpHeader->width, bmpHeader->height, scene, input);
+}
+
+byte* ConvertPixelsToPaddedByteArray(RGBFloat* arr, int w, int h)
+{
+	int bytesPerLine = (3 * (w + 1) / 4) * 4;
+	byte* bgr24 = new byte[bytesPerLine * h];
+	for (int y = 0; y < h; y++)
+	{
+		for (int x = 0; x < w; x++)
+		{
+			int srcIdx = y * w + x;
+			int destIdx = y * bytesPerLine + x * 3;
+			bgr24[destIdx + 0] = (byte)(arr[srcIdx].b * 255);
+			bgr24[destIdx + 1] = (byte)(arr[srcIdx].g * 255);
+			bgr24[destIdx + 2] = (byte)(arr[srcIdx].r * 255);
+		}
+	}
+	return bgr24;
 }
 
 void Bitmap::Write(Image* image, std::ofstream* stream)
@@ -83,14 +109,7 @@ void Bitmap::Write(Image* image, std::ofstream* stream)
 	int w = image->width;
 	int h = image->height;
 	int size = h * w;
-	byte* bgr24 = new byte[size * 3];
-	for (int i = 0; i < size; i++)
-	{
-		RGBFloat pixel = image->pixels[i];
-		bgr24[i * 3 + 0] = (byte) (pixel.b * 255);
-		bgr24[i * 3 + 1] = (byte) (pixel.g * 255);
-		bgr24[i * 3 + 2] = (byte) (pixel.r * 255);
-	}
+	byte* bgr24 = ConvertPixelsToPaddedByteArray(image->pixels, w, h);
 	BitmapHeader* header = new BitmapHeader();
 
 	header->type = MagicIdentifier;
@@ -110,5 +129,5 @@ void Bitmap::Write(Image* image, std::ofstream* stream)
 	header->nColours = 0;
 	header->impColours = 0;
 	stream->write((char*) header, sizeof(BitmapHeader));
-	stream->write((char*) bgr24, (long long ) size * 3);
+	stream->write((char*) bgr24, (long long) size * 3);
 }

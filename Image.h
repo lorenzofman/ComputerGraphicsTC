@@ -10,7 +10,6 @@ struct Image : public IRenderable, public Button, public IAnyKeyUpListener, publ
 {
 	enum class InterfaceTransformation{None, Translating, Rotating, Scaling};
 	RGBFloat* pixels;
-	int sizeInBytes;
 	int size;
 	int width;
 	int height;

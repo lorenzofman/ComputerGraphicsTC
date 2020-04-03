@@ -1,7 +1,7 @@
 #include <stdlib.h>
 
 #include "FileDialog.h"
-
+bool FileDialog::IsDialogOpen = false;
 OPENFILENAME FileDialog::CreateOfn(DWORD flags)
 {
 	OPENFILENAME ofn;
@@ -20,10 +20,16 @@ OPENFILENAME FileDialog::CreateOfn(DWORD flags)
 
 std::string FileDialog::Open()
 {
+	if (IsDialogOpen)
+	{
+		return std::string();
+	}
+	IsDialogOpen = true;
 	OPENFILENAME ofn = CreateOfn(OFN_EXPLORER | OFN_FILEMUSTEXIST | OFN_HIDEREADONLY);
 
 	if (GetOpenFileName(&ofn) == false)
 	{
+		IsDialogOpen = false;
 		return std::string();
 	}
 	char fileName[MAX_PATH];
@@ -33,11 +39,17 @@ std::string FileDialog::Open()
 
 	delete ofn.lpstrFile;
 
+	IsDialogOpen = false;
 	return std::string(fileName);
 }
 
 std::string FileDialog::Save()
 {
+	if (IsDialogOpen)
+	{
+		return std::string();
+	}
+	IsDialogOpen = true;
 	OPENFILENAME ofn = CreateOfn(OFN_EXPLORER | OFN_PATHMUSTEXIST | OFN_HIDEREADONLY);
 
 	if (GetSaveFileName(&ofn) == false)
@@ -51,5 +63,6 @@ std::string FileDialog::Save()
 
 	delete ofn.lpstrFile;
 
+	IsDialogOpen = false;
 	return std::string(fileName);
 }

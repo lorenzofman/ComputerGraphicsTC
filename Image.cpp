@@ -14,7 +14,6 @@ Image::Image(RGBFloat* pixels, int width, int height, Scene* scene, InputHandler
 	this->width = width;
 	this->height = height;
 	this->size = width * height;
-	this->sizeInBytes = this->size * sizeof(RGBFloat);
 	this->rotation = 0;
 	this->scale = 1;
 	this->input = input;

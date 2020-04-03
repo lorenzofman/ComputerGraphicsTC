@@ -7,6 +7,6 @@ IMouseListener::IMouseListener(Scene* scene)
 
 IMouseListener::~IMouseListener()
 {
-	// Deregister mouse callback
+	scene->DeregisterToOnMouseUpdateCallback(this);
 }
 
