@@ -164,6 +164,7 @@
     <ClCompile Include="IMouseWheelUpdateListener.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="Int2.cpp" />
+    <ClCompile Include="InterfaceButton.cpp" />
     <ClCompile Include="IRenderable.cpp" />
     <ClCompile Include="IRightMouseButtonDownListener.cpp" />
     <ClCompile Include="IRightMouseButtonUpListener.cpp" />
@@ -199,6 +200,7 @@
     <ClInclude Include="IMouseWheelUpdateListener.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="Int2.h" />
+    <ClInclude Include="InterfaceButton.h" />
     <ClInclude Include="IRightMouseButtonDownListener.h" />
     <ClInclude Include="IRightMouseButtonUpListener.h" />
     <ClInclude Include="IMiddleMouseButtonDownListener.h" />

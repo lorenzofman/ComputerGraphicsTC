@@ -12,9 +12,10 @@
 #include "ImageHistogram.h"
 #include "Rect.h"
 #include "Canvas2DExtensions.h"
-
+#include "InterfaceButton.h"
 Scene* Default = new Scene();
 InputHandler* Input = new InputHandler(Default);
+
 void OnKeyDown(int key)
 {
 	Default->OnKeyDownCallback(key);
@@ -35,31 +36,22 @@ void OnRender(void)
 	Default->OnRender();
 }
 
-std::string OpenFile()
+void OnLoadButtonClick()
 {
 	std::string filePath = FileDialog::Open();
 	if (filePath.empty())
 	{
-		std::cout << "User cancelled opening the file";
-		std::exit(EXIT_FAILURE);
+		return;
 	}
-	return filePath;
-}
-
-std::string SaveFile()
-{
-	std::string filePath = FileDialog::Save();
-	if (filePath.empty())
-	{
-		std::cout << "User cancelled saving the file";
-		std::exit(EXIT_FAILURE);
-	}
-	return filePath;
+	Image* userImage = ImageType::Read(filePath, std::string("bmp"), Default, Input);
 }
 
 int main()
 {
-	Image* userImage = ImageType::Read(OpenFile(), std::string("bmp"), Default, Input);
-	int h = userImage->height, w = userImage->width;
+	int h= 512, w = 512;
+	RGBFloat buttonColor = RGBFloat(142.0F / 255.0F, 68.f / 255.f, 173.f / 255.f);
+	RGBFloat buttonTitleColor = RGBFloat(1, 1, 1);
+	InterfaceButton* saveButton = new InterfaceButton(Default, Input, "Open File", buttonColor, buttonTitleColor,
+		Rect2D(0, 0, 150, 35), &OnLoadButtonClick);
 	Canvas2D::Canvas2D(&h, &w, std::string("Lorenzo - T0"), OnKeyDown, OnKeyUp, OnMouseUpdate, OnRender);
 }

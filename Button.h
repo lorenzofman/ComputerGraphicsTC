@@ -1,4 +1,6 @@
 #pragma once
+#include <string>
+
 #include "IRenderable.h"
 #include "InputHandler.h"
 #include "ILeftMouseButtonUpListener.h"

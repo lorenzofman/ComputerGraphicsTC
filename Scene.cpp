@@ -3,7 +3,7 @@
 
 void Scene::OnRender()
 {
-	Canvas2D::ClearScreen(0, 0, 0);
+	Canvas2D::ClearScreen(0.15, 0.15, 0.15);
 	for (auto&& renderable : renderableObjects)
 	{
 		renderable->Render();

@@ -3,7 +3,7 @@
 #include <GL/glut.h>
 #include <GL/freeglut_ext.h>
 #include <string>
-
+#undef DrawText
 class Canvas2D
 {
 	public:
