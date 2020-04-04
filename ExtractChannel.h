@@ -1,11 +1,11 @@
 #pragma once
 
-#include "ImageFilter.h"
 #include "Scene.h"
 #include "Channel.h"
+#include "Image.h"
 class ExtractChannel
 {
 	public:
-	static Image* Extract(Channel, Image*, Scene*);
+	static void Extract(Channel, Image*);
 };
 

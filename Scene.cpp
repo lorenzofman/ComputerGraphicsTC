@@ -20,7 +20,7 @@ void Scene::OnKeyDownCallback(int key)
 
 void Scene::OnKeyUpCallback(int key)
 {
-	for (auto i = 0; i < mouseListeners.size(); i++)
+	for (auto i = 0; i < keyUpListeners.size(); i++)
 	{
 		keyUpListeners[i]->OnKeyUp(key);
 	}

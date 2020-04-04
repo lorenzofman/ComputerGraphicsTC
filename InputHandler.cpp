@@ -68,9 +68,9 @@ void InputHandler::OnLeftMouseButtonDown()
 
 void InputHandler::OnLeftMouseButtonUp()
 {
-	for (auto i = 0; i < leftMouseButtonDownListeners.size(); i++)
+	for (auto i = 0; i < leftMouseButtonUpListeners.size(); i++)
 	{
-		leftMouseButtonDownListeners[i]->OnLeftMouseButtonDown(mousePosition);
+		leftMouseButtonUpListeners[i]->OnLeftMouseButtonUp(mousePosition);
 	}
 }
 
@@ -117,7 +117,6 @@ void InputHandler::OnMouseWheelUpdate(MouseWheelDirection dir)
 #pragma endregion
 
 #pragma region Mouse
-
 void InputHandler::MouseButtonsCallbacks(int button, int state)
 {
 	if (button < 0)

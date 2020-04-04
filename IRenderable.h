@@ -7,6 +7,6 @@ class IRenderable
 		virtual void Render() = 0;
 		IRenderable (Scene* scene);
 		~IRenderable();
-	private:
+	protected:
 	Scene *scene;
 };

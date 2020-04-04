@@ -30,6 +30,7 @@ InterfaceButton* LoadButton;
 
 InterfaceButton* SaveButton;
 
+int w = 512, h = 512;
 
 #pragma endregion
 
@@ -45,11 +46,12 @@ void OnLoadButtonClick()
 	SaveButton->interactable = true;
 	LoadButton->interactable = false;
 	Primary = ImageType::Read(filePath, std::string("bmp"), Default, Input);
+	Primary->SetPosition(Float2(w / 2.f, h / 2.f));
 }
 
 void OnSaveButtonClick()
 {
-	std::string filePath = FileDialog::Open();
+	std::string filePath = FileDialog::Save();
 	if (filePath.empty())
 	{
 		return;
@@ -59,6 +61,8 @@ void OnSaveButtonClick()
 	Primary = rasterized;
 	SaveButton->interactable = false;
 	ImageType::Write(rasterized, filePath, std::string("bmp"));
+	delete rasterized;
+	exit(0);
 }
 
 #pragma endregion
@@ -103,6 +107,5 @@ void InitializeWorld()
 int main()
 {
 	InitializeWorld();
-	int h= 512, w = 512;
 	Canvas2D::Canvas2D(&h, &w, std::string("Lorenzo - T0"), OnKeyDown, OnKeyUp, OnMouseUpdate, OnRender);
 }

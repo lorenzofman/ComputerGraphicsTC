@@ -11,19 +11,21 @@ class Button : public ILeftMouseButtonUpListener, public ILeftMouseButtonDownLis
 	public:
 	
 	Button(Scene*, InputHandler*);
+	Rect2D rect;
 	
 	protected:
 	
 	virtual void OnButtonDown();
 	virtual void OnButtonUp();
-	Rect2D rect;
-	private:
-	RGBFloat color;
 
 	// Inherited via ILeftMouseButtonUpListener
 	virtual void OnLeftMouseButtonUp(Float2 pos) override;
 
 	// Inherited via ILeftMouseButtonDownListener
 	virtual void OnLeftMouseButtonDown(Float2 pos) override;
+
+	private:
+	RGBFloat color;
+
 };
 

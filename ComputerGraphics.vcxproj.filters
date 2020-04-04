@@ -195,8 +195,11 @@
     <ClCompile Include="Int2.cpp">
       <Filter>Source Files\Primitive</Filter>
     </ClCompile>
+    <ClCompile Include="ImageActions.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
     <ClCompile Include="InterfaceButton.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -287,9 +290,6 @@
     <ClInclude Include="IMouseWheelUpdateListener.h">
       <Filter>Header Files\Interfaces\Mouse</Filter>
     </ClInclude>
-    <ClInclude Include="ImageFilter.h">
-      <Filter>Header Files\ImageManipulation</Filter>
-    </ClInclude>
     <ClInclude Include="ExtractChannel.h">
       <Filter>Header Files\ImageManipulation</Filter>
     </ClInclude>
@@ -305,8 +305,11 @@
     <ClInclude Include="Int2.h">
       <Filter>Header Files\Primitive</Filter>
     </ClInclude>
+    <ClInclude Include="ImageActions.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
     <ClInclude Include="InterfaceButton.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

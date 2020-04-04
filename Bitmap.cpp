@@ -109,6 +109,7 @@ void Bitmap::Write(Image* image, std::ofstream* stream)
 	int w = image->width;
 	int h = image->height;
 	int size = h * w;
+	int bytesPerLine = (3 * (w + 1) / 4) * 4;
 	byte* bgr24 = ConvertPixelsToPaddedByteArray(image->pixels, w, h);
 	BitmapHeader* header = new BitmapHeader();
 
@@ -129,5 +130,5 @@ void Bitmap::Write(Image* image, std::ofstream* stream)
 	header->nColours = 0;
 	header->impColours = 0;
 	stream->write((char*) header, sizeof(BitmapHeader));
-	stream->write((char*) bgr24, (long long) size * 3);
+	stream->write((char*) bgr24, (long long) bytesPerLine * h);
 }

@@ -113,7 +113,7 @@ class InputHandler : public IAnyKeyDownListener, public IAnyKeyUpListener, publi
 	std::vector<ILeftMouseButtonDownListener*> leftMouseButtonDownListeners = std::vector<ILeftMouseButtonDownListener*>();
 	std::vector<ILeftMouseButtonUpListener*> leftMouseButtonUpListeners = std::vector<ILeftMouseButtonUpListener*>();
 
-	std::vector<IRightMouseButtonDownListener*> rightMouseButtonDownListeners = std::vector < IRightMouseButtonDownListener*>();
+	std::vector<IRightMouseButtonDownListener*> rightMouseButtonDownListeners = std::vector <IRightMouseButtonDownListener*>();
 	std::vector<IRightMouseButtonUpListener*> rightMouseButtonUpListeners = std::vector<IRightMouseButtonUpListener*>();
 
 	std::vector<IMiddleMouseButtonDownListener*> middleMouseButtonDownListeners = std::vector<IMiddleMouseButtonDownListener*>();

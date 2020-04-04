@@ -3,12 +3,13 @@
 #include "Image.h"
 #include "Scene.h"
 #include "Canvas2DExtensions.h"
+#include "ImageActions.h"
 
 Image::Image(RGBFloat* pixels, int width, int height, Scene* scene, InputHandler* input) :
 	IRenderable(scene),
 	Button(scene, input),
 	IAnyKeyUpListener(scene),
-	IMouseListener(scene)
+	IRightMouseButtonUpListener(input)
 {
 	this->pixels = pixels;
 	this->width = width;
@@ -23,6 +24,8 @@ Image::Image(RGBFloat* pixels, int width, int height, Scene* scene, InputHandler
 	lastMousePosition = Float2();
 
 	RecalculateButtonRect();
+
+	ImageActions::Init(scene, input, this);
 }
 
 Image::~Image()
@@ -146,11 +149,18 @@ void Image::OnButtonDown()
 	}
 }
 
-void Image::OnButtonUp()
+void Image::OnLeftMouseButtonUp(Float2 pos)
 {
-	if (currentTransformation == InterfaceTransformation::Translating)
+	Button::OnLeftMouseButtonUp(pos);
+	currentTransformation = InterfaceTransformation::None;
+}
+
+void Image::OnLeftMouseButtonDown(Float2 pos)
+{
+	Button::OnLeftMouseButtonDown(pos);
+	if (ImageActions::ContainingRect.IsPointInside(pos) == false)
 	{
-		currentTransformation = InterfaceTransformation::None;
+		ImageActions::Hide();
 	}
 }
 
@@ -185,10 +195,12 @@ void Image::OnKeyUp(int key)
 	}
 }
 
-void Image::OnMouseUpdate(int button, int state, int wheel, int direction, int x, int y)
+void Image::OnRightMouseButtonUp(Float2 pos)
 {
-	if (button == 0 && state == 1)
+	if (rect.IsPointInside(pos) == false)
 	{
-		currentTransformation = InterfaceTransformation::None;
+		return;
 	}
+
+	ImageActions::Display(Int2(pos));
 }

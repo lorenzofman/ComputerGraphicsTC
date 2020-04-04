@@ -4,6 +4,6 @@
 class Grayscale
 {
 	public:
-	static Image* Convert(Image*, Scene*);
+	static void Convert(Image*);
 };
 

@@ -6,7 +6,9 @@
 #include "RGBFloat.h"
 #include "Button.h"
 #include "InputHandler.h"
-struct Image : public IRenderable, public Button, public IAnyKeyUpListener, public IMouseListener
+#include "IRightMouseButtonDownListener.h"
+
+struct Image : public IRenderable, public Button, public IAnyKeyUpListener, public IRightMouseButtonUpListener
 {
 	enum class InterfaceTransformation{None, Translating, Rotating, Scaling};
 	RGBFloat* pixels;
@@ -52,12 +54,14 @@ struct Image : public IRenderable, public Button, public IAnyKeyUpListener, publ
 
 	// Inherited from Button
 	void OnButtonDown() override;
-	void OnButtonUp() override;
+
+	virtual void OnLeftMouseButtonUp(Float2 pos) override;
+	virtual void OnLeftMouseButtonDown(Float2 pos) override;
+
 
 	// Inherited via IAnyKeyUpListener
 	virtual void OnKeyUp(int) override;
 
-	// Inherited via IMouseListener
-	virtual void OnMouseUpdate(int, int, int, int, int, int) override;
-
+	// Inherited via IRightMouseButtonUpListener
+	virtual void OnRightMouseButtonUp(Float2 pos) override;
 };
