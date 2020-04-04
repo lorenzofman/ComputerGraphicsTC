@@ -16,7 +16,11 @@ class ImageActions
 	static void OnExtractGreenButtonClick();
 	static void OnExtractBlueButtonClick();
 	static void OnConvertToGrayscaleButton();
-	static void OnPlotHistogramButton();
+	static void OnPlotRedHistogramButton();
+	static void OnPlotGreenHistogramButton();
+	static void OnPlotBlueHistogramButton();
+	static void OnPlotLuminescenceHistogramButton();
+
 	static Rect2D ContainingRect;
 	private:
 	static bool started;

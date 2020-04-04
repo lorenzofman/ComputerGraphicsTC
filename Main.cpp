@@ -14,8 +14,6 @@
 #include "Canvas2DExtensions.h"
 #include "InterfaceButton.h"
 
-#pragma region Global Declaring
-
 Scene* Default;
 
 InputHandler* Input;
@@ -30,11 +28,7 @@ InterfaceButton* LoadButton;
 
 InterfaceButton* SaveButton;
 
-int w = 512, h = 512;
-
-#pragma endregion
-
-#pragma region Button Callbacks
+int ScreenWidth = 512, ScreenHeight = 512;
 
 void OnLoadButtonClick()
 {
@@ -46,7 +40,7 @@ void OnLoadButtonClick()
 	SaveButton->interactable = true;
 	LoadButton->interactable = false;
 	Primary = ImageType::Read(filePath, std::string("bmp"), Default, Input);
-	Primary->SetPosition(Float2(w / 2.f, h / 2.f));
+	Primary->SetPosition(Float2(ScreenWidth / 2.f, ScreenHeight / 2.f));
 }
 
 void OnSaveButtonClick()
@@ -64,10 +58,6 @@ void OnSaveButtonClick()
 	delete rasterized;
 	exit(0);
 }
-
-#pragma endregion
-
-#pragma region Callbacks
 
 void OnKeyDown(int key)
 {
@@ -89,8 +79,6 @@ void OnRender(void)
 	Default->OnRender();
 }
 
-#pragma endregion
-
 void InitializeWorld()
 {
 	Default = new Scene();
@@ -107,5 +95,5 @@ void InitializeWorld()
 int main()
 {
 	InitializeWorld();
-	Canvas2D::Canvas2D(&h, &w, std::string("Lorenzo - T0"), OnKeyDown, OnKeyUp, OnMouseUpdate, OnRender);
+	Canvas2D(&ScreenHeight, &ScreenWidth, std::string("Lorenzo - T0"), OnKeyDown, OnKeyUp, OnMouseUpdate, OnRender);
 }

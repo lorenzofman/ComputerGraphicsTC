@@ -21,7 +21,7 @@ struct Image : public IRenderable, public Button, public IAnyKeyUpListener, publ
 
 	Image(RGBFloat* pixels, int width, int height, Scene *scene, InputHandler* input);
 
-	~Image();
+	virtual ~Image();
 
 	void ApplyInterfaceTransfomation();
 
@@ -43,7 +43,7 @@ struct Image : public IRenderable, public Button, public IAnyKeyUpListener, publ
 	void Show();
 	void Hide();
 
-	
+
 	void CopyTransformFrom(Image* from);
 
 	private:

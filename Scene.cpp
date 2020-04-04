@@ -1,10 +1,12 @@
+#include <algorithm>
+
 #include "Scene.h"
 #include "Canvas2D.h"
-
+#include "Types.h"
 void Scene::OnRender()
 {
-	Canvas2D::ClearScreen(0.15, 0.15, 0.15);
-	for (auto i = 0; i < renderableObjects.size(); i++)
+	Canvas2D::ClearScreen(0.15f, 0.15f, 0.15f);
+	for (uint  i = 0; i < renderableObjects.size(); i++)
 	{
 		renderableObjects[i]->Render();
 	}
@@ -12,7 +14,7 @@ void Scene::OnRender()
 
 void Scene::OnKeyDownCallback(int key)
 {
-	for (auto i = 0; i < keyDownListeners.size(); i++)
+	for (uint i = 0; i < keyDownListeners.size(); i++)
 	{
 		keyDownListeners[i]->OnKeyDown(key);
 	}
@@ -20,7 +22,7 @@ void Scene::OnKeyDownCallback(int key)
 
 void Scene::OnKeyUpCallback(int key)
 {
-	for (auto i = 0; i < keyUpListeners.size(); i++)
+	for (uint i = 0; i < keyUpListeners.size(); i++)
 	{
 		keyUpListeners[i]->OnKeyUp(key);
 	}
@@ -28,7 +30,7 @@ void Scene::OnKeyUpCallback(int key)
 
 void Scene::OnMouseUpdateCallback(int button, int state, int wheel, int direction, int x, int y)
 {
-	for (auto i = 0; i < mouseListeners.size(); i++)
+	for (uint i = 0; i < mouseListeners.size(); i++)
 	{
 		mouseListeners[i]->OnMouseUpdate(button, state, wheel, direction, x, y);
 	}

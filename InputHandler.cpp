@@ -1,8 +1,10 @@
+#include <stdio.h>
+#include <algorithm>
+
 #include "InputHandler.h"
 #include "IAnyKeyDownListener.h"
 #include "IAnyKeyUpListener.h"
 #include "IMouseListener.h"
-#include <stdio.h>
 
 InputHandler::InputHandler(Scene* sc) : IAnyKeyDownListener(sc), IAnyKeyUpListener(sc), IMouseListener(sc) { }
 
@@ -15,9 +17,9 @@ void InputHandler::OnKeyDown(int key)
 		return;
 	}
 
-	for (auto&& keyDown : keyDownListeners[key])
+	for (int i = keyDownListeners[key].size() - 1; i >= 0; i--)
 	{
-		keyDown->OnKeyDown();
+		keyDownListeners[key][i]->OnKeyDown();
 	}
 }
 
@@ -27,10 +29,9 @@ void InputHandler::OnKeyUp(int key)
 	{
 		return;
 	}
-
-	for (auto&& keyUp : keyUpListeners[key])
+	for (int i = keyUpListeners[key].size() - 1; i >= 0; i--)
 	{
-		keyUp->OnKeyUp();
+		keyUpListeners[key][i]->OnKeyUp();
 	}
 }
 

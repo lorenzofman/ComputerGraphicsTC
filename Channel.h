@@ -1,2 +1,2 @@
 #pragma once
-enum class Channel {R, G, B};
+enum class Channel {R, G, B, None};

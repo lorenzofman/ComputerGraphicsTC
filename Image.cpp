@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 
 #include "Image.h"
 #include "Scene.h"
@@ -69,7 +70,7 @@ void Image::ApplyInterfaceTransfomation()
 
 void Image::Render()
 {
-	if (active) 
+	if (active)
 	{
 		Canvas2DExtensions::DrawImage(this);
 		ApplyInterfaceTransfomation();
@@ -143,7 +144,7 @@ void Image::OnButtonDown()
 	{
 		currentTransformation = InterfaceTransformation::Translating;
 	}
-	else 
+	else
 	{
 		currentTransformation = InterfaceTransformation::None;
 	}

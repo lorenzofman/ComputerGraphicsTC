@@ -3,12 +3,13 @@
 #include <GL/glut.h>
 #include <GL/freeglut_ext.h>
 #include <string>
+#include <cmath>
 #undef DrawText
 class Canvas2D
 {
 	public:
 
-	Canvas2D(int*, int*, std::string, 
+	Canvas2D(int*, int*, std::string,
 		void(OnKeyDownCallback(int)),
 		void(OnKeyUpCallback(int)),
 		void(OnMouseUpdateCallback(int, int, int, int, int, int)),
