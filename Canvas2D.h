@@ -4,7 +4,11 @@
 #include <GL/freeglut_ext.h>
 #include <string>
 #include <cmath>
-#undef DrawText
+
+#include "Float2.h"
+#include "RGBAFloat.h"
+#undef DrawText /* DrawText conflicts with WinUser.h header*/
+
 class Canvas2D
 {
 	public:
@@ -21,16 +25,16 @@ class Canvas2D
 	static void DrawRect(int, int, int, int);
 	static void DrawFilledRect(int, int, int, int);
 
-	static void DrawPolygon(float[], float[], int);
-	static void DrawFilledPolygon(float[], float[], int);
+	static void DrawPolygon(Float2 vertices[], int);
+	static void DrawFilledPolygon(Float2 vertices[], int);
 
-	static void DrawCircle(int, int, int, int);
-	static void DrawFilledCircle(int, int, int, int);
+	static void DrawCircle(Float2 pos, float radius, int divisions);
+	static void DrawFilledCircle(Float2 pos, float radius, int divisions);
 
 	static void DrawText(int, int, const char*);
 
-	static void SetColor(float, float, float);
-	static void ClearScreen(float, float, float);
+	static void SetColor(RGBAFloat color);
+	static void ClearScreen(RGBAFloat color);
 
 	private:
 

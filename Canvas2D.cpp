@@ -11,6 +11,7 @@
 
 	Código formatado, métodos convertidos para Pascal Case (para manter a formatação nas classes mais abstratas),  traduzido para inglês e convertido para classe por: Lorenzo Schwertner Kaufmann (23/03/2020)
 	Métodos que usavam o valor literal 6.27 ao invés de PI_2 (6.28) para não fechar todos pontos do círculo foram substituídos por loops inteiros que não causam confusão. Itera n-1 vezes
+	Parametros de DrawPolygon alterados para uma estrutura que contém x, y
 	Original disponível em http://www-usr.inf.ufsm.br/~pozzer/
 */
 
@@ -105,27 +106,57 @@ void Canvas2D::DrawFilledRect(int x1, int y1, int x2, int y2)
 	glEnd();
 }
 
-void Canvas2D::DrawPolygon(float vx[], float vy[], int elems)
+void Canvas2D::DrawPolygon(Float2 vertices[], int elems)
 {
 	int cont;
 	glBegin(GL_LINE_LOOP);
 	for (cont = 0; cont < elems; cont++)
 	{
-		glVertex2d(vx[cont], vy[cont]);
+		glVertex2d(vertices[cont].x, vertices[cont].y);
 	}
 	glEnd();
 }
 
-void Canvas2D::DrawFilledPolygon(float vx[], float vy[], int elems)
+void Canvas2D::DrawFilledPolygon(Float2 vertices[], int elems)
 {
 	int cont;
 	glBegin(GL_POLYGON);
 	for (cont = 0; cont < elems; cont++)
 	{
-		glVertex2d(vx[cont], vy[cont]);
+		glVertex2d(vertices[cont].x, vertices[cont].y);
 	}
 	glEnd();
 
+}
+
+void Canvas2D::DrawCircle(Float2 pos, float radius, int divisions)
+{
+	double ang = 0.0;
+	double step = Tau / divisions;
+	glBegin(GL_LINE_LOOP);
+	for (int i = 0; i < divisions - 1; i++)
+	{
+		double x1 = (cos(ang) * radius);
+		double y1 = (sin(ang) * radius);
+		glVertex2d(x1 + pos.x, y1 + pos.y);
+		ang += step;
+	}
+	glEnd();
+}
+
+void Canvas2D::DrawFilledCircle(Float2 pos, float radius, int divisions)
+{
+	double ang = 0.0;
+	double step = Tau / divisions;
+	glBegin(GL_POLYGON);
+	for (int i = 0; i < divisions - 1; i++)
+	{
+		double x1 = (cos(ang) * radius);
+		double y1 = (sin(ang) * radius);
+		glVertex2d(x1 + pos.x, y1 + pos.y);
+		ang += step;
+	}
+	glEnd();
 }
 
 void Canvas2D::DrawText(int x, int y, const char* t)
@@ -138,44 +169,15 @@ void Canvas2D::DrawText(int x, int y, const char* t)
 	}
 }
 
-void Canvas2D::DrawCircle(int x, int y, int radius, int divisions)
+
+void Canvas2D::SetColor(RGBAFloat color)
 {
-	double ang = 0.0;
-	double step = Tau / divisions;
-	glBegin(GL_LINE_LOOP);
-	for (int i = 0; i < divisions - 1; i++)
-	{
-		double x1 = (cos(ang) * radius);
-		double y1 = (sin(ang) * radius);
-		glVertex2d(x1 + x, y1 + y);
-		ang += step;
-	}
-	glEnd();
+	glColor3d(color.r, color.g, color.b);
 }
 
-void Canvas2D::DrawFilledCircle(int x, int y, int radius, int divisions)
+void Canvas2D::ClearScreen(RGBAFloat color)
 {
-	double ang = 0.0;
-	double step = Tau / divisions;
-	glBegin(GL_POLYGON);
-	for (int i = 0; i < divisions - 1; i++)
-	{
-		double x1 = (cos(ang) * radius);
-		double y1 = (sin(ang) * radius);
-		glVertex2d(x1 + x, y1 + y);
-		ang += step;
-	}
-	glEnd();
-}
-
-void Canvas2D::SetColor(float r, float g, float b)
-{
-	glColor3d(r, g, b);
-}
-
-void Canvas2D::ClearScreen(float r, float g, float b)
-{
-	glClearColor(r, g, b, 1);
+	glClearColor(color.r, color.g, color.b, 1);
 }
 
 void Canvas2D::OnSpecialKeyDown(int key, int, int)

@@ -17,7 +17,7 @@ struct Float2
 	
 	Float2 operator * (float const& constant);
 	void operator *= (float const& constant);
-	void Rotate(double rot);
+	void Rotate(float rot);
 
 	static float Distance(Float2 a, Float2 b);
 	static float DistanceSq(Float2 a, Float2 b);

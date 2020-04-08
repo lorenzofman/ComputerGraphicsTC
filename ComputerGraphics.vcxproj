@@ -94,6 +94,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\Users\Lorenzo\Documents\ComputerGraphics\Canvas2D\Resources\Library;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>/VERBOSE %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -147,20 +148,30 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Circle.cpp" />
     <ClCompile Include="Int2.cpp" />
     <ClCompile Include="Canvas2D.cpp" />
     <ClCompile Include="Float2.cpp" />
-    <ClCompile Include="RGBFloat.cpp" />
+    <ClCompile Include="Polygon.cpp" />
+    <ClCompile Include="Rect.cpp" />
+    <ClCompile Include="RGBAFloat.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="FileDialog.cpp" />
+    <ClCompile Include="Shape.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Array.h" />
+    <ClInclude Include="Circle.h" />
     <ClInclude Include="Int2.h" />
     <ClInclude Include="Canvas2D.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="Float2.h" />
-    <ClInclude Include="RGBFloat.h" />
+    <ClInclude Include="IRenderable.h" />
+    <ClInclude Include="Polygon.h" />
+    <ClInclude Include="Rect.h" />
+    <ClInclude Include="RGBAFloat.h" />
     <ClInclude Include="FileDialog.h" />
+    <ClInclude Include="Shape.h" />
     <ClInclude Include="Types.h" />
   </ItemGroup>
   <ItemGroup>

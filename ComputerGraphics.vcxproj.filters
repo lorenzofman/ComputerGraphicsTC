@@ -43,13 +43,25 @@
     <Filter Include="Header Files\World">
       <UniqueIdentifier>{c6b17530-5293-41e5-9bb0-500c658e6a66}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Shapes">
+      <UniqueIdentifier>{938d0269-d778-41ba-88ef-9d1c969633ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interfaces">
+      <UniqueIdentifier>{5bc109e4-394a-4eae-a5fc-f94e346504cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shapes">
+      <UniqueIdentifier>{731a408b-1e4b-4a35-a644-814fc1b73301}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\DataStructures">
+      <UniqueIdentifier>{b17a3755-8274-4bd1-9e85-c3dfc2ae3302}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\DataStructures">
+      <UniqueIdentifier>{1c395121-a576-4fe2-8b81-b851451f58d7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Canvas2D.cpp">
       <Filter>Source Files\Canvas2D</Filter>
-    </ClCompile>
-    <ClCompile Include="RGBFloat.cpp">
-      <Filter>Source Files\Color</Filter>
     </ClCompile>
     <ClCompile Include="FileDialog.cpp">
       <Filter>Source Files\FileDialog</Filter>
@@ -63,13 +75,25 @@
     <ClCompile Include="Int2.cpp">
       <Filter>Source Files\Primitive</Filter>
     </ClCompile>
+    <ClCompile Include="Circle.cpp">
+      <Filter>Source Files\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="Rect.cpp">
+      <Filter>Source Files\Primitive</Filter>
+    </ClCompile>
+    <ClCompile Include="RGBAFloat.cpp">
+      <Filter>Source Files\Color</Filter>
+    </ClCompile>
+    <ClCompile Include="Polygon.cpp">
+      <Filter>Source Files\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="Shape.cpp">
+      <Filter>Source Files\Shapes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Canvas2D.h">
       <Filter>Header Files\Canvas2D</Filter>
-    </ClInclude>
-    <ClInclude Include="RGBFloat.h">
-      <Filter>Header Files\Color</Filter>
     </ClInclude>
     <ClInclude Include="Types.h">
       <Filter>Header Files\Primitive</Filter>
@@ -85,6 +109,27 @@
     </ClInclude>
     <ClInclude Include="Int2.h">
       <Filter>Header Files\Primitive</Filter>
+    </ClInclude>
+    <ClInclude Include="Shape.h">
+      <Filter>Header Files\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="IRenderable.h">
+      <Filter>Header Files\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Circle.h">
+      <Filter>Header Files\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Rect.h">
+      <Filter>Header Files\Primitive</Filter>
+    </ClInclude>
+    <ClInclude Include="RGBAFloat.h">
+      <Filter>Header Files\Color</Filter>
+    </ClInclude>
+    <ClInclude Include="Polygon.h">
+      <Filter>Header Files\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Array.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

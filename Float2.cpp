@@ -52,11 +52,11 @@ void Float2::operator*=(float const& constant)
 	y *= constant;
 }
 
-void Float2::Rotate(double rot)
+void Float2::Rotate(float rot)
 {
 	float x0 = x;
-	x = (float) (x0 * cos(rot) - y * sin(rot));
-	y = (float) (x0 * sin(rot) + y * cos(rot));
+	x = (float) (x0 * cosf(rot) - y * sinf(rot));
+	y = (float) (x0 * sinf(rot) + y * cosf(rot));
 }
 
 float Float2::Distance(Float2 a, Float2 b)

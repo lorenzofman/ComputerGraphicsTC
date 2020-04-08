@@ -1,12 +1,12 @@
 #pragma once
 #pragma pack (push, 1)
-struct RGBFloat
+struct RGBAFloat
 {
 	float r;
 	float g;
 	float b;
-
-	RGBFloat();
-	RGBFloat(float, float, float);
+	float a;
+	RGBAFloat();
+	RGBAFloat(float r, float g, float b, float a);
 };
 #pragma pack (pop)
