@@ -13,12 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\Bitmap">
-      <UniqueIdentifier>{bfa29733-965e-43ba-a393-6ee4a71e929c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Bitmap">
-      <UniqueIdentifier>{0dbac902-a519-43c2-9c29-1acc7e5dd622}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Canvas2D">
       <UniqueIdentifier>{07dc5b02-63e9-47ac-b47f-579def840530}</UniqueIdentifier>
     </Filter>
@@ -31,17 +25,11 @@
     <Filter Include="Source Files\FileDialog">
       <UniqueIdentifier>{01142632-0519-45e8-ac40-0892de790efe}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Image">
-      <UniqueIdentifier>{63ed1f6a-af0d-4e01-b998-3a646534170a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Color">
       <UniqueIdentifier>{49aa7824-d2a4-43c1-9043-61e03efa39d4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\FileDialog">
       <UniqueIdentifier>{7f955dad-a083-4287-96d8-85b96c7c8288}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Image">
-      <UniqueIdentifier>{146e104a-b26c-49a3-8d2b-97fc48401811}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Primitive">
       <UniqueIdentifier>{c80046fc-e741-4ae3-a9ef-8e1a6386162c}</UniqueIdentifier>
@@ -49,62 +37,14 @@
     <Filter Include="Source Files\Primitive">
       <UniqueIdentifier>{4685b989-155e-43b7-b5d3-20e62b1b17ce}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Interfaces">
-      <UniqueIdentifier>{a0723f90-3998-41a3-91dc-5d0bb454119b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Interfaces">
-      <UniqueIdentifier>{8b1a89c2-f393-4f16-a25b-1d60c0804f26}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Interfaces\Mouse">
-      <UniqueIdentifier>{a0e907ae-b0d2-4d53-995f-515bec1a2955}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Interfaces\Keyboard">
-      <UniqueIdentifier>{78a3e3af-2cda-4872-85b1-9ecd5d30c075}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Interfaces\Mouse">
-      <UniqueIdentifier>{87ba288a-3abb-41fa-8528-5e59c0c2983b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Interfaces\Keyboard">
-      <UniqueIdentifier>{7304727f-6868-406a-a47b-bd9149140443}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Input">
-      <UniqueIdentifier>{316f67b4-b98f-4e8d-a90d-9f207eaf663c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Input">
-      <UniqueIdentifier>{bf29e0df-5444-4126-be0f-ef97737db254}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Main">
       <UniqueIdentifier>{f3d05554-7578-4bcd-a51c-1e57d450ab89}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\UI">
-      <UniqueIdentifier>{ca272146-7869-4076-a66e-597694022b3a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\UI">
-      <UniqueIdentifier>{e9bb5a81-f8c5-478c-9d8b-5756667ee6c7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\World">
       <UniqueIdentifier>{c6b17530-5293-41e5-9bb0-500c658e6a66}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\World">
-      <UniqueIdentifier>{d8718ee7-e104-4851-806c-00d08f725304}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\ImageManipulation">
-      <UniqueIdentifier>{a599e7a1-b21a-4622-8193-36977891c82c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\ImageAnalysis">
-      <UniqueIdentifier>{d2d0e3c5-5467-42d6-8979-59efb643696d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\ImageAnalysis">
-      <UniqueIdentifier>{293e3fe1-1b38-4d6a-8536-dae86265f2c1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\ImageManipulation">
-      <UniqueIdentifier>{9e29a809-6f66-418d-951a-e94b11496289}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Bitmap.cpp">
-      <Filter>Source Files\Bitmap</Filter>
-    </ClCompile>
     <ClCompile Include="Canvas2D.cpp">
       <Filter>Source Files\Canvas2D</Filter>
     </ClCompile>
@@ -114,118 +54,22 @@
     <ClCompile Include="FileDialog.cpp">
       <Filter>Source Files\FileDialog</Filter>
     </ClCompile>
-    <ClCompile Include="Image.cpp">
-      <Filter>Source Files\Image</Filter>
-    </ClCompile>
-    <ClCompile Include="ImageConverter.cpp">
-      <Filter>Source Files\Image</Filter>
-    </ClCompile>
-    <ClCompile Include="ImageType.cpp">
-      <Filter>Source Files\Image</Filter>
-    </ClCompile>
-    <ClCompile Include="Canvas2DExtensions.cpp">
-      <Filter>Source Files\Canvas2D</Filter>
-    </ClCompile>
     <ClCompile Include="Float2.cpp">
       <Filter>Source Files\Primitive</Filter>
-    </ClCompile>
-    <ClCompile Include="Rect.cpp">
-      <Filter>Source Files\Primitive</Filter>
-    </ClCompile>
-    <ClCompile Include="IRenderable.cpp">
-      <Filter>Source Files\Interfaces</Filter>
-    </ClCompile>
-    <ClCompile Include="IMouseListener.cpp">
-      <Filter>Source Files\Interfaces\Mouse</Filter>
-    </ClCompile>
-    <ClCompile Include="IAnyKeyDownListener.cpp">
-      <Filter>Source Files\Interfaces\Keyboard</Filter>
-    </ClCompile>
-    <ClCompile Include="IAnyKeyUpListener.cpp">
-      <Filter>Source Files\Interfaces\Keyboard</Filter>
     </ClCompile>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files\Main</Filter>
     </ClCompile>
-    <ClCompile Include="Button.cpp">
-      <Filter>Source Files\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="InputHandler.cpp">
-      <Filter>Source Files\Input</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>Source Files\World</Filter>
-    </ClCompile>
-    <ClCompile Include="IKeyDownListener.cpp">
-      <Filter>Source Files\Interfaces\Keyboard</Filter>
-    </ClCompile>
-    <ClCompile Include="IKeyUpListener.cpp">
-      <Filter>Source Files\Interfaces\Keyboard</Filter>
-    </ClCompile>
-    <ClCompile Include="ILeftMouseButtonDownListener.cpp">
-      <Filter>Source Files\Interfaces\Mouse</Filter>
-    </ClCompile>
-    <ClCompile Include="ILeftMouseButtonUpListener.cpp">
-      <Filter>Source Files\Interfaces\Mouse</Filter>
-    </ClCompile>
-    <ClCompile Include="IMiddleMouseButtonDownListener.cpp">
-      <Filter>Source Files\Interfaces\Mouse</Filter>
-    </ClCompile>
-    <ClCompile Include="IMiddleMouseButtonUpListener.cpp">
-      <Filter>Source Files\Interfaces\Mouse</Filter>
-    </ClCompile>
-    <ClCompile Include="IMouseWheelUpdateListener.cpp">
-      <Filter>Source Files\Interfaces\Mouse</Filter>
-    </ClCompile>
-    <ClCompile Include="IRightMouseButtonDownListener.cpp">
-      <Filter>Source Files\Interfaces\Mouse</Filter>
-    </ClCompile>
-    <ClCompile Include="IRightMouseButtonUpListener.cpp">
-      <Filter>Source Files\Interfaces\Mouse</Filter>
-    </ClCompile>
-    <ClCompile Include="Grayscale.cpp">
-      <Filter>Source Files\ImageManipulation</Filter>
-    </ClCompile>
-    <ClCompile Include="ExtractChannel.cpp">
-      <Filter>Source Files\ImageManipulation</Filter>
-    </ClCompile>
-    <ClCompile Include="ImageHistogram.cpp">
-      <Filter>Source Files\ImageAnalysis</Filter>
-    </ClCompile>
     <ClCompile Include="Int2.cpp">
       <Filter>Source Files\Primitive</Filter>
     </ClCompile>
-    <ClCompile Include="ImageActions.cpp">
-      <Filter>Source Files\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="InterfaceButton.cpp">
-      <Filter>Source Files\UI</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Bitmap.h">
-      <Filter>Header Files\Bitmap</Filter>
-    </ClInclude>
-    <ClInclude Include="BitmapHeader.h">
-      <Filter>Header Files\Bitmap</Filter>
-    </ClInclude>
     <ClInclude Include="Canvas2D.h">
       <Filter>Header Files\Canvas2D</Filter>
     </ClInclude>
     <ClInclude Include="RGBFloat.h">
       <Filter>Header Files\Color</Filter>
-    </ClInclude>
-    <ClInclude Include="Canvas2DExtensions.h">
-      <Filter>Header Files\Canvas2D</Filter>
-    </ClInclude>
-    <ClInclude Include="Image.h">
-      <Filter>Header Files\Image</Filter>
-    </ClInclude>
-    <ClInclude Include="ImageType.h">
-      <Filter>Header Files\Image</Filter>
-    </ClInclude>
-    <ClInclude Include="ImageConverter.h">
-      <Filter>Header Files\Image</Filter>
     </ClInclude>
     <ClInclude Include="Types.h">
       <Filter>Header Files\Primitive</Filter>
@@ -236,80 +80,11 @@
     <ClInclude Include="Float2.h">
       <Filter>Header Files\Primitive</Filter>
     </ClInclude>
-    <ClInclude Include="Rect.h">
-      <Filter>Header Files\Primitive</Filter>
-    </ClInclude>
-    <ClInclude Include="IRenderable.h">
-      <Filter>Header Files\Interfaces</Filter>
-    </ClInclude>
     <ClInclude Include="FileDialog.h">
       <Filter>Header Files\FileDialog</Filter>
     </ClInclude>
-    <ClInclude Include="IAnyKeyDownListener.h">
-      <Filter>Header Files\Interfaces\Keyboard</Filter>
-    </ClInclude>
-    <ClInclude Include="IAnyKeyUpListener.h">
-      <Filter>Header Files\Interfaces\Keyboard</Filter>
-    </ClInclude>
-    <ClInclude Include="IMouseListener.h">
-      <Filter>Header Files\Interfaces\Mouse</Filter>
-    </ClInclude>
-    <ClInclude Include="IKeyDownListener.h">
-      <Filter>Header Files\Interfaces\Keyboard</Filter>
-    </ClInclude>
-    <ClInclude Include="IKeyUpListener.h">
-      <Filter>Header Files\Interfaces\Keyboard</Filter>
-    </ClInclude>
-    <ClInclude Include="Button.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="InputHandler.h">
-      <Filter>Header Files\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>Header Files\World</Filter>
-    </ClInclude>
-    <ClInclude Include="IMiddleMouseButtonDownListener.h">
-      <Filter>Header Files\Interfaces\Mouse</Filter>
-    </ClInclude>
-    <ClInclude Include="IRightMouseButtonUpListener.h">
-      <Filter>Header Files\Interfaces\Mouse</Filter>
-    </ClInclude>
-    <ClInclude Include="IRightMouseButtonDownListener.h">
-      <Filter>Header Files\Interfaces\Mouse</Filter>
-    </ClInclude>
-    <ClInclude Include="IMiddleMouseButtonUpListener.h">
-      <Filter>Header Files\Interfaces\Mouse</Filter>
-    </ClInclude>
-    <ClInclude Include="ILeftMouseButtonUpListener.h">
-      <Filter>Header Files\Interfaces\Mouse</Filter>
-    </ClInclude>
-    <ClInclude Include="ILeftMouseButtonDownListener.h">
-      <Filter>Header Files\Interfaces\Mouse</Filter>
-    </ClInclude>
-    <ClInclude Include="IMouseWheelUpdateListener.h">
-      <Filter>Header Files\Interfaces\Mouse</Filter>
-    </ClInclude>
-    <ClInclude Include="ExtractChannel.h">
-      <Filter>Header Files\ImageManipulation</Filter>
-    </ClInclude>
-    <ClInclude Include="Grayscale.h">
-      <Filter>Header Files\ImageManipulation</Filter>
-    </ClInclude>
-    <ClInclude Include="Channel.h">
-      <Filter>Header Files\Image</Filter>
-    </ClInclude>
-    <ClInclude Include="ImageHistogram.h">
-      <Filter>Header Files\ImageAnalysis</Filter>
-    </ClInclude>
     <ClInclude Include="Int2.h">
       <Filter>Header Files\Primitive</Filter>
-    </ClInclude>
-    <ClInclude Include="ImageActions.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="InterfaceButton.h">
-      <Filter>Header Files\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -87,13 +87,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\;C:\Users\Lorenzofman\Documents\CG\Visual Studio\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Lorenzo\Documents\ComputerGraphics\Canvas2D\Resources\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Lorenzofman\Documents\CG\Visual Studio\lib;C:\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Lorenzo\Documents\ComputerGraphics\Canvas2D\Resources\Library;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -102,12 +102,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\;C:\Users\Lorenzofman\Documents\CG\Visual Studio\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Lorenzo\Documents\ComputerGraphics\Canvas2D\Resources\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\lib;C:\Users\Lorenzofman\Documents\CG\Visual Studio\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Lorenzo\Documents\ComputerGraphics\Canvas2D\Resources\Library;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -147,76 +147,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Bitmap.cpp" />
-    <ClCompile Include="Button.cpp" />
-    <ClCompile Include="ExtractChannel.cpp" />
-    <ClCompile Include="Grayscale.cpp" />
-    <ClCompile Include="ImageActions.cpp" />
-    <ClCompile Include="ImageHistogram.cpp" />
-    <ClCompile Include="IAnyKeyDownListener.cpp" />
-    <ClCompile Include="IAnyKeyUpListener.cpp" />
-    <ClCompile Include="IKeyDownListener.cpp" />
-    <ClCompile Include="IKeyUpListener.cpp" />
-    <ClCompile Include="ILeftMouseButtonDownListener.cpp" />
-    <ClCompile Include="ILeftMouseButtonUpListener.cpp" />
-    <ClCompile Include="IMiddleMouseButtonDownListener.cpp" />
-    <ClCompile Include="IMiddleMouseButtonUpListener.cpp" />
-    <ClCompile Include="IMouseListener.cpp" />
-    <ClCompile Include="IMouseWheelUpdateListener.cpp" />
-    <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="Int2.cpp" />
-    <ClCompile Include="InterfaceButton.cpp" />
-    <ClCompile Include="IRenderable.cpp" />
-    <ClCompile Include="IRightMouseButtonDownListener.cpp" />
-    <ClCompile Include="IRightMouseButtonUpListener.cpp" />
-    <ClCompile Include="Rect.cpp" />
     <ClCompile Include="Canvas2D.cpp" />
-    <ClCompile Include="Canvas2DExtensions.cpp" />
     <ClCompile Include="Float2.cpp" />
-    <ClCompile Include="ImageConverter.cpp" />
     <ClCompile Include="RGBFloat.cpp" />
-    <ClCompile Include="Image.cpp" />
-    <ClCompile Include="ImageType.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="FileDialog.cpp" />
-    <ClCompile Include="Scene.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Bitmap.h" />
-    <ClInclude Include="BitmapHeader.h" />
-    <ClInclude Include="Button.h" />
-    <ClInclude Include="Channel.h" />
-    <ClInclude Include="ExtractChannel.h" />
-    <ClInclude Include="Grayscale.h" />
-    <ClInclude Include="ImageActions.h" />
-    <ClInclude Include="ImageHistogram.h" />
-    <ClInclude Include="IAnyKeyDownListener.h" />
-    <ClInclude Include="IAnyKeyUpListener.h" />
-    <ClInclude Include="IKeyDownListener.h" />
-    <ClInclude Include="IKeyUpListener.h" />
-    <ClInclude Include="ILeftMouseButtonDownListener.h" />
-    <ClInclude Include="ILeftMouseButtonUpListener.h" />
-    <ClInclude Include="IMiddleMouseButtonUpListener.h" />
-    <ClInclude Include="IMouseListener.h" />
-    <ClInclude Include="IMouseWheelUpdateListener.h" />
-    <ClInclude Include="InputHandler.h" />
     <ClInclude Include="Int2.h" />
-    <ClInclude Include="InterfaceButton.h" />
-    <ClInclude Include="IRightMouseButtonDownListener.h" />
-    <ClInclude Include="IRightMouseButtonUpListener.h" />
-    <ClInclude Include="IMiddleMouseButtonDownListener.h" />
-    <ClInclude Include="Rect.h" />
     <ClInclude Include="Canvas2D.h" />
-    <ClInclude Include="Canvas2DExtensions.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="Float2.h" />
-    <ClInclude Include="ImageConverter.h" />
     <ClInclude Include="RGBFloat.h" />
-    <ClInclude Include="IRenderable.h" />
-    <ClInclude Include="Image.h" />
-    <ClInclude Include="ImageType.h" />
     <ClInclude Include="FileDialog.h" />
-    <ClInclude Include="Scene.h" />
     <ClInclude Include="Types.h" />
   </ItemGroup>
   <ItemGroup>

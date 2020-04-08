@@ -32,7 +32,7 @@ std::string FileDialog::Open()
 	}
 	char fileName[MAX_PATH];
 	fileName[0] = '\0';
-	strcpy(fileName, ofn.lpstrFile);
+	strcpy_s(fileName, (const char*) ofn.lpstrFile);
 
 	delete ofn.lpstrFile;
 
