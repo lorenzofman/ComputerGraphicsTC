@@ -19,7 +19,8 @@ class Polygon : Shape
 	virtual void Rotate(float rad) override;
 	virtual void Scale(float) override;
 	virtual void Draw() override;
-	
+	virtual Rect2D GetRect() override;
+
 	private:
 	
 	Array<Float2> vertices;

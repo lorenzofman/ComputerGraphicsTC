@@ -40,6 +40,11 @@ void Polygon::Draw()
 	Canvas2D::DrawFilledPolygon(vertices.ptr, vertices.size);
 }
 
+Rect2D Polygon::GetRect()
+{
+	return Rect2D(vertices);
+}
+
 Float2 Polygon::CalculateCenter(Array<Float2> vertices)
 {
 	Rect2D enclosingRect = Rect2D(vertices);

@@ -5,7 +5,6 @@ Shape::Shape(RGBAFloat fillColor, RGBAFloat outlineColor, float outlineThickness
 	this->fillColor = fillColor;
 	this->outlineColor = outlineColor;
 	this->outlineThickness = outlineThickness;
-	this->isSelected = false;
 	this->Translate(Float2(Screen::Width / 2, Screen::Height / 2));
 }
 
@@ -16,13 +15,6 @@ void Shape::Translate(Float2 translation)
 
 void Shape::Render()
 {
-	if (isSelected)
-	{
-		Scale(SelectionThickness);
-		DrawFilled(Selection);
-		Scale(1.0f / SelectionThickness);
-	}
-
 	if (outlineThickness == 0)
 	{
 		DrawFilled(fillColor);
