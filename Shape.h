@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Types.h"
 #include "RGBAFloat.h"
 #include "Float2.h"
@@ -14,9 +13,9 @@ class Shape : public IRenderable
 	Shape(RGBAFloat filledColor, RGBAFloat outlineColor, float outlineThickness);
 
 	virtual void Translate(Float2 translation);
-	
+
 	virtual void Rotate(float rad) = 0;
-	
+
 	virtual void Scale(float scale) = 0;
 
 	virtual void Render() override;
@@ -33,12 +32,12 @@ class Shape : public IRenderable
 
 	virtual void Draw() = 0;
 
-	private: 
-	
+	private:
+
 	RGBAFloat fillColor;
-	
+
 	RGBAFloat outlineColor;
-	
+
 	float outlineThickness;
 
 	void DrawFilled(RGBAFloat color);

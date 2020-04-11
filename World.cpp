@@ -1,5 +1,4 @@
 #include "World.h"
-
 bool World::IsAltPressed = false;
 bool World::IsCtrlPressed = false;
 bool World::IsShiftPressed = false;
@@ -110,6 +109,7 @@ void World::OnRender()
     ProcessState();
     RenderShapes();
     MousePositionDelta = Int2(0, 0);
+	MouseScrollDelta = 0;
 }
 
 void World::ProcessState()
@@ -262,14 +262,23 @@ void World::ListenToInput()
 
 void World::UpdateOutlineThickness()
 {
+
 }
 
 void World::BringForward()
 {
+	if (SelectedShape == nullptr)
+	{
+		return;
+	}
+	RemoveShape(SelectedShape);
+	Shapes.insert(Shapes.begin(), SelectedShape);
 }
 
 void World::SendBackward()
 {
+	RemoveShape(SelectedShape);
+	Shapes.push_back(SelectedShape);
 }
 
 void World::GrabSelected()
@@ -317,6 +326,7 @@ void World::ScaleSelected()
 
 void World::Delete()
 {
+	RemoveShape(SelectedShape);
 }
 
 void World::OpenFile()
@@ -329,23 +339,30 @@ void World::SaveFile()
 
 }
 
-void World::CreateCircle()
-{
-    /* Todo: Parse String properly*/
-    Shapes.push_back(new Circle(128, RGBAFloat(1,0,0)));
-}
 
 void World::RenderShapes()
 {
-    for (uint i = 0; i < Shapes.size(); i++)
+    for (int i = Shapes.size() - 1; i >= 0; i--)
     {
         Shapes[i]->Render();
     }
 }
 
+void World::CreateCircle()
+{
+	/* Todo: Parse String properly*/
+	Shapes.push_back(new Circle(128, RGBAFloat(1, 0, 0)));
+}
+
 void World::CreateRectangle()
 {
-  
+	Shapes.push_back(new class Rectangle(Rect2D(128, 128, 384, 384), RGBAFloat(1, 0, 0), RGBAFloat(1, 0, 0), 0));
+}
+
+void World::RemoveShape(Shape* shape)
+{
+	std::vector<Shape*>::iterator it = std::find(Shapes.begin(), Shapes.end(), shape);
+	Shapes.erase(it);
 }
 
 /* Todo: Print message to screen*/

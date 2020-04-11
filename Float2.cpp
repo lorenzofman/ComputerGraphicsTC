@@ -12,7 +12,6 @@ Float2::Float2(Int2 integer)
 	this->y = (float)integer.y;
 }
 
-
 Float2::Float2(float x, float y)
 {
 	this->x = x;
@@ -28,6 +27,11 @@ void Float2::operator+=(Float2 const& obj)
 {
 	x += obj.x;
 	y += obj.y;
+}
+
+Float2 Float2::operator-()
+{
+	return Float2(-x, -y);
 }
 
 Float2 Float2::operator-(Float2 const& obj)

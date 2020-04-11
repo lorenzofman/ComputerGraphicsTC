@@ -9,7 +9,7 @@ class Circle : public Shape
 {
 	public:
 
-	Circle(float radius, RGBAFloat filledColor, RGBAFloat outlineColor = RGBAFloat(0,0,0), float outlineThickness = 0);
+	Circle(float radius, RGBAFloat filledColor, RGBAFloat outlineColor = RGBAFloat(0, 0, 0), float outlineThickness = 0);
 
 	// Inherited via Shape
 	virtual void Rotate(float rad) override;
@@ -19,9 +19,8 @@ class Circle : public Shape
 
 	// Inherited via Shape
 	virtual void Draw() override;
-	
+
 	private:
 
 	float radius;
 };
-

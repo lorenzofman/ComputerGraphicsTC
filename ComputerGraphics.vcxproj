@@ -154,6 +154,7 @@
     <ClCompile Include="Float2.cpp" />
     <ClCompile Include="Polygon.cpp" />
     <ClCompile Include="Rect.cpp" />
+    <ClCompile Include="Rectangle.cpp" />
     <ClCompile Include="RGBAFloat.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="FileDialog.cpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="IRenderable.h" />
     <ClInclude Include="Polygon.h" />
     <ClInclude Include="Rect.h" />
+    <ClInclude Include="Rectangle.h" />
     <ClInclude Include="RGBAFloat.h" />
     <ClInclude Include="FileDialog.h" />
     <ClInclude Include="Screen.h" />

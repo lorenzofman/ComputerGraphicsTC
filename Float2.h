@@ -12,6 +12,7 @@ struct Float2
 	Float2 operator + (Float2 const& obj);
 	void operator += (Float2 const& obj);
 
+	Float2 operator -();
 	Float2 operator - (Float2 const& obj);
 	void operator -= (Float2 const& obj);
 	

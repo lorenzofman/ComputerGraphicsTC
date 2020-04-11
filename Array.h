@@ -12,7 +12,6 @@ class Array
 	Array();
 	Array(T* ptr, int size);
 	Array(std::vector<T> vec);
-	
 	T operator[](int i) const;
 	T& operator[](int i);
 };

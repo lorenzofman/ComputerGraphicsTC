@@ -1,5 +1,4 @@
 #include "Polygon.h"
-
 Polygon::Polygon(Array<Float2> vertices, RGBAFloat filledColor, RGBAFloat outlineColor, float outlineThickness) : Shape(filledColor, outlineColor, outlineThickness)
 {
 	this->vertices = vertices;
@@ -38,6 +37,11 @@ void Polygon::Scale(float scale)
 void Polygon::Draw()
 {
 	Canvas2D::DrawFilledPolygon(vertices.ptr, vertices.size);
+}
+
+bool Polygon::IsPointInside(Float2)
+{
+	return false; // Todo: implement
 }
 
 Float2 Polygon::CalculateCenter(Array<Float2> vertices)

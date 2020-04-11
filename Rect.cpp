@@ -47,7 +47,9 @@ Rect2D::Rect2D(Array<Float2> points)
 			y2 = points.ptr[i].y;
 		}
 	}
-	Rect2D(x1, y1, x2, y2);
+	BottomLeft = Float2(x1, y1);
+	TopRight = Float2(x2, y2);
+	rotation = 0;
 }
 
 void Rect2D::Translate(Float2 translation)
@@ -84,6 +86,16 @@ bool Rect2D::IsPointInside(Float2 point)
 Float2 Rect2D::Center()
 {
 	return Float2(BottomLeft.x + TopRight.x, BottomLeft.y + TopRight.y) * 0.5f;
+}
+
+Float2 Rect2D::BottomRight()
+{
+	return Float2(TopRight.x, BottomLeft.y);
+}
+
+Float2 Rect2D::TopLeft()
+{
+	return Float2(BottomLeft.x, TopRight.y);
 }
 
 bool Rect2D::IsPointInsideUnRotatedRect(Float2 point)

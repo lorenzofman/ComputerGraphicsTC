@@ -4,8 +4,9 @@
 #include <iostream>
 #include <vector>
 
-#include "Shape.h"
+#include "Rectangle.h"
 #include "Circle.h"
+#include "Shape.h"
 #include "Screen.h"
 class World
 {
@@ -142,6 +143,7 @@ class World
 	static void GrabSelected();
 	static void RotateSelected();
 	static void ScaleSelected();
+	static void RemoveShape(Shape*);
 	static void Delete();
 	static void OpenFile();
 	static void SaveFile();

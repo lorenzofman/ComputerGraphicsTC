@@ -1,5 +1,4 @@
 #include "Shape.h"
-
 Shape::Shape(RGBAFloat fillColor, RGBAFloat outlineColor, float outlineThickness)
 {
 	this->fillColor = fillColor;
