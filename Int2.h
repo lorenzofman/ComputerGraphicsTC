@@ -11,6 +11,8 @@ struct Int2
 
 	Int2 operator + (Int2 const& obj);
 	void operator += (Int2 const& obj);
+	Int2 operator - (Int2 const& obj);
+	void operator -= (Int2 const& obj);
 
 	Int2 operator * (int constant);
 	void operator *= (int constant);

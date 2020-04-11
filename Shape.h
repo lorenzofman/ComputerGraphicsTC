@@ -6,7 +6,7 @@
 #include "IRenderable.h"
 #include "Canvas2D.h"
 #include "Constants.h"
-
+#include "Screen.h"
 class Shape : public IRenderable
 {
 	public:
@@ -19,11 +19,19 @@ class Shape : public IRenderable
 	
 	virtual void Scale(float scale) = 0;
 
-	virtual void Draw() = 0;
+	virtual void Render() override;
+
+	virtual bool IsPointInside(Float2) = 0;
+
+	bool isSelected;
+
+	Float2 GetCenter();
 
 	protected:
 
 	Float2 center;
+
+	virtual void Draw() = 0;
 
 	private: 
 	
@@ -32,12 +40,11 @@ class Shape : public IRenderable
 	RGBAFloat outlineColor;
 	
 	float outlineThickness;
-	
-	virtual void Render() override;
 
 	void DrawFilled(RGBAFloat color);
 
 	void DrawFilledOutlined(RGBAFloat fillColor, RGBAFloat borderColor, float thickness);
 
 	void DrawOutlined(RGBAFloat color, float thickness);
+
 };

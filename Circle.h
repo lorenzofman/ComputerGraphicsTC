@@ -9,13 +9,17 @@ class Circle : public Shape
 {
 	public:
 
-	Circle(float radius, RGBAFloat filledColor, RGBAFloat outlineColor, float outlineThickness = 0);
+	Circle(float radius, RGBAFloat filledColor, RGBAFloat outlineColor = RGBAFloat(0,0,0), float outlineThickness = 0);
 
 	// Inherited via Shape
 	virtual void Rotate(float rad) override;
 	virtual void Scale(float scale) override;
-	virtual void Draw() override;
+	virtual bool IsPointInside(Float2) override;
+	protected:
 
+	// Inherited via Shape
+	virtual void Draw() override;
+	
 	private:
 
 	float radius;

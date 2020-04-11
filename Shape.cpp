@@ -5,6 +5,8 @@ Shape::Shape(RGBAFloat fillColor, RGBAFloat outlineColor, float outlineThickness
 	this->fillColor = fillColor;
 	this->outlineColor = outlineColor;
 	this->outlineThickness = outlineThickness;
+	this->isSelected = false;
+	this->Translate(Float2(Screen::Width / 2, Screen::Height / 2));
 }
 
 void Shape::Translate(Float2 translation)
@@ -14,7 +16,14 @@ void Shape::Translate(Float2 translation)
 
 void Shape::Render()
 {
-	if (outlineThickness > 0)
+	if (isSelected)
+	{
+		Scale(SelectionThickness);
+		DrawFilled(Selection);
+		Scale(1.0f / SelectionThickness);
+	}
+
+	if (outlineThickness == 0)
 	{
 		DrawFilled(fillColor);
 		return;
@@ -29,6 +38,11 @@ void Shape::Render()
 	DrawFilledOutlined(fillColor, outlineColor, outlineThickness);
 }
 
+Float2 Shape::GetCenter()
+{
+	return center;
+}
+
 void Shape::DrawFilled(RGBAFloat color)
 {
 	Canvas2D::SetColor(color);
@@ -37,14 +51,13 @@ void Shape::DrawFilled(RGBAFloat color)
 
 void Shape::DrawFilledOutlined(RGBAFloat fillColor, RGBAFloat borderColor, float thickness)
 {
+	float ratio = 1 - thickness;
 	Canvas2D::SetColor(borderColor);
 	Draw();
-
-	Scale(1 / thickness);
+	Scale(ratio);
 	Canvas2D::SetColor(fillColor);
 	Draw();
-
-	Scale(thickness); /* Rollback - might loose precision */
+	Scale(1 / ratio); /* Rollback - might loose precision */
 }
 
 void Shape::DrawOutlined(RGBAFloat color, float thickness)

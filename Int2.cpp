@@ -29,6 +29,17 @@ void Int2::operator+=(Int2 const& obj)
 	y += obj.y;
 }
 
+Int2 Int2::operator-(Int2 const& obj)
+{
+	return Int2(x - obj.x, y - obj.y);
+}
+
+void Int2::operator-=(Int2 const& obj)
+{
+	x -= obj.x;
+	y -= obj.y;
+}
+
 Int2 Int2::operator*(int constant)
 {
 	return Int2(x * constant, y * constant);

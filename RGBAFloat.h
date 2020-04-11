@@ -7,6 +7,6 @@ struct RGBAFloat
 	float b;
 	float a;
 	RGBAFloat();
-	RGBAFloat(float r, float g, float b, float a);
+	RGBAFloat(float r, float g, float b, float a = 1);
 };
 #pragma pack (pop)
