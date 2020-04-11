@@ -43,6 +43,10 @@ bool Polygon::IsPointInside(Float2)
 {
 	return false; // Todo: implement
 }
+Rect2D Polygon::GetRect()
+{
+	return Rect2D(vertices);
+}
 
 Float2 Polygon::CalculateCenter(Array<Float2> vertices)
 {

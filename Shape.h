@@ -22,7 +22,7 @@ class Shape : public IRenderable
 
 	virtual bool IsPointInside(Float2) = 0;
 
-	bool isSelected;
+	virtual Rect2D GetRect() = 0;
 
 	Float2 GetCenter();
 
