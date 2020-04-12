@@ -105,6 +105,9 @@
     <ClCompile Include="Canvas2DExtensions.cpp">
       <Filter>Source Files\Canvas2D</Filter>
     </ClCompile>
+    <ClCompile Include="ShapeTransformer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Canvas2D.h">
@@ -159,6 +162,9 @@
       <Filter>Header Files\Shapes</Filter>
     </ClInclude>
     <ClInclude Include="Canvas2DExtensions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapeTransformer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

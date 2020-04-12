@@ -11,6 +11,7 @@
 #include "RGBAFloat.h"
 #include "Canvas2DExtensions.h"
 #include "Constants.h"
+#include "ShapeTransformer.h"
 
 class World
 {
@@ -121,6 +122,7 @@ class World
 	static int MouseScrollDelta;
 	static Shape* SelectedShape;
 	static std::vector<Shape*> Shapes;
+	static ShapeTransformer Transformer;
 
 	static void OnRender();
 	static void OnKeyDown(int key);
@@ -140,7 +142,6 @@ class World
 	static void SelectObject();
 	static Shape* GetFirstObjectMouseIsInside();
 	static void SetSelectedShape(Shape*);
-	static void StartEditing();
 	static void UpdateOutlineThickness();
 	static void BringForward();
 	static void SendBackward();

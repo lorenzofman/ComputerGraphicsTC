@@ -7,6 +7,7 @@ World::Input World::CurrentInput = Input::None;
 
 Shape* World::SelectedShape = nullptr;
 std::vector<Shape*> World::Shapes;
+ShapeTransformer World::Transformer = ShapeTransformer();
 
 World::InterfaceState World::CurrentState = World::InterfaceState::Idle;
 Callback<void> World::InputCallback = nullptr;
@@ -106,11 +107,11 @@ void World::ProcessInput(int input)
 void World::OnRender()
 {
     Canvas2D::ClearScreen(Background);
-    Canvas2DExtensions::DrawRoundedRect(Rect2D(128, 128, 384, 384), Selection, 50);
     ProcessState();
     RenderShapes();
     MousePositionDelta = Int2(0, 0);
 	MouseScrollDelta = 0;
+	Transformer.Render();
 }
 
 void World::ProcessState()
@@ -224,6 +225,7 @@ Shape* World::GetFirstObjectMouseIsInside()
 void World::SetSelectedShape(Shape* selected)
 {
     SelectedShape = selected;
+	Transformer.SetShape(selected);
 }
 
 void World::ListenToInput()
@@ -344,12 +346,12 @@ void World::RenderShapes()
 void World::CreateCircle()
 {
 	/* Todo: Parse String properly*/
-	Shapes.push_back(new Circle(128, RGBAFloat(1, 0, 0)));
+	Shapes.push_back(new Circle(128, RGBAFloat(0.9f, 0.9f, 0.9f)));
 }
 
 void World::CreateRectangle()
 {
-	Shapes.push_back(new class Rectangle(Rect2D(128, 128, 384, 384), RGBAFloat(1, 0, 0), RGBAFloat(1, 0, 0), 0));
+	Shapes.push_back(new class Rectangle(Rect2D(128, 128, 384, 384), RGBAFloat(0.9f, 0.9f, 0.9f), RGBAFloat(1, 0, 0), 0));
 }
 
 void World::RemoveShape(Shape* shape)

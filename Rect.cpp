@@ -90,12 +90,18 @@ Float2 Rect2D::Center()
 
 Float2 Rect2D::BottomRight()
 {
-	return Float2(TopRight.x, BottomLeft.y);
+	float x2 = (BottomLeft.x + TopRight.x + BottomLeft.y - TopRight.y) / 2;
+	float y2 = (TopRight.x - BottomLeft.x + BottomLeft.y + TopRight.y) / 2;
+
+	return Float2(x2,y2);
 }
 
 Float2 Rect2D::TopLeft()
 {
-	return Float2(BottomLeft.x, TopRight.y);
+	float x4 = (BottomLeft.x + TopRight.x + TopRight.y - BottomLeft.y) / 2;
+	float y4 = (BottomLeft.x - TopRight.x + BottomLeft.y + TopRight.y) / 2;
+
+	return Float2(x4, y4);
 }
 
 bool Rect2D::IsPointInsideUnRotatedRect(Float2 point)
