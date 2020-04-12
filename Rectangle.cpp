@@ -33,6 +33,11 @@ void Rectangle::Translate(Float2 translation)
 	rect.Translate(translation);
 }
 
+Rect2D Rectangle::GetRect()
+{
+	return rect;
+}
+
 Array<Float2> Rectangle::ExtractVerticesFromUnrotatedRect(Rect2D rect)
 {
 	Float2* arr = new Float2[4];

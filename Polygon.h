@@ -6,6 +6,7 @@
 #include "Canvas2D.h"
 #include "Array.h"
 #include "Rect.h"
+
 class Polygon : public Shape
 {
 	public:

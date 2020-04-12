@@ -8,6 +8,10 @@
 #include "Circle.h"
 #include "Shape.h"
 #include "Screen.h"
+#include "RGBAFloat.h"
+#include "Canvas2DExtensions.h"
+#include "Constants.h"
+
 class World
 {
 	public:

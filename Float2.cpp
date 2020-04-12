@@ -63,6 +63,32 @@ void Float2::Rotate(float rot)
 	y = (float) (x0 * sinf(rot) + y * cosf(rot));
 }
 
+float Float2::GetLength()
+{
+	return Float2::Distance(*this, Float2(0, 0));
+}
+
+void Float2::Normalize()
+{
+	*this *= 1 / GetLength();
+}
+
+Float2 Float2::GetNormalized()
+{
+	return *this * (1 / GetLength());
+}
+
+Float2 Float2::PerpendicularClockwise()
+{
+	return Float2(this->y, -this->x);
+}
+
+Float2 Float2::PerpendicularCounterClockwise()
+{
+	return Float2(-this->y, this->x);
+}
+
+
 float Float2::Distance(Float2 a, Float2 b)
 {
 	return sqrtf(DistanceSq(a,b));
@@ -70,7 +96,7 @@ float Float2::Distance(Float2 a, Float2 b)
 
 float Float2::DistanceSq(Float2 a, Float2 b)
 {
-	float xDif = b.x - a.x;
-	float yDif = b.y - a.y;
-	return xDif * xDif + yDif * yDif;
+	float dx = b.x - a.x;
+	float dy = b.y - a.y;
+	return dx * dx + dy * dy;
 }

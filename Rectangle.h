@@ -15,6 +15,8 @@ class Rectangle : public Polygon
 	virtual void Rotate(float) override;
 	virtual void Scale(float) override;
 	virtual void Translate(Float2) override;
+	virtual Rect2D GetRect() override;
+
 	private:
 	static Array<Float2> ExtractVerticesFromUnrotatedRect(Rect2D);
 	Rect2D rect;

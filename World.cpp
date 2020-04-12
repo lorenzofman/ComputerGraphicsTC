@@ -106,6 +106,7 @@ void World::ProcessInput(int input)
 void World::OnRender()
 {
     Canvas2D::ClearScreen(Background);
+    Canvas2DExtensions::DrawRoundedRect(Rect2D(128, 128, 384, 384), Selection, 50);
     ProcessState();
     RenderShapes();
     MousePositionDelta = Int2(0, 0);
@@ -222,14 +223,6 @@ Shape* World::GetFirstObjectMouseIsInside()
 
 void World::SetSelectedShape(Shape* selected)
 {
-    if (SelectedShape != nullptr) 
-    {
-        SelectedShape->isSelected = false;
-    }
-    if (selected != nullptr) 
-    {
-        selected->isSelected = true;
-    }
     SelectedShape = selected;
 }
 

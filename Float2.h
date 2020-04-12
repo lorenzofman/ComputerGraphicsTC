@@ -8,7 +8,6 @@ struct Float2
 	Float2();
 	Float2(Int2 integer);
 	Float2(float x, float y);
-
 	Float2 operator + (Float2 const& obj);
 	void operator += (Float2 const& obj);
 
@@ -19,8 +18,12 @@ struct Float2
 	Float2 operator * (float const& constant);
 	void operator *= (float const& constant);
 	void Rotate(float rot);
+	float GetLength();
+	void Normalize();
+	Float2 GetNormalized();
+	Float2 PerpendicularClockwise();
+	Float2 PerpendicularCounterClockwise();
 
 	static float Distance(Float2 a, Float2 b);
 	static float DistanceSq(Float2 a, Float2 b);
-
 };

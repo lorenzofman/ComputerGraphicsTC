@@ -1,4 +1,5 @@
 #pragma once
+
 #include "Types.h"
 #include "RGBAFloat.h"
 #include "Float2.h"
@@ -6,6 +7,8 @@
 #include "Canvas2D.h"
 #include "Constants.h"
 #include "Screen.h"
+#include "Rect.h"
+
 class Shape : public IRenderable
 {
 	public:
@@ -21,7 +24,7 @@ class Shape : public IRenderable
 	virtual void Render() override;
 
 	virtual bool IsPointInside(Float2) = 0;
-
+	
 	virtual Rect2D GetRect() = 0;
 
 	Float2 GetCenter();
