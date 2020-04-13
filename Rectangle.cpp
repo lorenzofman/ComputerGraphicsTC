@@ -27,6 +27,22 @@ void Rectangle::Scale(float scale)
 	rect.Translate(center);
 }
 
+void Rectangle::ScaleHorizontally(float xScale)
+{
+	Polygon::ScaleHorizontally(xScale);
+	rect.Translate(-center);
+	rect.ScaleHorizontally(xScale);
+	rect.Translate(center);
+}
+
+void Rectangle::ScaleVertically(float yScale)
+{
+	Polygon::ScaleVertically(yScale);
+	rect.Translate(-center);
+	rect.ScaleVertically(yScale);
+	rect.Translate(center);
+}
+
 void Rectangle::Translate(Float2 translation)
 {
 	Polygon::Translate(translation);

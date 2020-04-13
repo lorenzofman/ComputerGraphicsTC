@@ -3,6 +3,14 @@
 ShapeTransformer::ShapeTransformer(Shape* shape)
 {
 	SetShape(shape);
+	buttons.push_back(topLeft = new Button());
+	buttons.push_back(topMiddle = new Button());
+	buttons.push_back(topRight = new Button());
+	buttons.push_back(bottomLeft = new Button());
+	buttons.push_back(bottomMiddle = new Button());
+	buttons.push_back(bottomRight = new Button());
+	buttons.push_back(leftMiddle = new Button());
+	buttons.push_back(rightMiddle = new Button());
 }
 
 void ShapeTransformer::SetShape(Shape* shape)
@@ -29,25 +37,20 @@ void ShapeTransformer::DrawTransformPoints(Rect2D& rect)
 	Float2 middleLeftPoint = (rect.BottomLeft + rect.TopLeft()) * 0.5f;
 	Float2 middleRightPoint = (rect.BottomRight() + rect.TopRight) * 0.5f;
 
-	Rect2D topRight = InflatePoint(rect.TopRight, TransfomerEdgeHalfSize);
-	Rect2D topLeft = InflatePoint(rect.TopLeft(), TransfomerEdgeHalfSize);
-	Rect2D bottomLeft = InflatePoint(rect.BottomLeft, TransfomerEdgeHalfSize);
-	Rect2D bottomRight = InflatePoint(rect.BottomRight(), TransfomerEdgeHalfSize);
+	topRight->SetRect(InflatePoint(rect.TopRight, TransfomerEdgeHalfSize));
+	topLeft->SetRect(InflatePoint(rect.TopLeft(), TransfomerEdgeHalfSize));
+	bottomLeft->SetRect(InflatePoint(rect.BottomLeft, TransfomerEdgeHalfSize));
+	bottomRight->SetRect(InflatePoint(rect.BottomRight(), TransfomerEdgeHalfSize));
 
-	Rect2D middleUp = InflatePoint(middleUpPoint, TransformerSideHalfSize);
-	Rect2D middleDown = InflatePoint(middleDownPoint, TransformerSideHalfSize);
-	Rect2D middleLeft = InflatePoint(middleLeftPoint, TransformerSideHalfSize);
-	Rect2D middleRight = InflatePoint(middleRightPoint, TransformerSideHalfSize);
+	topMiddle->SetRect(InflatePoint(middleUpPoint, TransformerSideHalfSize));
+	bottomMiddle->SetRect(InflatePoint(middleDownPoint, TransformerSideHalfSize));
+	leftMiddle->SetRect(InflatePoint(middleLeftPoint, TransformerSideHalfSize));
+	rightMiddle->SetRect(InflatePoint(middleRightPoint, TransformerSideHalfSize));
 
-	DrawRect(topRight);
-	DrawRect(topLeft);
-	DrawRect(bottomLeft);
-	DrawRect(bottomRight);
-
-	DrawRect(middleUp);
-	DrawRect(middleDown);
-	DrawRect(middleLeft);
-	DrawRect(middleRight);
+	for (auto&& btn : buttons) 
+	{
+		btn->Render();
+	}
 
 }
 
@@ -56,12 +59,6 @@ Rect2D ShapeTransformer::InflatePoint(Float2 center, float squareHalfSize)
 	return Rect2D(center.x - squareHalfSize, center.y - squareHalfSize, center.x + squareHalfSize, center.y +squareHalfSize);
 }
 
-void ShapeTransformer::DrawRect(Rect2D& rect)
-{
-	Canvas2D::DrawFilledRect(rect.BottomLeft.x, rect.BottomLeft.y, rect.TopRight.x, rect.TopRight.y);
-}
-
-
 void ShapeTransformer::DrawSurrondingRect(Rect2D& rect)
 {
 	Canvas2DExtensions::DrawThickLine(rect.BottomLeft, rect.BottomRight(), Selection, SelectionThickness);
@@ -69,4 +66,3 @@ void ShapeTransformer::DrawSurrondingRect(Rect2D& rect)
 	Canvas2DExtensions::DrawThickLine(rect.TopRight, rect.TopLeft(), Selection, SelectionThickness);
 	Canvas2DExtensions::DrawThickLine(rect.TopLeft(), rect.BottomLeft, Selection, SelectionThickness);
 }
-

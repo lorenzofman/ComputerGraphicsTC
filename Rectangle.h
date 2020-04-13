@@ -14,6 +14,8 @@ class Rectangle : public Polygon
 	virtual bool IsPointInside(Float2) override;
 	virtual void Rotate(float) override;
 	virtual void Scale(float) override;
+	virtual void ScaleHorizontally(float) override;
+	virtual void ScaleVertically(float) override;
 	virtual void Translate(Float2) override;
 	virtual Rect2D GetRect() override;
 

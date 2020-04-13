@@ -3,7 +3,7 @@
 #include "Shape.h"
 #include "Rect.h"
 #include "Canvas2DExtensions.h"
-
+#include "Button.h"
 class ShapeTransformer : public IRenderable
 {
 	public:
@@ -17,12 +17,23 @@ class ShapeTransformer : public IRenderable
 
 	Rect2D InflatePoint(Float2 center, float squareHalfSize);
 	
-	void DrawRect(Rect2D& rect);
-	
 	void DrawSurrondingRect(Rect2D& rect);
 
+	void OnLeftMouseButtonDown(Float2);
+	void OnLeftMouseButtonUp(Float2);
+
+
 	private:
-	
+
+	std::vector<Button*> buttons;
+	Button* topLeft;
+	Button* topMiddle;
+	Button* topRight;
+	Button* bottomLeft;
+	Button* bottomMiddle;
+	Button* bottomRight;
+	Button* leftMiddle;
+	Button* rightMiddle;
 	Shape* shape;
 };
 

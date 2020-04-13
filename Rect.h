@@ -19,6 +19,8 @@ struct Rect2D
 	void Translate(Float2 translation);
 	void Rotate(float rotation);
 	void Scale(float amount);
+	void ScaleHorizontally(float xScale);
+	void ScaleVertically(float yScale);
 
 	bool IsPointInside(Float2 point);
 	Float2 Center();

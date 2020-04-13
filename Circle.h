@@ -15,6 +15,9 @@ class Circle : public Shape
 	// Inherited via Shape
 	virtual void Rotate(float rad) override;
 	virtual void Scale(float scale) override;
+	virtual void ScaleHorizontally(float xScale) override;
+	virtual void ScaleVertically(float yScale) override;
+
 	virtual bool IsPointInside(Float2) override;
 	virtual Rect2D GetRect() override;
 	protected:

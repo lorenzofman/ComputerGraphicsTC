@@ -10,16 +10,19 @@ std::vector<Shape*> World::Shapes;
 ShapeTransformer World::Transformer = ShapeTransformer();
 
 World::InterfaceState World::CurrentState = World::InterfaceState::Idle;
-Callback<void> World::InputCallback = nullptr;
+Callback<> World::InputCallback;
 Int2 World::MousePosition;
 Int2 World::MousePositionDelta;
 int World::MouseScrollDelta = 0;
 
 std::string World::InputField;
 
-void World::Boot()
+void World::BigBang()
 {
-	Canvas2D(&Screen::Width, &Screen::Height, std::string("Canvas"), &World::OnKeyDown, &World::OnKeyUp, &World::OnMouseUpdate, &World::OnRender);
+    EventSystem::UpdateCallback.Register(&OnRender);
+    EventSystem::KeyDownCallback.Register(&OnKeyDown);
+    EventSystem::KeyUpCallback.Register(&OnKeyUp);
+    EventSystem::MouseUpdateCallback.Register(&OnMouseUpdate);
 }
 
 void World::OnKeyDown(int key)
@@ -184,11 +187,11 @@ void World::IdleState()
             SelectObject();
             break;
         case World::Input::NewCircle:
-            InputCallback = &CreateCircle;
+            InputCallback.Register(&CreateCircle);
             CurrentState = World::InterfaceState::InputListening;
             break;
         case World::Input::NewRectangle:
-            InputCallback = &CreateRectangle;
+            InputCallback.Register(CreateRectangle);
             CurrentState = World::InterfaceState::InputListening;
             break;
         case World::Input::Open:
@@ -246,8 +249,8 @@ void World::ListenToInput()
             InputField += (char) CurrentInput;
             break;
         case World::Input::Confirm:
-            InputCallback();
-            InputCallback = nullptr;
+            InputCallback.Invoke();
+            InputCallback.Clear();
             CurrentState = World::InterfaceState::Idle;
             break;
         default:

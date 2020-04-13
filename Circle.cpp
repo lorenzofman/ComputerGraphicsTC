@@ -14,6 +14,16 @@ void Circle::Scale(float scale)
 	radius *= scale;
 }
 
+void Circle::ScaleHorizontally(float xScale)
+{
+	Scale(xScale);
+}
+
+void Circle::ScaleVertically(float yScale)
+{
+	Scale(yScale);
+}
+
 bool Circle::IsPointInside(Float2 point)
 {
 	return Float2::DistanceSq(point, center) < radius * radius;

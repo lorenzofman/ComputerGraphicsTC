@@ -34,6 +34,26 @@ void Polygon::Scale(float scale)
 	}
 }
 
+void Polygon::ScaleHorizontally(float xScale)
+{
+	for (int i = 0; i < vertices.size; i++)
+	{
+		vertices[i].x -= center.x;
+		vertices[i].x *= xScale;
+		vertices[i].x += center.x;
+	}
+}
+
+void Polygon::ScaleVertically(float yScale)
+{
+	for (int i = 0; i < vertices.size; i++)
+	{
+		vertices[i].y -= center.y;
+		vertices[i].y *= yScale;
+		vertices[i].y += center.y;
+	}
+}
+
 void Polygon::Draw()
 {
 	Canvas2D::DrawFilledPolygon(vertices.ptr, vertices.size);

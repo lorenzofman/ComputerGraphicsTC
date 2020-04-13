@@ -72,6 +72,18 @@ void Rect2D::Scale(float scale)
 	TopRight *= scale;
 }
 
+void Rect2D::ScaleHorizontally(float xScale)
+{
+	BottomLeft.x *= xScale;
+	TopRight.x *= xScale;
+}
+
+void Rect2D::ScaleVertically(float yScale)
+{
+	BottomLeft.y *= yScale;
+	TopRight.y *= yScale;
+}
+
 bool Rect2D::IsPointInside(Float2 point)
 {
 	Rect2D unrotatedRect = *this;

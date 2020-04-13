@@ -12,12 +12,14 @@
 #include "Canvas2DExtensions.h"
 #include "Constants.h"
 #include "ShapeTransformer.h"
-
+#include "Callback.h"
+#include "EventSystem.h"
 class World
 {
 	public:
 
-	static void Boot();
+	static void BigBang();
+
 
 	private:
 
@@ -115,7 +117,7 @@ class World
 	static InterfaceState CurrentState;
 	
 	static std::string InputField;
-	static Callback<void> InputCallback;
+	static Callback<> InputCallback;
 
 	static Int2 MousePositionDelta;
 	static Int2 MousePosition;
@@ -128,7 +130,7 @@ class World
 	static void OnKeyDown(int key);
 	static void OnKeyUp(int key);
 	static void OnMouseUpdate(int button, int state, int wheel, int direction, int x, int y);
-	
+
 	static void RenderShapes();
 
 	static void ProcessState();
