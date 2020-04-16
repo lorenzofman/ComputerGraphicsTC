@@ -39,8 +39,8 @@ void Canvas2DExtensions::DrawRoundedRect(Rect2D rect, RGBAFloat color, float rou
 	circlesRect.BottomLeft += offset;
 	circlesRect.TopRight -= offset;
 	Canvas2D::DrawFilledCircle(circlesRect.BottomLeft, roundness, circleSegments);
-	Canvas2D::DrawFilledCircle(circlesRect.BottomRight(), roundness, circleSegments);
+	Canvas2D::DrawFilledCircle(circlesRect.BottomRight, roundness, circleSegments);
 	Canvas2D::DrawFilledCircle(circlesRect.TopRight, roundness, circleSegments);
-	Canvas2D::DrawFilledCircle(circlesRect.TopLeft(), roundness, circleSegments);
+	Canvas2D::DrawFilledCircle(circlesRect.TopLeft, roundness, circleSegments);
 
 }

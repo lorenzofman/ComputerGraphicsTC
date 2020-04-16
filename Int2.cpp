@@ -1,6 +1,7 @@
 #include <cmath>
 
 #include "Int2.h"
+
 Int2::Int2()
 {
 	x = y = 0;
@@ -40,6 +41,16 @@ void Int2::operator-=(Int2 const& obj)
 	y -= obj.y;
 }
 
+bool Int2::operator==(Int2 const& obj)
+{
+	return x == obj.x && y == obj.y;
+}
+
+bool Int2::operator!=(Int2 const& obj)
+{
+	return ! (*this == obj);
+}
+
 Int2 Int2::operator*(int constant)
 {
 	return Int2(x * constant, y * constant);
@@ -57,3 +68,5 @@ void Int2::Rotate(double rot)
 	x = (int)(x0 * cos(rot) - y * sin(rot));
 	y = (int)(x0 * sin(rot) + y * cos(rot));
 }
+
+Int2 Int2::Zero = Int2(0, 0);

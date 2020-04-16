@@ -27,19 +27,11 @@ void Rectangle::Scale(float scale)
 	rect.Translate(center);
 }
 
-void Rectangle::ScaleHorizontally(float xScale)
+void Rectangle::Scale(float x, float y)
 {
-	Polygon::ScaleHorizontally(xScale);
+	Polygon::Scale(x, y);
 	rect.Translate(-center);
-	rect.ScaleHorizontally(xScale);
-	rect.Translate(center);
-}
-
-void Rectangle::ScaleVertically(float yScale)
-{
-	Polygon::ScaleVertically(yScale);
-	rect.Translate(-center);
-	rect.ScaleVertically(yScale);
+	rect.Scale(x, y);
 	rect.Translate(center);
 }
 
@@ -57,9 +49,9 @@ Rect2D Rectangle::GetRect()
 Array<Float2> Rectangle::ExtractVerticesFromUnrotatedRect(Rect2D rect)
 {
 	Float2* arr = new Float2[4];
-	arr[3] = rect.TopLeft();
+	arr[3] = rect.TopLeft;
 	arr[2] = rect.TopRight;
-	arr[1] = rect.BottomRight();
+	arr[1] = rect.BottomRight;
 	arr[0] = rect.BottomLeft;
 	return Array<Float2>(arr, 4);
 }

@@ -9,6 +9,8 @@ struct Rect2D
 
 	Float2 BottomLeft;
 	Float2 TopRight;
+	Float2 BottomRight;
+	Float2 TopLeft;
 	float rotation;
 
 	Rect2D();
@@ -19,15 +21,11 @@ struct Rect2D
 	void Translate(Float2 translation);
 	void Rotate(float rotation);
 	void Scale(float amount);
-	void ScaleHorizontally(float xScale);
-	void ScaleVertically(float yScale);
+	void Scale(float x, float y);
 
 	bool IsPointInside(Float2 point);
 	Float2 Center();
-
-	Float2 BottomRight();
-	Float2 TopLeft();
-
+	static Rect2D TopLeftBottomRight(Float2 topLeft, Float2 bottomRight);
 	private:
 	bool IsPointInsideUnRotatedRect(Float2 point);
 };

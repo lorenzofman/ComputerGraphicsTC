@@ -21,14 +21,12 @@ class Shape : public IRenderable
 
 	virtual void Scale(float scale) = 0;
 
-	virtual void ScaleHorizontally(float xScale) = 0;
-
-	virtual void ScaleVertically(float yScale) = 0;
+	virtual void Scale(float x, float y) = 0;
 
 	virtual void Render() override;
 
 	virtual bool IsPointInside(Float2) = 0;
-	
+
 	virtual Rect2D GetRect() = 0;
 
 	Float2 GetCenter();

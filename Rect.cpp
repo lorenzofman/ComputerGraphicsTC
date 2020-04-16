@@ -4,7 +4,7 @@
 #include "Constants.h"
 Rect2D::Rect2D()
 {
-	BottomLeft = TopRight = Float2();
+	BottomLeft = TopRight = BottomRight = TopLeft = Float2();
 	rotation = 0;
 }
 
@@ -12,13 +12,17 @@ Rect2D::Rect2D(float x1, float y1, float x2, float y2)
 {
 	BottomLeft = Float2(x1,y1);
 	TopRight = Float2(x2,y2);
+	BottomRight = Float2(TopRight.x, BottomLeft.y);
+	TopLeft = Float2(BottomLeft.x, TopRight.y);
 	rotation = 0;
 }
 
 Rect2D::Rect2D(Float2 bottomLeft, Float2 topRight)
 {
-	this->BottomLeft = bottomLeft;
-	this->TopRight = topRight;
+	BottomLeft = bottomLeft;
+	TopRight = topRight;
+	BottomRight = Float2(TopRight.x, BottomLeft.y);
+	TopLeft = Float2(BottomLeft.x, TopRight.y);
 	rotation = 0;
 }
 
@@ -49,6 +53,10 @@ Rect2D::Rect2D(Array<Float2> points)
 	}
 	BottomLeft = Float2(x1, y1);
 	TopRight = Float2(x2, y2);
+
+	BottomRight = Float2(x2, y1);
+	TopLeft = Float2(x1, y2);
+
 	rotation = 0;
 }
 
@@ -56,12 +64,16 @@ void Rect2D::Translate(Float2 translation)
 {
 	BottomLeft += translation;
 	TopRight += translation;
+	BottomRight += translation;
+	TopLeft += translation;
 }
 
 void Rect2D::Rotate(float rotation)
 {
 	BottomLeft.Rotate(rotation);
 	TopRight.Rotate(rotation);
+	BottomRight.Rotate(rotation);
+	TopLeft.Rotate(rotation);
 	this->rotation += rotation;
 	this->rotation = fmodf(this->rotation, 2 * PI);
 }
@@ -70,18 +82,21 @@ void Rect2D::Scale(float scale)
 {
 	BottomLeft *= scale;
 	TopRight *= scale;
+	BottomRight *= scale;
+	TopLeft *= scale;
 }
 
-void Rect2D::ScaleHorizontally(float xScale)
+void Rect2D::Scale(float x, float y)
 {
-	BottomLeft.x *= xScale;
-	TopRight.x *= xScale;
-}
+	BottomLeft.x *= x;
+	TopRight.x *= x;
+	BottomRight.x *= x;
+	TopLeft.x *= x;
 
-void Rect2D::ScaleVertically(float yScale)
-{
-	BottomLeft.y *= yScale;
-	TopRight.y *= yScale;
+	BottomLeft.y *= y;
+	TopRight.y *= y;
+	BottomRight.y *= y;
+	TopLeft.y *= y;
 }
 
 bool Rect2D::IsPointInside(Float2 point)
@@ -100,20 +115,15 @@ Float2 Rect2D::Center()
 	return Float2(BottomLeft.x + TopRight.x, BottomLeft.y + TopRight.y) * 0.5f;
 }
 
-Float2 Rect2D::BottomRight()
+Rect2D Rect2D::TopLeftBottomRight(Float2 topLeft, Float2 bottomRight)
 {
-	float x2 = (BottomLeft.x + TopRight.x + BottomLeft.y - TopRight.y) / 2;
-	float y2 = (TopRight.x - BottomLeft.x + BottomLeft.y + TopRight.y) / 2;
-
-	return Float2(x2,y2);
-}
-
-Float2 Rect2D::TopLeft()
-{
-	float x4 = (BottomLeft.x + TopRight.x + TopRight.y - BottomLeft.y) / 2;
-	float y4 = (BottomLeft.x - TopRight.x + BottomLeft.y + TopRight.y) / 2;
-
-	return Float2(x4, y4);
+	Rect2D rect = Rect2D();
+	rect.BottomRight = bottomRight;
+	rect.TopLeft = topLeft;
+	rect.BottomLeft = Float2(rect.TopLeft.x, rect.BottomRight.y);
+	rect.TopRight = Float2(rect.BottomRight.x, rect.TopLeft.y);
+	rect.rotation = 0;
+	return rect;
 }
 
 bool Rect2D::IsPointInsideUnRotatedRect(Float2 point)

@@ -1,11 +1,6 @@
-#include "World.h"
 #include "EventSystem.h"
-#include <functional>
+#include "World.h"
 
-void Test(int a)
-{
-
-}
 int main()
 {
 	World::BigBang();

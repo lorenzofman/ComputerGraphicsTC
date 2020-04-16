@@ -12,3 +12,5 @@ RGBAFloat::RGBAFloat(float r, float g, float b, float a)
 	this->b = b;
 	this->a = a;
 }
+
+RGBAFloat RGBAFloat::Blank = RGBAFloat(0, 0, 0, 0);

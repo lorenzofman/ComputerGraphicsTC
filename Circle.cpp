@@ -3,10 +3,12 @@ Circle::Circle(float radius, RGBAFloat filledColor, RGBAFloat outlineColor, floa
 	Shape(filledColor, outlineColor, outlineThickness)
 {
 	this->radius = radius;
+	this->rotation = 0;
 }
 
 void Circle::Rotate(float rad)
 {
+	rotation += rad;
 }
 
 void Circle::Scale(float scale)
@@ -14,14 +16,9 @@ void Circle::Scale(float scale)
 	radius *= scale;
 }
 
-void Circle::ScaleHorizontally(float xScale)
+void Circle::Scale(float x, float y)
 {
-	Scale(xScale);
-}
-
-void Circle::ScaleVertically(float yScale)
-{
-	Scale(yScale);
+	Scale(fminf(x, y));
 }
 
 bool Circle::IsPointInside(Float2 point)
@@ -31,7 +28,11 @@ bool Circle::IsPointInside(Float2 point)
 
 Rect2D Circle::GetRect()
 {
-	return Rect2D(center.x - radius, center.y - radius, center.x + radius, center.y + radius);
+	Rect2D rect = Rect2D(center.x - radius, center.y - radius, center.x + radius, center.y + radius);
+	rect.Translate(-center);
+	rect.Rotate(rotation);
+	rect.Translate(center);
+	return rect;
 }
 
 void Circle::Draw()

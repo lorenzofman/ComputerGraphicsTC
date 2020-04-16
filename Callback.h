@@ -7,14 +7,20 @@ class Callback
 {
 	public:
 
-	void Register(std::function<void(_Args ...)> func)
+	int Register(std::function<void(_Args ...)> func)
 	{
 		listeners.push_back(func);
+		indices.push_back(index);
+		return index++;
 	}
 
-	void Deregister(std::function<void(_Args ...)> func)
+	void Deregister(int id)
 	{
-		listeners.erase(std::find(listeners.begin(), listeners.end(), func));
+		auto it = std::find(indices.begin(), indices.end(), id);
+		int idx = it - indices.begin();
+
+		indices.erase(it);
+		listeners.erase(listeners.begin() + idx);
 	}
 
 	void Clear()
@@ -28,9 +34,11 @@ class Callback
 		{
 			std::invoke(listeners[i], args ...);
 		}
-	}
 
+	}
 	private:
 
 	std::vector<std::function<void(_Args ...)>> listeners;
+	std::vector<int> indices;
+	int index = 0;
 };

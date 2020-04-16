@@ -52,19 +52,6 @@ class World
 		Delete = 127
 	};
 
-	enum class MouseButton
-	{
-		Left = 0,
-		Middle = 1,
-		Right = 2
-	};
-
-	enum class MouseButtonState
-	{
-		Down = 0,
-		Up = 1
-	};
-
 	enum class InterfaceState
 	{
 		Idle,
@@ -129,7 +116,7 @@ class World
 	static void OnRender();
 	static void OnKeyDown(int key);
 	static void OnKeyUp(int key);
-	static void OnMouseUpdate(int button, int state, int wheel, int direction, int x, int y);
+	static void OnLeftMouseButtonDown(Int2);
 
 	static void RenderShapes();
 

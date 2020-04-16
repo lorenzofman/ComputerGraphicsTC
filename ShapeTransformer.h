@@ -19,9 +19,19 @@ class ShapeTransformer : public IRenderable
 	
 	void DrawSurrondingRect(Rect2D& rect);
 
-	void OnLeftMouseButtonDown(Float2);
-	void OnLeftMouseButtonUp(Float2);
+	void OnTopLeftDrag(Float2 delta);
+	void OnTopMiddleDrag(Float2 delta);
+	void OnTopRightDrag(Float2 delta);
 
+	void OnBottomLeftDrag(Float2 delta);
+	void ApplyTransformation(Rect2D& newRect);
+	void OnBottomMiddleDrag(Float2 delta);
+	void OnBottomRightDrag(Float2 delta);
+
+	void OnLeftMiddleDrag(Float2 delta);
+	void OnRightMiddleDrag(Float2 delta);
+
+	bool IsPointInsideAnyTransformerButton(Int2);
 
 	private:
 
@@ -35,5 +45,6 @@ class ShapeTransformer : public IRenderable
 	Button* leftMiddle;
 	Button* rightMiddle;
 	Shape* shape;
+	Rect2D rect;
 };
 

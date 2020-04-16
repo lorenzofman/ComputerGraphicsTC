@@ -1,4 +1,5 @@
 #include "World.h"
+
 bool World::IsAltPressed = false;
 bool World::IsCtrlPressed = false;
 bool World::IsShiftPressed = false;
@@ -11,9 +12,6 @@ ShapeTransformer World::Transformer = ShapeTransformer();
 
 World::InterfaceState World::CurrentState = World::InterfaceState::Idle;
 Callback<> World::InputCallback;
-Int2 World::MousePosition;
-Int2 World::MousePositionDelta;
-int World::MouseScrollDelta = 0;
 
 std::string World::InputField;
 
@@ -22,7 +20,7 @@ void World::BigBang()
     EventSystem::UpdateCallback.Register(&OnRender);
     EventSystem::KeyDownCallback.Register(&OnKeyDown);
     EventSystem::KeyUpCallback.Register(&OnKeyUp);
-    EventSystem::MouseUpdateCallback.Register(&OnMouseUpdate);
+    EventSystem::LeftMouseButtonDownCallback.Register(&OnLeftMouseButtonDown);
 }
 
 void World::OnKeyDown(int key)
@@ -36,15 +34,9 @@ void World::OnKeyUp(int key)
 	ProcessModifiers(key, false);
 }
 
-void World::OnMouseUpdate(int button, int state, int wheel, int direction, int x, int y)
+void World::OnLeftMouseButtonDown(Int2 mousePos)
 {
-    MouseScrollDelta = (wheel) ? direction : 0;
-    MousePositionDelta = Int2(x, y) - MousePosition;
-    MousePosition = Int2(x, y);
-    if (button == (int)MouseButton::Left && state == (int) MouseButtonState::Down)
-    {
-        CurrentInput = Input::Select;
-    }
+    CurrentInput = Input::Select;
 }
 
 void World::ProcessModifiers(int key, bool pressed)
@@ -112,8 +104,7 @@ void World::OnRender()
     Canvas2D::ClearScreen(Background);
     ProcessState();
     RenderShapes();
-    MousePositionDelta = Int2(0, 0);
-	MouseScrollDelta = 0;
+    
 	Transformer.Render();
 }
 
@@ -205,14 +196,17 @@ void World::IdleState()
 
 void World::SelectObject()
 {
-    SetSelectedShape(GetFirstObjectMouseIsInside());
+    if (Transformer.IsPointInsideAnyTransformerButton(EventSystem::MousePosition) == false) 
+    {
+        SetSelectedShape(GetFirstObjectMouseIsInside());
+    }
 }
 
 Shape* World::GetFirstObjectMouseIsInside()
 {
     for (uint i = 0; i < Shapes.size(); i++)
     {
-        if (Shapes[i]->IsPointInside(MousePosition))
+        if (Shapes[i]->IsPointInside(EventSystem::MousePosition))
         {
             CurrentState = InterfaceState::ShapeSelected;
             return Shapes[i];
@@ -286,7 +280,7 @@ void World::GrabSelected()
     {
         return;
     }
-    SelectedShape->Translate(Float2(MousePositionDelta));
+    SelectedShape->Translate(Float2(EventSystem::MousePositionDelta));
 }
 
 void World::RotateSelected()
@@ -296,9 +290,9 @@ void World::RotateSelected()
     {
         return;
     }
-    Float2 lastMousePosition = MousePosition - MousePositionDelta;
+    Float2 lastMousePosition = EventSystem::MousePosition - EventSystem::MousePositionDelta;
 
-    Float2 currentDifToCenter  = SelectedShape->GetCenter() - MousePosition;
+    Float2 currentDifToCenter  = SelectedShape->GetCenter() - EventSystem::MousePosition;
     Float2 previousDifToCenter = SelectedShape->GetCenter() - lastMousePosition;
 
     float currentAngleToCenter  = atan2f(currentDifToCenter.x, currentDifToCenter.y);
@@ -315,8 +309,8 @@ void World::ScaleSelected()
     {
         return;
     }
-    float currentDistance = Float2::Distance(MousePosition, SelectedShape->GetCenter());
-    float previousDistance = Float2::Distance(MousePosition - MousePositionDelta, SelectedShape->GetCenter());
+    float currentDistance = Float2::Distance(EventSystem::MousePosition, SelectedShape->GetCenter());
+    float previousDistance = Float2::Distance(EventSystem::MousePosition - EventSystem::MousePositionDelta, SelectedShape->GetCenter());
 
     float scaleDelta = currentDistance / previousDistance;
     SelectedShape->Scale(scaleDelta);
@@ -336,7 +330,6 @@ void World::SaveFile()
 {
 
 }
-
 
 void World::RenderShapes()
 {
@@ -368,5 +361,3 @@ void World::Message(const char* str)
 {
     std::cout << str << std::endl;
 }
-
-

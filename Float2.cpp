@@ -100,3 +100,9 @@ float Float2::DistanceSq(Float2 a, Float2 b)
 	float dy = b.y - a.y;
 	return dx * dx + dy * dy;
 }
+
+float Float2::Angle(Float2 a, Float2 b)
+{
+	Float2 dif = b - a;
+	return atan2f(dif.y, dif.x);
+}

@@ -8,14 +8,13 @@
 class Rectangle : public Polygon
 {
 	public:
-	Rectangle(Rect2D, RGBAFloat filledColor, RGBAFloat outlineColor, float outlineThickness);
+	Rectangle(Rect2D, RGBAFloat filledColor, RGBAFloat outlineColor = RGBAFloat::Blank, float outlineThickness = 0);
 
 	// Inherited via Polygon
 	virtual bool IsPointInside(Float2) override;
 	virtual void Rotate(float) override;
 	virtual void Scale(float) override;
-	virtual void ScaleHorizontally(float) override;
-	virtual void ScaleVertically(float) override;
+	virtual void Scale(float, float) override;
 	virtual void Translate(Float2) override;
 	virtual Rect2D GetRect() override;
 

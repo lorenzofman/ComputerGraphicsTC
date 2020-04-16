@@ -34,23 +34,14 @@ void Polygon::Scale(float scale)
 	}
 }
 
-void Polygon::ScaleHorizontally(float xScale)
+void Polygon::Scale(float xScale, float yScale)
 {
 	for (int i = 0; i < vertices.size; i++)
 	{
-		vertices[i].x -= center.x;
+		vertices[i] -= center;
 		vertices[i].x *= xScale;
-		vertices[i].x += center.x;
-	}
-}
-
-void Polygon::ScaleVertically(float yScale)
-{
-	for (int i = 0; i < vertices.size; i++)
-	{
-		vertices[i].y -= center.y;
 		vertices[i].y *= yScale;
-		vertices[i].y += center.y;
+		vertices[i] += center;
 	}
 }
 
@@ -67,6 +58,7 @@ Rect2D Polygon::GetRect()
 {
 	return Rect2D(vertices);
 }
+
 
 Float2 Polygon::CalculateCenter(Array<Float2> vertices)
 {

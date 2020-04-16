@@ -17,13 +17,11 @@ class Polygon : public Shape
 	virtual void Translate(Float2 translation) override;
 	virtual void Rotate(float rad) override;
 	virtual void Scale(float) override;
-	virtual void ScaleHorizontally(float) override;
-	virtual void ScaleVertically(float) override;
-
+	virtual void Scale(float, float) override;
 	virtual void Draw() override;
 	virtual bool IsPointInside(Float2) override;
 	virtual Rect2D GetRect() override;
-
+	
 	private:
 
 	Array<Float2> vertices;

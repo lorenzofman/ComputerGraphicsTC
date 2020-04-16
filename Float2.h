@@ -26,4 +26,5 @@ struct Float2
 
 	static float Distance(Float2 a, Float2 b);
 	static float DistanceSq(Float2 a, Float2 b);
+	static float Angle(Float2 a, Float2 b);
 };
