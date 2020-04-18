@@ -18,7 +18,7 @@ void Circle::Scale(float scale)
 
 void Circle::Scale(float x, float y)
 {
-	Scale(fminf(x, y));
+	Scale((x + y) /2);
 }
 
 bool Circle::IsPointInside(Float2 point)
@@ -33,6 +33,13 @@ Rect2D Circle::GetRect()
 	rect.Rotate(rotation);
 	rect.Translate(center);
 	return rect;
+}
+
+void Circle::MatchRect(Rect2D rect)
+{
+	this->center = rect.Center();
+	this->radius = rect.LargestEdge() / 2;
+	//this->Rotate(rect.rotation - rotation);
 }
 
 void Circle::Draw()

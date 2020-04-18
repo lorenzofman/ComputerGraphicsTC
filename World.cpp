@@ -9,6 +9,9 @@ World::Input World::CurrentInput = Input::None;
 Shape* World::SelectedShape = nullptr;
 std::vector<Shape*> World::Shapes;
 ShapeTransformer World::Transformer = ShapeTransformer();
+ColorPalette World::MainColorPalette = ColorPalette(Float2(Colors::Palette::ButtonHalfSize, Colors::Palette::ButtonHalfSize));
+ColorPalette World::OutlineColorPalette = ColorPalette(Float2 (Colors::Palette::ButtonHalfSize * 3, Colors::Palette::ButtonHalfSize));
+
 
 World::InterfaceState World::CurrentState = World::InterfaceState::Idle;
 Callback<> World::InputCallback;
@@ -21,6 +24,8 @@ void World::BigBang()
     EventSystem::KeyDownCallback.Register(&OnKeyDown);
     EventSystem::KeyUpCallback.Register(&OnKeyUp);
     EventSystem::LeftMouseButtonDownCallback.Register(&OnLeftMouseButtonDown);
+    MainColorPalette.colorUpdateCallback.Register(&UpdateMainColor);
+    OutlineColorPalette.colorUpdateCallback.Register(&UpdateOutlineColor);
 }
 
 void World::OnKeyDown(int key)
@@ -101,11 +106,14 @@ void World::ProcessInput(int input)
 
 void World::OnRender()
 {
-    Canvas2D::ClearScreen(Background);
+    Canvas2D::ClearScreen(Colors::Background);
     ProcessState();
     RenderShapes();
     
 	Transformer.Render();
+    MainColorPalette.Render();
+    OutlineColorPalette.Render();
+
 }
 
 void World::ProcessState()
@@ -319,6 +327,7 @@ void World::ScaleSelected()
 void World::Delete()
 {
 	RemoveShape(SelectedShape);
+    Transformer.SetShape(nullptr);
 }
 
 void World::OpenFile()
@@ -331,6 +340,20 @@ void World::SaveFile()
 
 }
 
+void World::UpdateMainColor(RGBAFloat color)
+{
+    if (SelectedShape == nullptr)
+    {
+        return;
+    }
+    SelectedShape->SetMainColor(color);
+}
+
+void World::UpdateOutlineColor(RGBAFloat color)
+{
+    SelectedShape->SetOutlineColor(color);
+}
+
 void World::RenderShapes()
 {
     for (int i = Shapes.size() - 1; i >= 0; i--)
@@ -341,13 +364,12 @@ void World::RenderShapes()
 
 void World::CreateCircle()
 {
-	/* Todo: Parse String properly*/
-	Shapes.push_back(new Circle(128, RGBAFloat(0.9f, 0.9f, 0.9f)));
+	Shapes.push_back(new Circle(128, Colors::Default));
 }
 
 void World::CreateRectangle()
 {
-	Shapes.push_back(new class Rectangle(Rect2D(128, 128, 384, 384), RGBAFloat(0.9f, 0.9f, 0.9f), RGBAFloat(1, 0, 0), 0));
+	Shapes.push_back(new class Rectangle(Rect2D(128, 128, 384, 384), Colors::Default, Colors::Blank, 0));
 }
 
 void World::RemoveShape(Shape* shape)

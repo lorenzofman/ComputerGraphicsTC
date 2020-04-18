@@ -6,25 +6,29 @@
 #include "Callback.h"
 #include "EventSystem.h"
 #include "Rectangle.h"
+#include "RGBAFloat.h"
 
-constexpr int DragThreshold = 5;
+constexpr int DragThreshold = 2;
+constexpr float ButtonMouseOverColorMultiplier = 0.8f;
 
 class Button : public IRenderable
 {
 	public:
 	
-	Button(Rect2D rect = Rect2D());
+	Button(RGBAFloat color, Rect2D rect = Rect2D());
 
-	Callback<Int2> DragCallback;
-	Callback<Int2> ClickCallback;
+	Callback<Button*> DragCallback;
+	Callback<Button*> ClickCallback;
 
 	static Button* PressedButton;
 	void OnMousePositionUpdate(Int2 deltaPos);
 	
 	// Inherited via IRenderable
 	virtual void Render() override;
+	virtual void MouseOver(RGBAFloat& color);
 	Rect2D rect;
-	
+	RGBAFloat color;
+	bool active;
 	private:
 
 	Int2 totalDelta;

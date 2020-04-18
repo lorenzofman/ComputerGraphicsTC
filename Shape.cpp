@@ -29,6 +29,16 @@ void Shape::Render()
 	DrawFilledOutlined(fillColor, outlineColor, outlineThickness);
 }
 
+void Shape::SetMainColor(RGBAFloat color)
+{
+	this->fillColor = color;
+}
+
+void Shape::SetOutlineColor(RGBAFloat color)
+{
+	outlineColor = color;
+}
+
 Float2 Shape::GetCenter()
 {
 	return center;
@@ -53,5 +63,5 @@ void Shape::DrawFilledOutlined(RGBAFloat fillColor, RGBAFloat borderColor, float
 
 void Shape::DrawOutlined(RGBAFloat color, float thickness)
 {
-	DrawFilledOutlined(Background, color, thickness);
+	DrawFilledOutlined(Colors::Background, color, thickness);
 }

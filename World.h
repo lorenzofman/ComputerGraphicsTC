@@ -14,12 +14,14 @@
 #include "ShapeTransformer.h"
 #include "Callback.h"
 #include "EventSystem.h"
+#include "ShapeTransformer.h"
+#include "ColorPalette.h"
+
 class World
 {
 	public:
 
 	static void BigBang();
-
 
 	private:
 
@@ -112,6 +114,8 @@ class World
 	static Shape* SelectedShape;
 	static std::vector<Shape*> Shapes;
 	static ShapeTransformer Transformer;
+	static ColorPalette MainColorPalette;
+	static ColorPalette OutlineColorPalette;
 
 	static void OnRender();
 	static void OnKeyDown(int key);
@@ -141,7 +145,10 @@ class World
 	static void Delete();
 	static void OpenFile();
 	static void SaveFile();
-	
+	static void UpdateMainColor(RGBAFloat color);
+	static void UpdateOutlineColor(RGBAFloat color);
+
+
 	static void CreateCircle();
 
 	static void CreateRectangle();

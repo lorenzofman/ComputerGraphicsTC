@@ -27,7 +27,13 @@ class Shape : public IRenderable
 
 	virtual bool IsPointInside(Float2) = 0;
 
+	virtual void MatchRect(Rect2D) = 0;
+
 	virtual Rect2D GetRect() = 0;
+
+	virtual void SetMainColor(RGBAFloat);
+
+	virtual void SetOutlineColor(RGBAFloat);
 
 	Float2 GetCenter();
 
@@ -50,5 +56,4 @@ class Shape : public IRenderable
 	void DrawFilledOutlined(RGBAFloat fillColor, RGBAFloat borderColor, float thickness);
 
 	void DrawOutlined(RGBAFloat color, float thickness);
-
 };

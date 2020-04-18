@@ -152,6 +152,7 @@
     <ClCompile Include="Callback.cpp" />
     <ClCompile Include="Canvas2DExtensions.cpp" />
     <ClCompile Include="Circle.cpp" />
+    <ClCompile Include="ColorPalette.cpp" />
     <ClCompile Include="EventSystem.cpp" />
     <ClCompile Include="Int2.cpp" />
     <ClCompile Include="Canvas2D.cpp" />
@@ -173,6 +174,7 @@
     <ClInclude Include="Callback.h" />
     <ClInclude Include="Canvas2DExtensions.h" />
     <ClInclude Include="Circle.h" />
+    <ClInclude Include="ColorPalette.h" />
     <ClInclude Include="EventSystem.h" />
     <ClInclude Include="Int2.h" />
     <ClInclude Include="Canvas2D.h" />

@@ -59,6 +59,31 @@ Rect2D Polygon::GetRect()
 	return Rect2D(vertices);
 }
 
+void Polygon::MatchRect(Rect2D newRect)
+{
+	Rect2D rect = GetRect();
+	float oldWidth = rect.TopRight.x - rect.BottomLeft.x;
+	float newWidth = newRect.TopRight.x - newRect.BottomLeft.x;
+
+	float oldHeight = rect.TopRight.y - rect.BottomLeft.y;
+	float newHeight = newRect.TopRight.y - newRect.BottomLeft.y;
+
+	float dx = newWidth - oldWidth;
+	float dy = newHeight - oldHeight;
+
+	float ddx = newWidth / oldWidth;
+	float ddy = newHeight / oldHeight;
+	float max = fmaxf(ddx, ddy);
+
+	Float2 newCenter = newRect.Center();
+	Float2 oldCenter = rect.Center();
+	Float2 dif = newCenter - oldCenter;
+
+	Scale(ddx, ddy);
+	Translate(dif);
+	rect.rotation = newRect.rotation;
+}
+
 
 Float2 Polygon::CalculateCenter(Array<Float2> vertices)
 {

@@ -2,9 +2,19 @@
 
 #include "Rect.h"
 #include "Constants.h"
+
 Rect2D::Rect2D()
 {
 	BottomLeft = TopRight = BottomRight = TopLeft = Float2();
+	rotation = 0;
+}
+
+Rect2D::Rect2D(Float2 center, float inflate)
+{
+	BottomLeft	= center + Float2(-inflate, -inflate);
+	BottomRight = center + Float2( inflate, -inflate);
+	TopLeft		= center + Float2(-inflate,  inflate);
+	TopRight	= center + Float2( inflate,  inflate);
 	rotation = 0;
 }
 
@@ -97,6 +107,13 @@ void Rect2D::Scale(float x, float y)
 	TopRight.y *= y;
 	BottomRight.y *= y;
 	TopLeft.y *= y;
+}
+
+float Rect2D::LargestEdge()
+{
+	float d1sq = Float2::DistanceSq(TopLeft, BottomLeft);
+	float d2sq = Float2::DistanceSq(TopLeft, TopRight);
+	return sqrtf(fmaxf(d1sq, d2sq));
 }
 
 bool Rect2D::IsPointInside(Float2 point)

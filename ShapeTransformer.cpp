@@ -3,25 +3,25 @@
 ShapeTransformer::ShapeTransformer(Shape* shape)
 {
 	SetShape(shape);
-	buttons.push_back(topLeft = new Button());
-	buttons.push_back(topMiddle = new Button());
-	buttons.push_back(topRight = new Button());
-	buttons.push_back(bottomLeft = new Button());
-	buttons.push_back(bottomMiddle = new Button());
-	buttons.push_back(bottomRight = new Button());
-	buttons.push_back(leftMiddle = new Button());
-	buttons.push_back(rightMiddle = new Button());
+	buttons.push_back(topLeft = new Button(Colors::Selection));
+	buttons.push_back(topMiddle = new Button(Colors::Selection));
+	buttons.push_back(topRight = new Button(Colors::Selection));
+	buttons.push_back(bottomLeft = new Button(Colors::Selection));
+	buttons.push_back(bottomMiddle = new Button(Colors::Selection));
+	buttons.push_back(bottomRight = new Button(Colors::Selection));
+	buttons.push_back(leftMiddle = new Button(Colors::Selection));
+	buttons.push_back(rightMiddle = new Button(Colors::Selection));
 
-	topLeft->DragCallback.Register([this](Int2 delta) {this->OnTopLeftDrag(delta); });
-	topMiddle->DragCallback.Register([this](Int2 delta) {this->OnTopMiddleDrag(delta); });
-	topRight->DragCallback.Register([this](Int2 delta) {this->OnTopRightDrag(delta); });
+	topLeft->DragCallback.Register([this](Button*) {this->OnTopLeftDrag(); });
+	topMiddle->DragCallback.Register([this](Button*) {this->OnTopMiddleDrag(); });
+	topRight->DragCallback.Register([this](Button*) {this->OnTopRightDrag(); });
 
-	bottomLeft->DragCallback.Register([this](Int2 delta) {this->OnBottomLeftDrag(delta); });
-	bottomMiddle->DragCallback.Register([this](Int2 delta) {this->OnBottomMiddleDrag(delta); });
-	bottomRight->DragCallback.Register([this](Int2 delta) {this->OnBottomRightDrag(delta); });
+	bottomLeft->DragCallback.Register([this](Button*) {this->OnBottomLeftDrag(); });
+	bottomMiddle->DragCallback.Register([this](Button*) {this->OnBottomMiddleDrag(); });
+	bottomRight->DragCallback.Register([this](Button*) {this->OnBottomRightDrag(); });
 
-	leftMiddle->DragCallback.Register([this](Int2 delta) {this->OnLeftMiddleDrag(delta); });
-	rightMiddle->DragCallback.Register([this](Int2 delta) {this->OnRightMiddleDrag(delta); });
+	leftMiddle->DragCallback.Register([this](Button*) {this->OnLeftMiddleDrag(); });
+	rightMiddle->DragCallback.Register([this](Button*) {this->OnRightMiddleDrag(); });
 
 }
 
@@ -75,48 +75,49 @@ Rect2D ShapeTransformer::InflatePoint(Float2 center, float squareHalfSize)
 
 void ShapeTransformer::DrawSurrondingRect(Rect2D& rect)
 {
-	Canvas2DExtensions::DrawThickLine(rect.BottomLeft, rect.BottomRight, Selection, SelectionThickness);
-	Canvas2DExtensions::DrawThickLine(rect.BottomRight, rect.TopRight, Selection, SelectionThickness);
-	Canvas2DExtensions::DrawThickLine(rect.TopRight, rect.TopLeft, Selection, SelectionThickness);
-	Canvas2DExtensions::DrawThickLine(rect.TopLeft, rect.BottomLeft, Selection, SelectionThickness);
+	Canvas2DExtensions::DrawThickLine(rect.BottomLeft, rect.BottomRight, Colors::Selection, SelectionThickness);
+	Canvas2DExtensions::DrawThickLine(rect.BottomRight, rect.TopRight, Colors::Selection, SelectionThickness);
+	Canvas2DExtensions::DrawThickLine(rect.TopRight, rect.TopLeft, Colors::Selection, SelectionThickness);
+	Canvas2DExtensions::DrawThickLine(rect.TopLeft, rect.BottomLeft, Colors::Selection, SelectionThickness);
 }
-void ShapeTransformer::OnTopLeftDrag(Float2 delta)
+
+void ShapeTransformer::OnTopLeftDrag()
 {
 	Rect2D newRect = Rect2D::TopLeftBottomRight(EventSystem::MousePosition, rect.BottomRight);
 	ApplyTransformation(newRect);
 }
-void ShapeTransformer::OnTopRightDrag(Float2 delta)
+void ShapeTransformer::OnTopRightDrag()
 {
 	Rect2D newRect = Rect2D(rect.BottomLeft, EventSystem::MousePosition);
 	ApplyTransformation(newRect);
 }
-void ShapeTransformer::OnBottomLeftDrag(Float2 delta)
+void ShapeTransformer::OnBottomLeftDrag()
 {
 	Rect2D newRect = Rect2D(EventSystem::MousePosition, rect.TopRight);
 	ApplyTransformation(newRect);
 }
-void ShapeTransformer::OnBottomRightDrag(Float2 delta)
+void ShapeTransformer::OnBottomRightDrag()
 {
 	Rect2D newRect = Rect2D::TopLeftBottomRight(rect.TopLeft, EventSystem::MousePosition);
 	ApplyTransformation(newRect);
 }
 
-void ShapeTransformer::OnTopMiddleDrag(Float2 delta)
+void ShapeTransformer::OnTopMiddleDrag()
 {
 	Rect2D newRect = Rect2D(rect.BottomLeft, Float2(rect.TopRight.x, EventSystem::MousePosition.y));
 	ApplyTransformation(newRect);
 }
-void ShapeTransformer::OnBottomMiddleDrag(Float2 delta)
+void ShapeTransformer::OnBottomMiddleDrag()
 {
 	Rect2D newRect = Rect2D(Float2(rect.BottomLeft.x, EventSystem::MousePosition.y), rect.TopRight);
 	ApplyTransformation(newRect);
 }
-void ShapeTransformer::OnLeftMiddleDrag(Float2 delta)
+void ShapeTransformer::OnLeftMiddleDrag()
 {
 	Rect2D newRect = Rect2D(Float2(EventSystem::MousePosition.x, rect.BottomLeft.y), rect.TopRight);
 	ApplyTransformation(newRect);
 }
-void ShapeTransformer::OnRightMiddleDrag(Float2 delta)
+void ShapeTransformer::OnRightMiddleDrag()
 {
 	Rect2D newRect = Rect2D(rect.BottomLeft, Float2(EventSystem::MousePosition.x, rect.TopRight.y));
 	ApplyTransformation(newRect);
@@ -124,26 +125,7 @@ void ShapeTransformer::OnRightMiddleDrag(Float2 delta)
 
 void ShapeTransformer::ApplyTransformation(Rect2D& newRect)
 {
-	newRect.rotation = this->rect.rotation;
-	float oldWidth = rect.TopRight.x - rect.BottomLeft.x;
-	float newWidth = newRect.TopRight.x - newRect.BottomLeft.x;
-
-	float oldHeight = rect.TopRight.y - rect.BottomLeft.y;
-	float newHeight = newRect.TopRight.y - newRect.BottomLeft.y;
-
-	float dx = newWidth - oldWidth;
-	float dy = newHeight - oldHeight;
-	
-	float ddx = newWidth / oldWidth;
-	float ddy = newHeight / oldHeight;
-	float max = fmaxf(ddx, ddy);
-
-	Float2 newCenter = newRect.Center();
-	Float2 oldCenter = this->rect.Center();
-	Float2 dif = newCenter - oldCenter;
-	//shape->Scale(max);
-	shape->Translate(dif);
-	shape->Scale(ddx, ddy);
+	shape->MatchRect(newRect);
 }
 
 bool ShapeTransformer::IsPointInsideAnyTransformerButton(Int2 mousePos)

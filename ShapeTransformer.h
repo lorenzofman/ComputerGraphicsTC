@@ -19,18 +19,18 @@ class ShapeTransformer : public IRenderable
 	
 	void DrawSurrondingRect(Rect2D& rect);
 
-	void OnTopLeftDrag(Float2 delta);
-	void OnTopMiddleDrag(Float2 delta);
-	void OnTopRightDrag(Float2 delta);
+	void OnTopLeftDrag();
+	void OnTopMiddleDrag();
+	void OnTopRightDrag();
 
-	void OnBottomLeftDrag(Float2 delta);
+	void OnBottomLeftDrag();
+	void OnBottomMiddleDrag();
+	void OnBottomRightDrag();
+
+	void OnLeftMiddleDrag();
+	void OnRightMiddleDrag();
+
 	void ApplyTransformation(Rect2D& newRect);
-	void OnBottomMiddleDrag(Float2 delta);
-	void OnBottomRightDrag(Float2 delta);
-
-	void OnLeftMiddleDrag(Float2 delta);
-	void OnRightMiddleDrag(Float2 delta);
-
 	bool IsPointInsideAnyTransformerButton(Int2);
 
 	private:

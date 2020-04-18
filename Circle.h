@@ -19,6 +19,7 @@ class Circle : public Shape
 
 	virtual bool IsPointInside(Float2) override;
 	virtual Rect2D GetRect() override;
+	virtual void MatchRect(Rect2D) override;
 	protected:
 
 	// Inherited via Shape
