@@ -12,7 +12,14 @@ constexpr byte PolygonId	= 0xfd;
 
 class Serial
 {
-	static std::vector<Shape*> Deserialize(std::ifstream);
-	static Shape* DeserializeShape(std::ifstream);
+	static Shape** Deserialize(std::ifstream&);
+	static Shape* DeserializeShape(std::ifstream&);
+	template <typename T>
+	static T Read(std::ifstream& stream)
+	{
+		T t;
+		stream.read((char*)&t, sizeof(T));
+		return t;
+	}
 };
 

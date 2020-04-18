@@ -4,7 +4,7 @@ Shape::Shape(RGBAFloat fillColor, RGBAFloat outlineColor, float outlineThickness
 	this->fillColor = fillColor;
 	this->outlineColor = outlineColor;
 	this->outlineThickness = outlineThickness;
-	this->Translate(Float2(Screen::Width / 2, Screen::Height / 2));
+	this->Translate(Screen::Center());
 }
 
 void Shape::Translate(Float2 translation)
