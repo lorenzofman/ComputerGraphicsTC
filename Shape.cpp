@@ -1,10 +1,28 @@
 #include "Shape.h"
+
 Shape::Shape(RGBAFloat fillColor, RGBAFloat outlineColor, float outlineThickness)
 {
 	this->fillColor = fillColor;
 	this->outlineColor = outlineColor;
 	this->outlineThickness = outlineThickness;
 	this->Translate(Screen::Center());
+}
+
+Shape::Shape(std::ifstream& stream)
+{
+	this->center = Serial::Read<Float2>(stream);
+	this->fillColor = Serial::Read<RGBAFloat>(stream);
+	this->outlineColor = Serial::Read<RGBAFloat>(stream);
+	this->outlineThickness = Serial::Read<float>(stream);
+}
+
+void Shape::Serialize(std::ofstream& stream)
+{
+	Serial::Write<byte>(stream, GetShapeIdentifier());
+	Serial::Write<Float2>(stream, this->center);
+	Serial::Write<RGBAFloat>(stream, this->fillColor);
+	Serial::Write<RGBAFloat>(stream, this->outlineColor);
+	Serial::Write<float>(stream, this->outlineThickness);
 }
 
 void Shape::Translate(Float2 translation)
@@ -28,6 +46,7 @@ void Shape::Render()
 
 	DrawFilledOutlined(fillColor, outlineColor, outlineThickness);
 }
+
 
 void Shape::SetMainColor(RGBAFloat color)
 {

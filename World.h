@@ -16,6 +16,8 @@
 #include "EventSystem.h"
 #include "ShapeTransformer.h"
 #include "ColorPalette.h"
+#include "FileDialog.h"
+#include "ShapeSerializer.h"
 
 class World
 {

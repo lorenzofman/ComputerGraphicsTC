@@ -5,6 +5,22 @@ Rectangle::Rectangle(Rect2D rect, RGBAFloat filledColor, RGBAFloat outlineColor,
 	this->rect = rect;
 }
 
+Rectangle::Rectangle(std::ifstream& stream) : Polygon(stream)
+{
+	this->rect = Serial::Read<Rect2D>(stream);
+}
+
+void Rectangle::Serialize(std::ofstream& stream)
+{
+	Polygon::Serialize(stream);
+	Serial::Write(stream, this->rect);
+}
+
+byte Rectangle::GetShapeIdentifier()
+{
+	return RectangleId;
+}
+
 bool Rectangle::IsPointInside(Float2 point)
 {
 	return rect.IsPointInside(point);
@@ -16,7 +32,6 @@ void Rectangle::Rotate(float rad)
 	rect.Translate(-center);
 	rect.Rotate(rad);
 	rect.Translate(center);
-
 }
 
 void Rectangle::Scale(float scale)

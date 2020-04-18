@@ -10,12 +10,17 @@
 #include "Constants.h"
 #include "Screen.h"
 #include "Rect.h"
-
+#include "Serial.h"
 class Shape : public IRenderable
 {
 	public:
 
 	Shape(RGBAFloat filledColor, RGBAFloat outlineColor, float outlineThickness);
+
+	Shape(std::ifstream& stream);
+	virtual void Serialize(std::ofstream&);
+
+	virtual byte GetShapeIdentifier() = 0;
 
 	virtual void Translate(Float2 translation);
 
@@ -33,7 +38,6 @@ class Shape : public IRenderable
 
 	virtual Rect2D GetRect() = 0;
 
-	virtual byte* Serialize() = 0;
 
 	void SetMainColor(RGBAFloat);
 

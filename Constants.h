@@ -1,7 +1,8 @@
 #pragma once
 
 #include "RGBAFloat.h"
-namespace Colors 
+#include "Types.h"
+namespace Colors
 {
 	static const RGBAFloat White = RGBAFloat(1, 1, 1);
 	static const RGBAFloat Red = RGBAFloat(1, 0, 0);
@@ -79,3 +80,7 @@ constexpr int SelectionThickness = 1;
 constexpr int TransfomerEdgeHalfSize = 4;
 constexpr int TransformerSideHalfSize = 3;
 constexpr float OutlineScrollSpeed = 0.01f;
+
+constexpr byte RectangleId = 0xff;
+constexpr byte CircleId = 0xfe;
+constexpr byte PolygonId = 0xfd;

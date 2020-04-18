@@ -5,6 +5,23 @@ Circle::Circle(float radius, RGBAFloat filledColor, RGBAFloat outlineColor, floa
 	this->radius = radius;
 	this->rotation = 0;
 }
+Circle::Circle(std::ifstream& stream) : Shape(stream)
+{
+	this->radius = Serial::Read<float>(stream);
+	this->rotation = Serial::Read<float>(stream);
+}
+
+void Circle::Serialize(std::ofstream& stream)
+{
+	Shape::Serialize(stream);
+	Serial::Write<float>(stream, this->radius);
+	Serial::Write<float>(stream, this->rotation);
+}
+
+byte Circle::GetShapeIdentifier()
+{
+	return CircleId;
+}
 
 void Circle::Rotate(float rad)
 {
@@ -39,8 +56,8 @@ void Circle::MatchRect(Rect2D rect)
 {
 	this->center = rect.Center();
 	this->radius = rect.LargestEdge() / 2;
-	//this->Rotate(rect.rotation - rotation);
 }
+
 
 void Circle::Draw()
 {

@@ -5,6 +5,33 @@ Polygon::Polygon(Array<Float2> vertices, RGBAFloat filledColor, RGBAFloat outlin
 	this->center = CalculateCenter(vertices);
 }
 
+Polygon::Polygon(std::ifstream& stream) : Shape(stream)
+{
+	int verticesArraySize = Serial::Read<int>(stream);
+	Float2* vertices = new Float2[verticesArraySize];
+	for (int i = 0; i < verticesArraySize; i++)
+	{
+		vertices[i] = Serial::Read<Float2>(stream);
+	}
+	this->vertices = Array<Float2>(vertices, verticesArraySize);
+	this->center = CalculateCenter(this->vertices);
+}
+
+void Polygon::Serialize(std::ofstream& stream)
+{
+	Shape::Serialize(stream);
+	Serial::Write<int>(stream, this->vertices.size);
+	for (int i = 0; i < this->vertices.size; i++)
+	{
+		Serial::Write<Float2>(stream, this->vertices[i]);
+	}
+}
+
+byte Polygon::GetShapeIdentifier()
+{
+	return PolygonId;
+}
+
 void Polygon::Translate(Float2 translation)
 {
 	for (int i = 0; i < vertices.size; i++)

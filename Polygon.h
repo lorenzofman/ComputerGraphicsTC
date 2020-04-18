@@ -1,5 +1,7 @@
 #pragma once
 #include <vector>
+#include <iostream>
+#include <fstream>
 
 #include "Float2.h"
 #include "Shape.h"
@@ -12,7 +14,11 @@ class Polygon : public Shape
 	public:
 
 	Polygon(Array<Float2> vertices, RGBAFloat filledColor, RGBAFloat outlineColor, float outlineThickness = 0);
+	
+	Polygon(std::ifstream& stream);
 
+	virtual void Serialize(std::ofstream&) override;
+	virtual byte GetShapeIdentifier() override;
 	// Inherited via Shape
 	virtual void Translate(Float2 translation) override;
 	virtual void Rotate(float rad) override;

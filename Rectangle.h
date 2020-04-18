@@ -1,5 +1,8 @@
 #pragma once
 
+#include <iostream>
+#include <fstream>
+
 #include "Polygon.h"
 #include "Rect.h"
 #include "Array.h"
@@ -9,7 +12,11 @@ class Rectangle : public Polygon
 {
 	public:
 	Rectangle(Rect2D, RGBAFloat filledColor, RGBAFloat outlineColor = RGBAFloat::Blank, float outlineThickness = 0);
+	
+	Rectangle(std::ifstream&);
 
+	virtual void Serialize(std::ofstream&) override;
+	virtual byte GetShapeIdentifier() override;
 	// Inherited via Polygon
 	virtual bool IsPointInside(Float2) override;
 	virtual void Rotate(float) override;

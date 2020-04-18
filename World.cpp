@@ -351,12 +351,23 @@ void World::Delete()
 
 void World::OpenFile()
 {
-
+    for (int i = Shapes.size() - 1; i >= 0; i--)
+    {
+        delete Shapes[i];
+    }
+    Shapes.clear();
+    Array<Shape*> arr = ShapeSerializer::Deserialize("Shapes.gr");
+    Shapes.reserve(arr.size);
+    for (int i = 0; i < arr.size; i++) 
+    {
+        Shapes.push_back(arr.ptr[i]);
+    }
+    delete[] arr.ptr;
 }
 
 void World::SaveFile()
 {
-	
+    ShapeSerializer::Serialize("Shapes.gr", Array(&Shapes[0], Shapes.size()));
 }
 
 void World::UpdateMainColor(RGBAFloat color)
