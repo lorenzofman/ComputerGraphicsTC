@@ -75,7 +75,6 @@ class World
 		NewPolygon,
 		NewCircle,
 		NewRectangle,
-		Edit,
 		MouseWheelUpdate,
 		ChangeColor,
 		ChangeOutlineColor,
@@ -121,6 +120,7 @@ class World
 	static void OnKeyDown(int key);
 	static void OnKeyUp(int key);
 	static void OnLeftMouseButtonDown(Int2);
+	static void OnMouseWheelUpdate();
 
 	static void RenderShapes();
 

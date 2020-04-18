@@ -164,6 +164,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="FileDialog.cpp" />
     <ClCompile Include="Screen.cpp" />
+    <ClCompile Include="Serial.cpp" />
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="ShapeTransformer.cpp" />
     <ClCompile Include="World.cpp" />
@@ -187,6 +188,7 @@
     <ClInclude Include="RGBAFloat.h" />
     <ClInclude Include="FileDialog.h" />
     <ClInclude Include="Screen.h" />
+    <ClInclude Include="Serial.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="ShapeTransformer.h" />
     <ClInclude Include="Types.h" />

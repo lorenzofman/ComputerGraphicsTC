@@ -3,15 +3,15 @@
 ColorPalette::ColorPalette(Float2 buttonPosition)
 {
 	this->position = buttonPosition;
+	this->open = false;
 	colorButton = new Button(Colors::Default, Rect2D(buttonPosition, Colors::Palette::ButtonHalfSize));
 	colorButton->ClickCallback.Register([this](Button* btn) {this->OnOpenPalette(); });
 	CreateButtons();
-	//colorButton->ClickCallback.Register([this](Button* btn) {this->OnColorClick(btn); });
 }
 
 void ColorPalette::Render()
 {
-	//colorButton->Render();
+	colorButton->Render();
 	for (const auto & [buttonPtr, color] : buttons) 
 	{
 		buttonPtr->Render();
@@ -20,12 +20,53 @@ void ColorPalette::Render()
 
 void ColorPalette::OnOpenPalette()
 {
+	for (const auto& [buttonPtr, color] : buttons)
+	{
+		buttonPtr->active = true;
+	}
+	open = true;
+}
 
+void ColorPalette::ClosePalette()
+{
+	for (const auto& [buttonPtr, color] : buttons)
+	{
+		buttonPtr->active = false;
+	}
+	open = false;
 }
 
 void ColorPalette::OnColorClick(Button* btn)
 {
+	RGBAFloat color = buttons[btn];
+	this->colorButton->color = color;
+	colorUpdateCallback.Invoke(color);
+	ClosePalette();
+}
 
+RGBAFloat ColorPalette::GetCurrentColor()
+{
+	return colorButton->color;
+}
+
+bool ColorPalette::IsMouseOver()
+{
+	if (colorButton->rect.IsPointInside(EventSystem::MousePosition))
+	{
+		return true;
+	}
+	if (open == false)
+	{
+		return false;
+	}
+	for (const auto& [buttonPtr, color] : buttons)
+	{
+		if (buttonPtr->rect.IsPointInside(EventSystem::MousePosition))
+		{
+			return true;
+		}
+	}
+	return false;
 }
 
 void ColorPalette::CreateButtons()
@@ -37,8 +78,10 @@ void ColorPalette::CreateButtons()
 			int idx = i * Colors::Palette::Width + j;
 			RGBAFloat color = Colors::Palette::Colors[idx];
 			Rect2D rect = CalculateRectangle(i, j);
-			rect.Translate(Float2(Colors::Palette::ButtonHalfSize * 2, Colors::Palette::ButtonHalfSize * 2));
+			rect.Translate(Float2(position.x - Colors::Palette::ButtonHalfSize, Colors::Palette::ButtonHalfSize * 2));
 			Button* btn = new Button(color, rect);
+			btn->ClickCallback.Register([this](Button* btn) {this->OnColorClick(btn); });
+			btn->active = false;
 			buttons[btn] = color;
 		}
 	}

@@ -31,7 +31,7 @@ class ShapeTransformer : public IRenderable
 	void OnRightMiddleDrag();
 
 	void ApplyTransformation(Rect2D& newRect);
-	bool IsPointInsideAnyTransformerButton(Int2);
+	bool IsMouseOver();
 
 	private:
 

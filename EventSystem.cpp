@@ -19,7 +19,7 @@ Callback<Int2> EventSystem::RightMouseButtonDownCallback;
 Callback<Int2> EventSystem::RightMouseButtonUpCallback;
 
 Callback<Int2> EventSystem::MouseMovementCallback;
-Callback<int> EventSystem::MouseWheelCallback;
+Callback<> EventSystem::MouseWheelCallback;
 
 void EventSystem::OnUpdate()
 {
@@ -40,7 +40,7 @@ void EventSystem::OnKeyUp(int key)
 
 void EventSystem::OnMouseUpdate(int button, int state, int wheel, int direction, int x, int y)
 {
-	MouseScrollDelta = (wheel) ? direction : 0;
+	MouseScrollDelta = (wheel == 0) ? direction : 0;
 	MousePositionDelta = Int2(x, y) - MousePosition;
 	MousePosition = Int2(x, y);
 
@@ -69,9 +69,9 @@ void EventSystem::OnMouseUpdate(int button, int state, int wheel, int direction,
 		MouseMovementCallback.Invoke(MousePositionDelta);
 	}
 
-	if (direction != 0)
+	if (direction != 0 && direction != -2)
 	{
-		MouseWheelCallback.Invoke(direction);
+		MouseWheelCallback.Invoke();
 	}
 }
 

@@ -75,6 +75,7 @@ namespace Colors
 }
 
 constexpr float PI = 3.14159265359f;
-static const int SelectionThickness = 1;
-static const int TransfomerEdgeHalfSize = 4;
-static const int TransformerSideHalfSize = 3;
+constexpr int SelectionThickness = 1;
+constexpr int TransfomerEdgeHalfSize = 4;
+constexpr int TransformerSideHalfSize = 3;
+constexpr float OutlineScrollSpeed = 0.01f;

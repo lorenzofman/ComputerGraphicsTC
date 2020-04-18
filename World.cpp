@@ -9,8 +9,8 @@ World::Input World::CurrentInput = Input::None;
 Shape* World::SelectedShape = nullptr;
 std::vector<Shape*> World::Shapes;
 ShapeTransformer World::Transformer = ShapeTransformer();
-ColorPalette World::MainColorPalette = ColorPalette(Float2(Colors::Palette::ButtonHalfSize, Colors::Palette::ButtonHalfSize));
-ColorPalette World::OutlineColorPalette = ColorPalette(Float2 (Colors::Palette::ButtonHalfSize * 3, Colors::Palette::ButtonHalfSize));
+ColorPalette World::MainColorPalette = ColorPalette(Float2(Colors::Palette::ButtonHalfSize * 8, Colors::Palette::ButtonHalfSize));
+ColorPalette World::OutlineColorPalette = ColorPalette(Float2 (Colors::Palette::ButtonHalfSize * 20, Colors::Palette::ButtonHalfSize));
 
 
 World::InterfaceState World::CurrentState = World::InterfaceState::Idle;
@@ -24,6 +24,7 @@ void World::BigBang()
     EventSystem::KeyDownCallback.Register(&OnKeyDown);
     EventSystem::KeyUpCallback.Register(&OnKeyUp);
     EventSystem::LeftMouseButtonDownCallback.Register(&OnLeftMouseButtonDown);
+	EventSystem::MouseWheelCallback.Register(&OnMouseWheelUpdate);
     MainColorPalette.colorUpdateCallback.Register(&UpdateMainColor);
     OutlineColorPalette.colorUpdateCallback.Register(&UpdateOutlineColor);
 }
@@ -42,6 +43,11 @@ void World::OnKeyUp(int key)
 void World::OnLeftMouseButtonDown(Int2 mousePos)
 {
     CurrentInput = Input::Select;
+}
+
+void World::OnMouseWheelUpdate()
+{
+	CurrentInput = Input::MouseWheelUpdate;
 }
 
 void World::ProcessModifiers(int key, bool pressed)
@@ -91,7 +97,6 @@ void World::ProcessInput(int input)
         case World::Key::Num_8: CurrentInput = Input::Num8; break;
         case World::Key::Num_9: CurrentInput = Input::Num9; break;
 
-        case World::Key::E: CurrentInput = Input::Edit; break;
         case World::Key::B: CurrentInput = Input::SendBackward; break;
         case World::Key::F: CurrentInput = Input::BringForward; break;
         case World::Key::C: CurrentInput = (IsAltPressed) ? Input::ChangeColor : Input::ChangeOutlineColor; break;
@@ -111,7 +116,13 @@ void World::OnRender()
     RenderShapes();
     
 	Transformer.Render();
+
+	Canvas2D::SetColor(Colors::White);
+	Canvas2D::DrawText(0, Colors::Palette::ButtonHalfSize - 5, "Fill Color:");
     MainColorPalette.Render();
+
+	Canvas2D::SetColor(Colors::White);
+	Canvas2D::DrawText(160, Colors::Palette::ButtonHalfSize - 5, "Outline Color:");
     OutlineColorPalette.Render();
 
 }
@@ -204,7 +215,9 @@ void World::IdleState()
 
 void World::SelectObject()
 {
-    if (Transformer.IsPointInsideAnyTransformerButton(EventSystem::MousePosition) == false) 
+    if (Transformer.IsMouseOver() == false && 
+		MainColorPalette.IsMouseOver() == false &&
+		OutlineColorPalette.IsMouseOver() == false)
     {
         SetSelectedShape(GetFirstObjectMouseIsInside());
     }
@@ -262,7 +275,13 @@ void World::ListenToInput()
 
 void World::UpdateOutlineThickness()
 {
-
+	if (SelectedShape == nullptr)
+	{
+		return;
+	}
+	float currentThickness = SelectedShape->GetOutlineThickness();
+	float change = EventSystem::MouseScrollDelta * OutlineScrollSpeed;
+	SelectedShape->SetOutlineThickness(currentThickness + change);
 }
 
 void World::BringForward()
@@ -337,7 +356,7 @@ void World::OpenFile()
 
 void World::SaveFile()
 {
-
+	
 }
 
 void World::UpdateMainColor(RGBAFloat color)
@@ -351,6 +370,10 @@ void World::UpdateMainColor(RGBAFloat color)
 
 void World::UpdateOutlineColor(RGBAFloat color)
 {
+	if (SelectedShape == nullptr)
+	{
+		return;
+	}
     SelectedShape->SetOutlineColor(color);
 }
 
@@ -364,12 +387,13 @@ void World::RenderShapes()
 
 void World::CreateCircle()
 {
-	Shapes.push_back(new Circle(128, Colors::Default));
+	Shapes.push_back(new Circle(128, MainColorPalette.GetCurrentColor()));
 }
 
 void World::CreateRectangle()
 {
-	Shapes.push_back(new class Rectangle(Rect2D(128, 128, 384, 384), Colors::Default, Colors::Blank, 0));
+	Rect2D rect = Rect2D(Float2(Screen::Center()), 128);
+	Shapes.push_back(new class Rectangle(rect, MainColorPalette.GetCurrentColor()));
 }
 
 void World::RemoveShape(Shape* shape)

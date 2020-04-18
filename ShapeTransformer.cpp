@@ -128,11 +128,11 @@ void ShapeTransformer::ApplyTransformation(Rect2D& newRect)
 	shape->MatchRect(newRect);
 }
 
-bool ShapeTransformer::IsPointInsideAnyTransformerButton(Int2 mousePos)
+bool ShapeTransformer::IsMouseOver()
 {
 	for (auto&& btn : buttons)
 	{
-		if (btn->rect.IsPointInside(mousePos))
+		if (btn->rect.IsPointInside(EventSystem::MousePosition))
 		{
 			return true;
 		}

@@ -17,14 +17,18 @@ class ColorPalette : public IRenderable
 
 	virtual void Render() override;
 	void OnOpenPalette();
-	void OnColorClick(Button*);
+	void ClosePalette();
 
+	void OnColorClick(Button*);
+	RGBAFloat GetCurrentColor();
+	bool IsMouseOver();
 
 	private:
 	void CreateButtons();
 	Rect2D CalculateRectangle(int, int);
+	
 	std::map<Button*, RGBAFloat> buttons;
 	Button* colorButton;
-
+	bool open;
 	Float2 position;
 };

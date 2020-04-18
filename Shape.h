@@ -1,5 +1,7 @@
 #pragma once
 
+#include <algorithm>
+
 #include "Types.h"
 #include "RGBAFloat.h"
 #include "Float2.h"
@@ -31,11 +33,16 @@ class Shape : public IRenderable
 
 	virtual Rect2D GetRect() = 0;
 
-	virtual void SetMainColor(RGBAFloat);
+	virtual byte* Serialize() = 0;
 
-	virtual void SetOutlineColor(RGBAFloat);
+	void SetMainColor(RGBAFloat);
+
+	void SetOutlineColor(RGBAFloat);
 
 	Float2 GetCenter();
+
+	float GetOutlineThickness();
+	void SetOutlineThickness(float);
 
 	protected:
 
@@ -45,11 +52,11 @@ class Shape : public IRenderable
 
 	private:
 
+	float outlineThickness;
+
 	RGBAFloat fillColor;
 
 	RGBAFloat outlineColor;
-
-	float outlineThickness;
 
 	void DrawFilled(RGBAFloat color);
 

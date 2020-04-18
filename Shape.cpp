@@ -44,6 +44,17 @@ Float2 Shape::GetCenter()
 	return center;
 }
 
+float Shape::GetOutlineThickness()
+{
+	return outlineThickness;
+}
+
+void Shape::SetOutlineThickness(float outlineThickness)
+{
+	outlineThickness = std::clamp(outlineThickness, 0.0f, 1.0f);
+	this->outlineThickness = outlineThickness;
+}
+
 void Shape::DrawFilled(RGBAFloat color)
 {
 	Canvas2D::SetColor(color);
