@@ -13,11 +13,11 @@ class ShapeTransformer : public IRenderable
 
 	virtual void Render() override;
 
-	void DrawTransformPoints(Rect2D& rect);
+	void DrawTransformPoints(Rect& rect);
 
-	Rect2D InflatePoint(Float2 center, float squareHalfSize);
+	Rect InflatePoint(Float2 center, float squareHalfSize);
 	
-	void DrawSurrondingRect(Rect2D& rect);
+	void DrawSurrondingRect(Rect& rect);
 
 	void OnTopLeftDrag();
 	void OnTopMiddleDrag();
@@ -30,7 +30,7 @@ class ShapeTransformer : public IRenderable
 	void OnLeftMiddleDrag();
 	void OnRightMiddleDrag();
 
-	void ApplyTransformation(Rect2D& newRect);
+	void ApplyTransformation(Rect& newRect);
 	bool IsMouseOver();
 
 	private:
@@ -45,6 +45,6 @@ class ShapeTransformer : public IRenderable
 	Button* leftMiddle;
 	Button* rightMiddle;
 	Shape* shape;
-	Rect2D rect;
+	Rect rect;
 };
 

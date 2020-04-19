@@ -403,7 +403,7 @@ void World::CreateCircle()
 
 void World::CreateRectangle()
 {
-	Rect2D rect = Rect2D(Float2(Screen::Center()), 128);
+	Rect rect = Rect(Float2(Screen::Center()), 128);
 	Shapes.push_back(new class Rectangle(rect, MainColorPalette.GetCurrentColor()));
 }
 

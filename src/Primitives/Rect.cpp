@@ -3,13 +3,13 @@
 #include "Rect.h"
 #include "Constants.h"
 
-Rect2D::Rect2D()
+Rect::Rect()
 {
 	BottomLeft = TopRight = BottomRight = TopLeft = Float2();
 	rotation = 0;
 }
 
-Rect2D::Rect2D(Float2 center, float inflate)
+Rect::Rect(Float2 center, float inflate)
 {
 	BottomLeft	= center + Float2(-inflate, -inflate);
 	BottomRight = center + Float2( inflate, -inflate);
@@ -18,7 +18,7 @@ Rect2D::Rect2D(Float2 center, float inflate)
 	rotation = 0;
 }
 
-Rect2D::Rect2D(float x1, float y1, float x2, float y2)
+Rect::Rect(float x1, float y1, float x2, float y2)
 {
 	BottomLeft = Float2(x1,y1);
 	TopRight = Float2(x2,y2);
@@ -27,7 +27,7 @@ Rect2D::Rect2D(float x1, float y1, float x2, float y2)
 	rotation = 0;
 }
 
-Rect2D::Rect2D(Float2 bottomLeft, Float2 topRight)
+Rect::Rect(Float2 bottomLeft, Float2 topRight)
 {
 	BottomLeft = bottomLeft;
 	TopRight = topRight;
@@ -36,7 +36,7 @@ Rect2D::Rect2D(Float2 bottomLeft, Float2 topRight)
 	rotation = 0;
 }
 
-Rect2D::Rect2D(Array<Float2> points)
+Rect::Rect(Array<Float2> points)
 {
 	float x1, x2, y1, y2;
 	x1 = x2 = points.ptr[0].x;
@@ -70,7 +70,7 @@ Rect2D::Rect2D(Array<Float2> points)
 	rotation = 0;
 }
 
-void Rect2D::Translate(Float2 translation)
+void Rect::Translate(Float2 translation)
 {
 	BottomLeft += translation;
 	TopRight += translation;
@@ -78,7 +78,7 @@ void Rect2D::Translate(Float2 translation)
 	TopLeft += translation;
 }
 
-void Rect2D::Rotate(float rotation)
+void Rect::Rotate(float rotation)
 {
 	BottomLeft.Rotate(rotation);
 	TopRight.Rotate(rotation);
@@ -88,7 +88,7 @@ void Rect2D::Rotate(float rotation)
 	this->rotation = fmodf(this->rotation, 2 * PI);
 }
 
-void Rect2D::Scale(float scale)
+void Rect::Scale(float scale)
 {
 	BottomLeft *= scale;
 	TopRight *= scale;
@@ -96,7 +96,7 @@ void Rect2D::Scale(float scale)
 	TopLeft *= scale;
 }
 
-void Rect2D::Scale(float x, float y)
+void Rect::Scale(float x, float y)
 {
 	BottomLeft.x *= x;
 	TopRight.x *= x;
@@ -109,16 +109,16 @@ void Rect2D::Scale(float x, float y)
 	TopLeft.y *= y;
 }
 
-float Rect2D::LargestEdge()
+float Rect::LargestEdge()
 {
 	float d1sq = Float2::DistanceSq(TopLeft, BottomLeft);
 	float d2sq = Float2::DistanceSq(TopLeft, TopRight);
 	return sqrtf(fmaxf(d1sq, d2sq));
 }
 
-bool Rect2D::IsPointInside(Float2 point)
+bool Rect::IsPointInside(Float2 point)
 {
-	Rect2D unrotatedRect = *this;
+	Rect unrotatedRect = *this;
 	if (rotation != 0) 
 	{
 		unrotatedRect.Rotate(-this->rotation); // Rollback
@@ -127,14 +127,14 @@ bool Rect2D::IsPointInside(Float2 point)
 	return unrotatedRect.IsPointInsideUnRotatedRect(point);
 }
 
-Float2 Rect2D::Center()
+Float2 Rect::Center()
 {
 	return Float2(BottomLeft.x + TopRight.x, BottomLeft.y + TopRight.y) * 0.5f;
 }
 
-Rect2D Rect2D::TopLeftBottomRight(Float2 topLeft, Float2 bottomRight)
+Rect Rect::TopLeftBottomRight(Float2 topLeft, Float2 bottomRight)
 {
-	Rect2D rect = Rect2D();
+	Rect rect = Rect();
 	rect.BottomRight = bottomRight;
 	rect.TopLeft = topLeft;
 	rect.BottomLeft = Float2(rect.TopLeft.x, rect.BottomRight.y);
@@ -143,7 +143,7 @@ Rect2D Rect2D::TopLeftBottomRight(Float2 topLeft, Float2 bottomRight)
 	return rect;
 }
 
-bool Rect2D::IsPointInsideUnRotatedRect(Float2 point)
+bool Rect::IsPointInsideUnRotatedRect(Float2 point)
 {
 	return(	point.x > BottomLeft.x &&
 			point.y > BottomLeft.y &&

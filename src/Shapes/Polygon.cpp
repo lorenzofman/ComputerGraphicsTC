@@ -81,14 +81,14 @@ bool Polygon::IsPointInside(Float2)
 {
 	return false; // Todo: implement
 }
-Rect2D Polygon::GetRect()
+Rect Polygon::GetRect()
 {
-	return Rect2D(vertices);
+	return Rect(vertices);
 }
 
-void Polygon::MatchRect(Rect2D newRect)
+void Polygon::MatchRect(Rect newRect)
 {
-	Rect2D rect = GetRect();
+	Rect rect = GetRect();
 	float oldWidth = rect.TopRight.x - rect.BottomLeft.x;
 	float newWidth = newRect.TopRight.x - newRect.BottomLeft.x;
 
@@ -114,6 +114,6 @@ void Polygon::MatchRect(Rect2D newRect)
 
 Float2 Polygon::CalculateCenter(Array<Float2> vertices)
 {
-	Rect2D enclosingRect = Rect2D(vertices);
+	Rect enclosingRect = Rect(vertices);
 	return enclosingRect.Center();
 }

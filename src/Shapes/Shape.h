@@ -34,9 +34,9 @@ class Shape : public IRenderable
 
 	virtual bool IsPointInside(Float2) = 0;
 
-	virtual void MatchRect(Rect2D) = 0;
+	virtual void MatchRect(Rect) = 0;
 
-	virtual Rect2D GetRect() = 0;
+	virtual Rect GetRect() = 0;
 
 
 	void SetMainColor(RGBAFloat);

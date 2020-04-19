@@ -26,8 +26,8 @@ class Circle : public Shape
 	virtual void Scale(float x, float y) override;
 
 	virtual bool IsPointInside(Float2) override;
-	virtual Rect2D GetRect() override;
-	virtual void MatchRect(Rect2D) override;
+	virtual Rect GetRect() override;
+	virtual void MatchRect(Rect) override;
 
 	protected:
 

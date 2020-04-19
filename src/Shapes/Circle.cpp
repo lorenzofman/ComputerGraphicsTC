@@ -43,16 +43,16 @@ bool Circle::IsPointInside(Float2 point)
 	return Float2::DistanceSq(point, center) < radius * radius;
 }
 
-Rect2D Circle::GetRect()
+Rect Circle::GetRect()
 {
-	Rect2D rect = Rect2D(center.x - radius, center.y - radius, center.x + radius, center.y + radius);
+	Rect rect = Rect(center.x - radius, center.y - radius, center.x + radius, center.y + radius);
 	rect.Translate(-center);
 	rect.Rotate(rotation);
 	rect.Translate(center);
 	return rect;
 }
 
-void Circle::MatchRect(Rect2D rect)
+void Circle::MatchRect(Rect rect)
 {
 	this->center = rect.Center();
 	this->radius = rect.LargestEdge() / 2;

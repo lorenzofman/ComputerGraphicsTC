@@ -27,8 +27,8 @@ class Polygon : public Shape
 	virtual void Scale(float, float) override;
 	virtual void Draw() override;
 	virtual bool IsPointInside(Float2) override;
-	virtual Rect2D GetRect() override;
-	virtual void MatchRect(Rect2D) override;
+	virtual Rect GetRect() override;
+	virtual void MatchRect(Rect) override;
 	
 	private:
 

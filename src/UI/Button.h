@@ -15,7 +15,7 @@ class Button : public IRenderable
 {
 	public:
 	
-	Button(RGBAFloat color, Rect2D rect = Rect2D());
+	Button(RGBAFloat color, Rect rect = Rect());
 
 	Callback<Button*> DragCallback;
 	Callback<Button*> ClickCallback;
@@ -26,7 +26,7 @@ class Button : public IRenderable
 	// Inherited via IRenderable
 	virtual void Render() override;
 	virtual void MouseOver(RGBAFloat& color);
-	Rect2D rect;
+	Rect rect;
 	RGBAFloat color;
 	bool active;
 	private:

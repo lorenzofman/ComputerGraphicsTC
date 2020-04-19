@@ -36,13 +36,13 @@ void ShapeTransformer::Render()
 	{
 		return;
 	}
-	Rect2D rect = shape->GetRect();
+	Rect rect = shape->GetRect();
 
 	DrawSurrondingRect(rect);
 	DrawTransformPoints(rect);
 }
 
-void ShapeTransformer::DrawTransformPoints(Rect2D& rect)
+void ShapeTransformer::DrawTransformPoints(Rect& rect)
 {
 	this->rect = rect;
 	
@@ -68,12 +68,12 @@ void ShapeTransformer::DrawTransformPoints(Rect2D& rect)
 	}
 }
 
-Rect2D ShapeTransformer::InflatePoint(Float2 center, float squareHalfSize)
+Rect ShapeTransformer::InflatePoint(Float2 center, float squareHalfSize)
 {
-	return Rect2D(center.x - squareHalfSize, center.y - squareHalfSize, center.x + squareHalfSize, center.y +squareHalfSize);
+	return Rect(center.x - squareHalfSize, center.y - squareHalfSize, center.x + squareHalfSize, center.y +squareHalfSize);
 }
 
-void ShapeTransformer::DrawSurrondingRect(Rect2D& rect)
+void ShapeTransformer::DrawSurrondingRect(Rect& rect)
 {
 	Canvas2DExtensions::DrawThickLine(rect.BottomLeft, rect.BottomRight, Colors::Selection, SelectionThickness);
 	Canvas2DExtensions::DrawThickLine(rect.BottomRight, rect.TopRight, Colors::Selection, SelectionThickness);
@@ -83,47 +83,47 @@ void ShapeTransformer::DrawSurrondingRect(Rect2D& rect)
 
 void ShapeTransformer::OnTopLeftDrag()
 {
-	Rect2D newRect = Rect2D::TopLeftBottomRight(EventSystem::MousePosition, rect.BottomRight);
+	Rect newRect = Rect::TopLeftBottomRight(EventSystem::MousePosition, rect.BottomRight);
 	ApplyTransformation(newRect);
 }
 void ShapeTransformer::OnTopRightDrag()
 {
-	Rect2D newRect = Rect2D(rect.BottomLeft, EventSystem::MousePosition);
+	Rect newRect = Rect(rect.BottomLeft, EventSystem::MousePosition);
 	ApplyTransformation(newRect);
 }
 void ShapeTransformer::OnBottomLeftDrag()
 {
-	Rect2D newRect = Rect2D(EventSystem::MousePosition, rect.TopRight);
+	Rect newRect = Rect(EventSystem::MousePosition, rect.TopRight);
 	ApplyTransformation(newRect);
 }
 void ShapeTransformer::OnBottomRightDrag()
 {
-	Rect2D newRect = Rect2D::TopLeftBottomRight(rect.TopLeft, EventSystem::MousePosition);
+	Rect newRect = Rect::TopLeftBottomRight(rect.TopLeft, EventSystem::MousePosition);
 	ApplyTransformation(newRect);
 }
 
 void ShapeTransformer::OnTopMiddleDrag()
 {
-	Rect2D newRect = Rect2D(rect.BottomLeft, Float2(rect.TopRight.x, EventSystem::MousePosition.y));
+	Rect newRect = Rect(rect.BottomLeft, Float2(rect.TopRight.x, EventSystem::MousePosition.y));
 	ApplyTransformation(newRect);
 }
 void ShapeTransformer::OnBottomMiddleDrag()
 {
-	Rect2D newRect = Rect2D(Float2(rect.BottomLeft.x, EventSystem::MousePosition.y), rect.TopRight);
+	Rect newRect = Rect(Float2(rect.BottomLeft.x, EventSystem::MousePosition.y), rect.TopRight);
 	ApplyTransformation(newRect);
 }
 void ShapeTransformer::OnLeftMiddleDrag()
 {
-	Rect2D newRect = Rect2D(Float2(EventSystem::MousePosition.x, rect.BottomLeft.y), rect.TopRight);
+	Rect newRect = Rect(Float2(EventSystem::MousePosition.x, rect.BottomLeft.y), rect.TopRight);
 	ApplyTransformation(newRect);
 }
 void ShapeTransformer::OnRightMiddleDrag()
 {
-	Rect2D newRect = Rect2D(rect.BottomLeft, Float2(EventSystem::MousePosition.x, rect.TopRight.y));
+	Rect newRect = Rect(rect.BottomLeft, Float2(EventSystem::MousePosition.x, rect.TopRight.y));
 	ApplyTransformation(newRect);
 }
 
-void ShapeTransformer::ApplyTransformation(Rect2D& newRect)
+void ShapeTransformer::ApplyTransformation(Rect& newRect)
 {
 	shape->MatchRect(newRect);
 }

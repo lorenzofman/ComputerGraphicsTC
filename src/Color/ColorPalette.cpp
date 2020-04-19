@@ -4,7 +4,7 @@ ColorPalette::ColorPalette(Float2 buttonPosition)
 {
 	this->position = buttonPosition;
 	this->open = false;
-	colorButton = new Button(Colors::Default, Rect2D(buttonPosition, Colors::Palette::ButtonHalfSize));
+	colorButton = new Button(Colors::Default, Rect(buttonPosition, Colors::Palette::ButtonHalfSize));
 	colorButton->ClickCallback.Register([this](Button* btn) {this->OnOpenPalette(); });
 	CreateButtons();
 }
@@ -77,7 +77,7 @@ void ColorPalette::CreateButtons()
 		{
 			int idx = i * Colors::Palette::Width + j;
 			RGBAFloat color = Colors::Palette::Colors[idx];
-			Rect2D rect = CalculateRectangle(i, j);
+			Rect rect = CalculateRectangle(i, j);
 			rect.Translate(Float2(position.x - Colors::Palette::ButtonHalfSize, Colors::Palette::ButtonHalfSize * 2));
 			Button* btn = new Button(color, rect);
 			btn->ClickCallback.Register([this](Button* btn) {this->OnColorClick(btn); });
@@ -90,7 +90,7 @@ void ColorPalette::CreateButtons()
 Top -> Down
 Left-> Right
 */
-Rect2D ColorPalette::CalculateRectangle(int i, int j)
+Rect ColorPalette::CalculateRectangle(int i, int j)
 {
 	int heightStep = (Colors::Palette::ColorHeight);
 	int widthStep = (Colors::Palette::ColorWidth);
@@ -99,5 +99,5 @@ Rect2D ColorPalette::CalculateRectangle(int i, int j)
 	int yEnd = paletteHeight - i * heightStep;
 	int xStart = widthStep * j;
 	int xEnd = widthStep * (j + 1);
-	return Rect2D((float) xStart, (float) yStart, (float) xEnd, (float) yEnd);
+	return Rect((float) xStart, (float) yStart, (float) xEnd, (float) yEnd);
 }

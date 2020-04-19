@@ -26,7 +26,7 @@ class ColorPalette : public IRenderable
 
 	private:
 	void CreateButtons();
-	Rect2D CalculateRectangle(int, int);
+	Rect CalculateRectangle(int, int);
 	
 	std::map<Button*, RGBAFloat> buttons;
 	Button* colorButton;

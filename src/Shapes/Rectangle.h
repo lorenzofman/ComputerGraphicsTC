@@ -11,7 +11,7 @@
 class Rectangle : public Polygon
 {
 	public:
-	Rectangle(Rect2D, RGBAFloat filledColor, RGBAFloat outlineColor = RGBAFloat::Blank, float outlineThickness = 0);
+	Rectangle(Rect, RGBAFloat filledColor, RGBAFloat outlineColor = RGBAFloat::Blank, float outlineThickness = 0);
 	
 	Rectangle(std::ifstream&);
 
@@ -23,9 +23,9 @@ class Rectangle : public Polygon
 	virtual void Scale(float) override;
 	virtual void Scale(float, float) override;
 	virtual void Translate(Float2) override;
-	virtual Rect2D GetRect() override;
+	virtual Rect GetRect() override;
 
 	private:
-	static Array<Float2> ExtractVerticesFromUnrotatedRect(Rect2D);
-	Rect2D rect;
+	static Array<Float2> ExtractVerticesFromUnrotatedRect(Rect);
+	Rect rect;
 };

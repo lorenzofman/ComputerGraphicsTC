@@ -3,7 +3,7 @@
 #include "../DataStructures/Array.h"
 #include "Float2.h"
 
-struct Rect2D
+struct Rect
 {
 	public:
 
@@ -13,11 +13,11 @@ struct Rect2D
 	Float2 TopLeft;
 	float rotation;
 
-	Rect2D();
-	Rect2D(Float2 center, float inflate);
-	Rect2D(float x1, float y1, float x2, float y2);
-	Rect2D(Float2 bottomLeft, Float2 topRight);
-	Rect2D(Array<Float2> points);
+	Rect();
+	Rect(Float2 center, float inflate);
+	Rect(float x1, float y1, float x2, float y2);
+	Rect(Float2 bottomLeft, Float2 topRight);
+	Rect(Array<Float2> points);
 
 	void Translate(Float2 translation);
 	void Rotate(float rotation);
@@ -26,7 +26,7 @@ struct Rect2D
 	float LargestEdge();
 	bool IsPointInside(Float2 point);
 	Float2 Center();
-	static Rect2D TopLeftBottomRight(Float2 topLeft, Float2 bottomRight);
+	static Rect TopLeftBottomRight(Float2 topLeft, Float2 bottomRight);
 	private:
 	bool IsPointInsideUnRotatedRect(Float2 point);
 };

@@ -1,5 +1,5 @@
 #include "Rectangle.h"
-Rectangle::Rectangle(Rect2D rect, RGBAFloat filledColor, RGBAFloat outlineColor, float outlineThickness) :
+Rectangle::Rectangle(Rect rect, RGBAFloat filledColor, RGBAFloat outlineColor, float outlineThickness) :
 	Polygon(ExtractVerticesFromUnrotatedRect(rect), filledColor, outlineColor, outlineThickness)
 {
 	this->rect = rect;
@@ -7,7 +7,7 @@ Rectangle::Rectangle(Rect2D rect, RGBAFloat filledColor, RGBAFloat outlineColor,
 
 Rectangle::Rectangle(std::ifstream& stream) : Polygon(stream)
 {
-	this->rect = Serial::Read<Rect2D>(stream);
+	this->rect = Serial::Read<Rect>(stream);
 }
 
 void Rectangle::Serialize(std::ofstream& stream)
@@ -56,12 +56,12 @@ void Rectangle::Translate(Float2 translation)
 	rect.Translate(translation);
 }
 
-Rect2D Rectangle::GetRect()
+Rect Rectangle::GetRect()
 {
 	return rect;
 }
 
-Array<Float2> Rectangle::ExtractVerticesFromUnrotatedRect(Rect2D rect)
+Array<Float2> Rectangle::ExtractVerticesFromUnrotatedRect(Rect rect)
 {
 	Float2* arr = new Float2[4];
 	arr[3] = rect.TopLeft;

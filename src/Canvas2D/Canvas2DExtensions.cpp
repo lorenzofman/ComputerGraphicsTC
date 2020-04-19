@@ -19,12 +19,12 @@ void Canvas2DExtensions::DrawThickLine(Float2 start, Float2 end, RGBAFloat color
 	delete[] points;
 }
 
-void Canvas2DExtensions::DrawRoundedRect(Rect2D rect, RGBAFloat color, float roundness)
+void Canvas2DExtensions::DrawRoundedRect(Rect rect, RGBAFloat color, float roundness)
 {
 	Canvas2D::SetColor(color);
 
-	Rect2D horizontal = rect;
-	Rect2D vertical = rect;
+	Rect horizontal = rect;
+	Rect vertical = rect;
 	horizontal.BottomLeft.y += roundness;
 	horizontal.TopRight.y -= roundness;
 
@@ -34,7 +34,7 @@ void Canvas2DExtensions::DrawRoundedRect(Rect2D rect, RGBAFloat color, float rou
 	Canvas2D::DrawFilledRect((int) horizontal.BottomLeft.x, (int) horizontal.BottomLeft.y, (int) horizontal.TopRight.x, (int) horizontal.TopRight.y);
 	Canvas2D::DrawFilledRect((int) vertical.BottomLeft.x, (int) vertical.BottomLeft.y, (int) vertical.TopRight.x, (int) vertical.TopRight.y);
 	
-	Rect2D circlesRect = rect;
+	Rect circlesRect = rect;
 	Float2 offset = Float2(roundness, roundness);
 	circlesRect.BottomLeft += offset;
 	circlesRect.TopRight -= offset;

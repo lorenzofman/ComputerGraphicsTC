@@ -1,7 +1,7 @@
 #include "Button.h"
 #include <iostream>
 Button* Button::PressedButton;
-Button::Button(RGBAFloat color, Rect2D rect)
+Button::Button(RGBAFloat color, Rect rect)
 {
 	EventSystem::LeftMouseButtonDownCallback.Register([this](Int2 arg){ this->OnLeftMouseButtonDown(arg);});
 	EventSystem::LeftMouseButtonUpCallback.Register([this](Int2 arg) {this->OnLeftMouseButtonUp(arg); });
