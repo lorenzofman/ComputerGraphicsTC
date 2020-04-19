@@ -80,6 +80,7 @@ constexpr int SelectionThickness = 1;
 constexpr int TransfomerEdgeHalfSize = 4;
 constexpr int TransformerSideHalfSize = 3;
 constexpr float OutlineScrollSpeed = 0.01f;
+constexpr int MinShapeSize = 1;
 
 constexpr byte RectangleId = 0xff;
 constexpr byte CircleId = 0xfe;

@@ -137,6 +137,7 @@ class World
 	static void GrabSelected();
 	static void RotateSelected();
 	static void ScaleSelected();
+	static bool ResultingRectIsBigEnough(float scaleDelta);
 	static void RemoveShape(Shape*);
 	static void Delete();
 	static void OpenFile();

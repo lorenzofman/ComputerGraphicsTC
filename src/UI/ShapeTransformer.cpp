@@ -125,7 +125,18 @@ void ShapeTransformer::OnRightMiddleDrag()
 
 void ShapeTransformer::ApplyTransformation(Rect& newRect)
 {
-	shape->MatchRect(newRect);
+	if (newRect.TopRight.x - newRect.BottomLeft.x < MinShapeSize)
+	{
+		return;
+	}
+	if (newRect.TopRight.y - newRect.BottomLeft.y < MinShapeSize)
+	{
+		return;
+	}
+	if (shape != nullptr) 
+	{
+		shape->MatchRect(newRect);
+	}
 }
 
 bool ShapeTransformer::IsMouseOver()

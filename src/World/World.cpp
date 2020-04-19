@@ -303,9 +303,22 @@ void World::ScaleSelected()
     }
     float currentDistance = Float2::Distance(EventSystem::MousePosition, SelectedShape->GetCenter());
     float previousDistance = Float2::Distance(EventSystem::MousePosition - EventSystem::MousePositionDelta, SelectedShape->GetCenter());
-
     float scaleDelta = currentDistance / previousDistance;
+
+    if (ResultingRectIsBigEnough(scaleDelta) == false)
+    {
+        return;
+    }
+
     SelectedShape->Scale(scaleDelta);
+}
+
+bool World::ResultingRectIsBigEnough(float scaleDelta)
+{
+    Rect rect = SelectedShape->GetRect();
+    rect.Scale(scaleDelta);
+    Float2 dif = rect.TopRight - rect.BottomLeft;
+    return (dif.x >= MinShapeSize || dif.y >= MinShapeSize);
 }
 
 void World::Delete()
