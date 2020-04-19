@@ -104,22 +104,22 @@ void ShapeTransformer::OnBottomRightDrag()
 
 void ShapeTransformer::OnTopMiddleDrag()
 {
-	Rect newRect = Rect(rect.BottomLeft, Float2(rect.TopRight.x, EventSystem::MousePosition.y));
+	Rect newRect = Rect(rect.BottomLeft, Float2(rect.TopRight.x, (float)EventSystem::MousePosition.y));
 	ApplyTransformation(newRect);
 }
 void ShapeTransformer::OnBottomMiddleDrag()
 {
-	Rect newRect = Rect(Float2(rect.BottomLeft.x, EventSystem::MousePosition.y), rect.TopRight);
+	Rect newRect = Rect(Float2(rect.BottomLeft.x, (float)EventSystem::MousePosition.y), rect.TopRight);
 	ApplyTransformation(newRect);
 }
 void ShapeTransformer::OnLeftMiddleDrag()
 {
-	Rect newRect = Rect(Float2(EventSystem::MousePosition.x, rect.BottomLeft.y), rect.TopRight);
+	Rect newRect = Rect(Float2((float)EventSystem::MousePosition.x, rect.BottomLeft.y), rect.TopRight);
 	ApplyTransformation(newRect);
 }
 void ShapeTransformer::OnRightMiddleDrag()
 {
-	Rect newRect = Rect(rect.BottomLeft, Float2(EventSystem::MousePosition.x, rect.TopRight.y));
+	Rect newRect = Rect(rect.BottomLeft, Float2((float)EventSystem::MousePosition.x, rect.TopRight.y));
 	ApplyTransformation(newRect);
 }
 
