@@ -3,11 +3,12 @@
 #include <iostream>
 #include <fstream>
 
-#include "Float2.h"
+#include "../Primitives/Float2.h"
 #include "Shape.h"
-#include "Canvas2D.h"
-#include "Array.h"
-#include "Rect.h"
+#include "../Canvas2D/Canvas2D.h"
+#include "../DataStructures/Array.h"
+#include "../Primitives/Rect.h"
+#include "../Primitives/Types.h"
 
 class Polygon : public Shape
 {

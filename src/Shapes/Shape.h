@@ -2,15 +2,15 @@
 
 #include <algorithm>
 
-#include "Types.h"
-#include "RGBAFloat.h"
-#include "Float2.h"
-#include "IRenderable.h"
-#include "Canvas2D.h"
-#include "Constants.h"
-#include "Screen.h"
-#include "Rect.h"
-#include "Serial.h"
+#include "../Primitives/Types.h"
+#include "../Primitives/RGBAFloat.h"
+#include "../Primitives/Float2.h"
+#include "../Primitives/Rect.h"
+#include "../Primitives/Constants.h"
+#include "../World/Screen.h"
+#include "../Canvas2D/Canvas2D.h"
+#include "../Serialization/Serial.h"
+#include "../Interfaces/IRenderable.h"
 class Shape : public IRenderable
 {
 	public:

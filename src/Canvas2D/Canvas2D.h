@@ -5,8 +5,8 @@
 #include <string>
 #include <cmath>
 
-#include "Float2.h"
-#include "RGBAFloat.h"
+#include "../Primitives/Float2.h"
+#include "../Primitives/RGBAFloat.h"
 #undef DrawText /* DrawText conflicts with WinUser.h header*/
 
 class Canvas2D

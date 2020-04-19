@@ -4,20 +4,18 @@
 #include <iostream>
 #include <vector>
 
-#include "Rectangle.h"
-#include "Circle.h"
-#include "Shape.h"
 #include "Screen.h"
-#include "RGBAFloat.h"
-#include "Canvas2DExtensions.h"
-#include "Constants.h"
-#include "ShapeTransformer.h"
-#include "Callback.h"
 #include "EventSystem.h"
-#include "ShapeTransformer.h"
-#include "ColorPalette.h"
-#include "FileDialog.h"
-#include "ShapeSerializer.h"
+#include "../Shapes/Rectangle.h"
+#include "../Shapes/Circle.h"
+#include "../Shapes/Shape.h"
+#include "../Primitives/RGBAFloat.h"
+#include "../Primitives/Constants.h"
+#include "../Canvas2D/Canvas2DExtensions.h"
+#include "../Helpers/Callback.h"
+#include "../UI/ShapeTransformer.h"
+#include "../Color/ColorPalette.h"
+#include "../Serialization/ShapeSerializer.h"
 
 class World
 {

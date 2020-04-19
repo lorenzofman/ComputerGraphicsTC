@@ -1,12 +1,12 @@
 #pragma once
 
-#include "IRenderable.h"
-#include "Rect.h"
-#include "Canvas2D.h"
-#include "Callback.h"
-#include "EventSystem.h"
-#include "Rectangle.h"
-#include "RGBAFloat.h"
+#include "../Interfaces/IRenderable.h"
+#include "../Primitives/Rect.h"
+#include "../Primitives/RGBAFloat.h"
+#include "../Canvas2D/Canvas2D.h"
+#include "../Helpers/Callback.h"
+#include "../World/EventSystem.h"
+#include "../Shapes/Rectangle.h"
 
 constexpr int DragThreshold = 2;
 constexpr float ButtonMouseOverColorMultiplier = 0.8f;

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Shape.h"
-#include "Rect.h"
-#include "Canvas2DExtensions.h"
+#include "../Shapes/Shape.h"
+#include "../Primitives/Rect.h"
+#include "../Canvas2D/Canvas2DExtensions.h"
 #include "Button.h"
 class ShapeTransformer : public IRenderable
 {

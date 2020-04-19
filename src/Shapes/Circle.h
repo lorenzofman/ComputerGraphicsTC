@@ -3,12 +3,12 @@
 #include <ostream>
 #include <fstream>
 
-#include "Float2.h"
+#include "../Primitives/Float2.h"
 #include "Shape.h"
-#include "Rect.h"
-#include "Canvas2D.h"
-#include "Constants.h"
-#include "Serial.h"
+#include "../Primitives/Rect.h"
+#include "../Canvas2D/Canvas2D.h"
+#include "../Primitives/Constants.h"
+#include "../Serialization/Serial.h"
 
 class Circle : public Shape
 {

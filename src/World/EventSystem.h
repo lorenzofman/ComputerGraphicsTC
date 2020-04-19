@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Callback.h"
+#include "../Helpers/Callback.h"
 
-#include "Int2.h"
+#include "../Primitives/Int2.h"
 
 class EventSystem
 {

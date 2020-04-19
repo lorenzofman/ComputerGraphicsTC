@@ -1,7 +1,7 @@
 #pragma once
 #include "Canvas2D.h"
-#include "Float2.h"
-#include "Rect.h"
+#include "../Primitives/Float2.h"
+#include "../Primitives/Rect.h"
 class Canvas2DExtensions
 {
 	public:

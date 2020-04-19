@@ -2,13 +2,14 @@
 
 #include <map>
 
-#include "IRenderable.h"
-#include "Callback.h"
-#include "RGBAFloat.h"
-#include "Float2.h"
-#include "Canvas2DExtensions.h"
-#include "Constants.h"
-#include "Button.h"
+#include "../Primitives/RGBAFloat.h"
+#include "../Primitives/Float2.h"
+#include "../Primitives/Constants.h"
+#include "../Interfaces/IRenderable.h"
+#include "../Helpers/Callback.h"
+#include "../Canvas2D/Canvas2DExtensions.h"
+#include "../UI/Button.h"
+
 class ColorPalette : public IRenderable
 {
 	public:

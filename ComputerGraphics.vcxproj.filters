@@ -127,9 +127,6 @@
     <ClInclude Include="src\Color\ColorPalette.h">
       <Filter>Header Files\Color</Filter>
     </ClInclude>
-    <ClInclude Include="src\Primitives\RGBAFloat.h">
-      <Filter>Header Files\Color</Filter>
-    </ClInclude>
     <ClInclude Include="src\World\EventSystem.h">
       <Filter>Header Files\World</Filter>
     </ClInclude>
@@ -141,6 +138,9 @@
     </ClInclude>
     <ClInclude Include="src\Interfaces\IRenderable.h">
       <Filter>Header Files\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Primitives\RGBAFloat.h">
+      <Filter>Header Files\Primitives</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -177,9 +177,6 @@
     <ClCompile Include="src\Shapes\Rectangle.cpp">
       <Filter>Source Files\Shapes</Filter>
     </ClCompile>
-    <ClCompile Include="src\Primitives\RGBAFloat.cpp">
-      <Filter>Source Files\Color</Filter>
-    </ClCompile>
     <ClCompile Include="src\Shapes\Shape.cpp">
       <Filter>Source Files\Shapes</Filter>
     </ClCompile>
@@ -203,6 +200,9 @@
     </ClCompile>
     <ClCompile Include="src\UI\ShapeTransformer.cpp">
       <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Primitives\RGBAFloat.cpp">
+      <Filter>Source Files\Primitives</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

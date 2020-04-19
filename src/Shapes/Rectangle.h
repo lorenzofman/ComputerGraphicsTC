@@ -3,11 +3,11 @@
 #include <iostream>
 #include <fstream>
 
-#include "Polygon.h"
-#include "Rect.h"
-#include "Array.h"
-#include "RGBAFloat.h"
-#include "Float2.h"
+#include "../Shapes/Polygon.h"
+#include "../DataStructures/Array.h"
+#include "../Primitives/Rect.h"
+#include "../Primitives/RGBAFloat.h"
+#include "../Primitives/Float2.h"
 class Rectangle : public Polygon
 {
 	public:

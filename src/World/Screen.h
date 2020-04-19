@@ -1,5 +1,5 @@
 #pragma once
-#include "Int2.h"
+#include "../Primitives/Int2.h"
 class Screen
 {
 	public:

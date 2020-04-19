@@ -3,13 +3,13 @@
 #include <ostream>
 #include <iostream>
 
-#include "Array.h"
-#include "Types.h"
-#include "Shape.h"
 #include "Serial.h"
-#include "Rectangle.h"
-#include "Circle.h"
-#include "Polygon.h"
+#include "../Shapes/Shape.h"
+#include "../Shapes/Rectangle.h"
+#include "../Shapes/Circle.h"
+#include "../Shapes/Polygon.h"
+#include "../DataStructures/Array.h"
+#include "../Primitives/Types.h"
 
 
 
