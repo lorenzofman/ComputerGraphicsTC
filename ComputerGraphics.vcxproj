@@ -148,57 +148,55 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Button.cpp" />
-    <ClCompile Include="Callback.cpp" />
-    <ClCompile Include="Canvas2DExtensions.cpp" />
-    <ClCompile Include="Circle.cpp" />
-    <ClCompile Include="ColorPalette.cpp" />
-    <ClCompile Include="EventSystem.cpp" />
-    <ClCompile Include="Int2.cpp" />
-    <ClCompile Include="Canvas2D.cpp" />
-    <ClCompile Include="Float2.cpp" />
-    <ClCompile Include="Polygon.cpp" />
-    <ClCompile Include="Rect.cpp" />
-    <ClCompile Include="Rectangle.cpp" />
-    <ClCompile Include="RGBAFloat.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="FileDialog.cpp" />
-    <ClCompile Include="Screen.cpp" />
-    <ClCompile Include="Serial.cpp" />
-    <ClCompile Include="Shape.cpp" />
-    <ClCompile Include="ShapeSerializer.cpp" />
-    <ClCompile Include="ShapeTransformer.cpp" />
-    <ClCompile Include="World.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Array.h" />
-    <ClInclude Include="Button.h" />
-    <ClInclude Include="Callback.h" />
-    <ClInclude Include="Canvas2DExtensions.h" />
-    <ClInclude Include="Circle.h" />
-    <ClInclude Include="ColorPalette.h" />
-    <ClInclude Include="EventSystem.h" />
-    <ClInclude Include="Int2.h" />
-    <ClInclude Include="Canvas2D.h" />
-    <ClInclude Include="Constants.h" />
-    <ClInclude Include="Float2.h" />
-    <ClInclude Include="IRenderable.h" />
-    <ClInclude Include="Polygon.h" />
-    <ClInclude Include="Rect.h" />
-    <ClInclude Include="Rectangle.h" />
-    <ClInclude Include="RGBAFloat.h" />
-    <ClInclude Include="FileDialog.h" />
-    <ClInclude Include="Screen.h" />
-    <ClInclude Include="Serial.h" />
-    <ClInclude Include="Shape.h" />
-    <ClInclude Include="ShapeSerializer.h" />
-    <ClInclude Include="ShapeTransformer.h" />
-    <ClInclude Include="Types.h" />
-    <ClInclude Include="World.h" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="freeglut.dll" />
     <None Include="glfw3.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Canvas2D\Canvas2D.h" />
+    <ClInclude Include="src\Canvas2D\Canvas2DExtensions.h" />
+    <ClInclude Include="src\Color\ColorPalette.h" />
+    <ClInclude Include="src\DataStructures\Array.h" />
+    <ClInclude Include="src\Helpers\Callback.h" />
+    <ClInclude Include="src\Interfaces\IRenderable.h" />
+    <ClInclude Include="src\Primitives\Constants.h" />
+    <ClInclude Include="src\Primitives\Float2.h" />
+    <ClInclude Include="src\Primitives\Int2.h" />
+    <ClInclude Include="src\Primitives\Rect.h" />
+    <ClInclude Include="src\Primitives\RGBAFloat.h" />
+    <ClInclude Include="src\Primitives\Types.h" />
+    <ClInclude Include="src\Serialization\Serial.h" />
+    <ClInclude Include="src\Serialization\ShapeSerializer.h" />
+    <ClInclude Include="src\Shapes\Circle.h" />
+    <ClInclude Include="src\Shapes\Polygon.h" />
+    <ClInclude Include="src\Shapes\Rectangle.h" />
+    <ClInclude Include="src\Shapes\Shape.h" />
+    <ClInclude Include="src\UI\Button.h" />
+    <ClInclude Include="src\UI\ShapeTransformer.h" />
+    <ClInclude Include="src\World\EventSystem.h" />
+    <ClInclude Include="src\World\Screen.h" />
+    <ClInclude Include="src\World\World.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Canvas2D\Canvas2D.cpp" />
+    <ClCompile Include="src\Canvas2D\Canvas2DExtensions.cpp" />
+    <ClCompile Include="src\Color\ColorPalette.cpp" />
+    <ClCompile Include="src\Helpers\Callback.cpp" />
+    <ClCompile Include="src\Primitives\Float2.cpp" />
+    <ClCompile Include="src\Primitives\Int2.cpp" />
+    <ClCompile Include="src\Primitives\Rect.cpp" />
+    <ClCompile Include="src\Primitives\RGBAFloat.cpp" />
+    <ClCompile Include="src\Serialization\Serial.cpp" />
+    <ClCompile Include="src\Serialization\ShapeSerializer.cpp" />
+    <ClCompile Include="src\Shapes\Circle.cpp" />
+    <ClCompile Include="src\Shapes\Polygon.cpp" />
+    <ClCompile Include="src\Shapes\Rectangle.cpp" />
+    <ClCompile Include="src\Shapes\Shape.cpp" />
+    <ClCompile Include="src\UI\Button.cpp" />
+    <ClCompile Include="src\UI\ShapeTransformer.cpp" />
+    <ClCompile Include="src\World\EventSystem.cpp" />
+    <ClCompile Include="src\World\Main.cpp" />
+    <ClCompile Include="src\World\Screen.cpp" />
+    <ClCompile Include="src\World\World.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -14,213 +14,195 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="Header Files\Canvas2D">
-      <UniqueIdentifier>{07dc5b02-63e9-47ac-b47f-579def840530}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Canvas2D">
-      <UniqueIdentifier>{580be466-5811-4d2e-9922-c51e30dbcc61}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Color">
-      <UniqueIdentifier>{a35d308e-5fa9-424a-b334-2c3378af14ee}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\FileDialog">
-      <UniqueIdentifier>{01142632-0519-45e8-ac40-0892de790efe}</UniqueIdentifier>
+      <UniqueIdentifier>{2437f0ef-35ba-40b1-b11e-1c9a86ee2cd7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Color">
-      <UniqueIdentifier>{49aa7824-d2a4-43c1-9043-61e03efa39d4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\FileDialog">
-      <UniqueIdentifier>{7f955dad-a083-4287-96d8-85b96c7c8288}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Primitive">
-      <UniqueIdentifier>{c80046fc-e741-4ae3-a9ef-8e1a6386162c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Primitive">
-      <UniqueIdentifier>{4685b989-155e-43b7-b5d3-20e62b1b17ce}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Main">
-      <UniqueIdentifier>{f3d05554-7578-4bcd-a51c-1e57d450ab89}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\World">
-      <UniqueIdentifier>{c6b17530-5293-41e5-9bb0-500c658e6a66}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Shapes">
-      <UniqueIdentifier>{938d0269-d778-41ba-88ef-9d1c969633ac}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Interfaces">
-      <UniqueIdentifier>{5bc109e4-394a-4eae-a5fc-f94e346504cf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Shapes">
-      <UniqueIdentifier>{731a408b-1e4b-4a35-a644-814fc1b73301}</UniqueIdentifier>
+      <UniqueIdentifier>{82ac5cf6-4277-495b-b829-b31fc712eeba}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\DataStructures">
-      <UniqueIdentifier>{b17a3755-8274-4bd1-9e85-c3dfc2ae3302}</UniqueIdentifier>
+      <UniqueIdentifier>{4fbb72d3-aa97-449e-97c3-e5107fe249e9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\DataStructures">
-      <UniqueIdentifier>{1c395121-a576-4fe2-8b81-b851451f58d7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\UI">
-      <UniqueIdentifier>{9f207fcb-f5be-4b6c-845b-9894f254d97e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Helpers">
-      <UniqueIdentifier>{eb3b9e5a-8026-41bb-8b0e-b788ac918ea2}</UniqueIdentifier>
+    <Filter Include="Header Files\Interfaces">
+      <UniqueIdentifier>{60831340-5281-4986-9bc4-40af609e1443}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Serialization">
-      <UniqueIdentifier>{eddd3baf-47d2-4dde-a552-329bd8feab1c}</UniqueIdentifier>
+      <UniqueIdentifier>{8ecd6ad3-5a85-48cf-9e8d-c32687fa994e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\UI">
-      <UniqueIdentifier>{0405eb6a-141c-425a-8644-4cfb1a2ed053}</UniqueIdentifier>
+    <Filter Include="Header Files\Shapes">
+      <UniqueIdentifier>{2865995b-fda1-4382-b697-8f8bbdf9f278}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Serialization">
-      <UniqueIdentifier>{3257e536-03a2-4a23-ba7f-aabe639622a3}</UniqueIdentifier>
+    <Filter Include="Header Files\World">
+      <UniqueIdentifier>{a486b065-e992-4a42-8028-4b29c2b599ac}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\World">
-      <UniqueIdentifier>{0417cc8f-fce7-45f2-9e59-5ab195142de8}</UniqueIdentifier>
+    <Filter Include="Header Files\UI">
+      <UniqueIdentifier>{61f870ad-b0ea-4027-bcd5-b9835462033c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Primitives">
+      <UniqueIdentifier>{91eb77ea-7cac-4e07-b102-370be8b6d9b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Helpers">
+      <UniqueIdentifier>{58e5e55d-a6f2-4a42-9e2e-5006f0edbffc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Canvas2D">
+      <UniqueIdentifier>{b08aa2a8-7ceb-4fb4-ada5-f28a7f0cc653}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Color">
+      <UniqueIdentifier>{f392655b-c5ff-40ff-89f3-fae4795b4c99}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Helpers">
-      <UniqueIdentifier>{0a2d7c68-bb2f-48b9-b3de-b0ad99b45203}</UniqueIdentifier>
+      <UniqueIdentifier>{366b3afc-e437-40f3-b668-4d876f4de80d}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Canvas2D.cpp">
-      <Filter>Source Files\Canvas2D</Filter>
-    </ClCompile>
-    <ClCompile Include="FileDialog.cpp">
-      <Filter>Source Files\FileDialog</Filter>
-    </ClCompile>
-    <ClCompile Include="Float2.cpp">
-      <Filter>Source Files\Primitive</Filter>
-    </ClCompile>
-    <ClCompile Include="Main.cpp">
-      <Filter>Source Files\Main</Filter>
-    </ClCompile>
-    <ClCompile Include="Int2.cpp">
-      <Filter>Source Files\Primitive</Filter>
-    </ClCompile>
-    <ClCompile Include="Circle.cpp">
-      <Filter>Source Files\Shapes</Filter>
-    </ClCompile>
-    <ClCompile Include="Rect.cpp">
-      <Filter>Source Files\Primitive</Filter>
-    </ClCompile>
-    <ClCompile Include="RGBAFloat.cpp">
-      <Filter>Source Files\Color</Filter>
-    </ClCompile>
-    <ClCompile Include="Polygon.cpp">
-      <Filter>Source Files\Shapes</Filter>
-    </ClCompile>
-    <ClCompile Include="Shape.cpp">
-      <Filter>Source Files\Shapes</Filter>
-    </ClCompile>
-    <ClCompile Include="Rectangle.cpp">
-      <Filter>Source Files\Shapes</Filter>
-    </ClCompile>
-    <ClCompile Include="Canvas2DExtensions.cpp">
-      <Filter>Source Files\Canvas2D</Filter>
-    </ClCompile>
-    <ClCompile Include="ShapeTransformer.cpp">
-      <Filter>Source Files\Shapes</Filter>
-    </ClCompile>
-    <ClCompile Include="ShapeSerializer.cpp">
-      <Filter>Source Files\Serialization</Filter>
-    </ClCompile>
-    <ClCompile Include="Serial.cpp">
-      <Filter>Source Files\Serialization</Filter>
-    </ClCompile>
-    <ClCompile Include="World.cpp">
-      <Filter>Source Files\World</Filter>
-    </ClCompile>
-    <ClCompile Include="Screen.cpp">
-      <Filter>Source Files\World</Filter>
-    </ClCompile>
-    <ClCompile Include="EventSystem.cpp">
-      <Filter>Source Files\World</Filter>
-    </ClCompile>
-    <ClCompile Include="Button.cpp">
-      <Filter>Source Files\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="Callback.cpp">
-      <Filter>Source Files\Helpers</Filter>
-    </ClCompile>
-    <ClCompile Include="ColorPalette.cpp">
-      <Filter>Source Files\Color</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Canvas2D.h">
-      <Filter>Header Files\Canvas2D</Filter>
-    </ClInclude>
-    <ClInclude Include="Types.h">
-      <Filter>Header Files\Primitive</Filter>
-    </ClInclude>
-    <ClInclude Include="Constants.h">
-      <Filter>Header Files\Primitive</Filter>
-    </ClInclude>
-    <ClInclude Include="Float2.h">
-      <Filter>Header Files\Primitive</Filter>
-    </ClInclude>
-    <ClInclude Include="FileDialog.h">
-      <Filter>Header Files\FileDialog</Filter>
-    </ClInclude>
-    <ClInclude Include="Int2.h">
-      <Filter>Header Files\Primitive</Filter>
-    </ClInclude>
-    <ClInclude Include="Shape.h">
-      <Filter>Header Files\Shapes</Filter>
-    </ClInclude>
-    <ClInclude Include="IRenderable.h">
-      <Filter>Header Files\Interfaces</Filter>
-    </ClInclude>
-    <ClInclude Include="Circle.h">
-      <Filter>Header Files\Shapes</Filter>
-    </ClInclude>
-    <ClInclude Include="Rect.h">
-      <Filter>Header Files\Primitive</Filter>
-    </ClInclude>
-    <ClInclude Include="RGBAFloat.h">
-      <Filter>Header Files\Color</Filter>
-    </ClInclude>
-    <ClInclude Include="Polygon.h">
-      <Filter>Header Files\Shapes</Filter>
-    </ClInclude>
-    <ClInclude Include="Rectangle.h">
-      <Filter>Header Files\Shapes</Filter>
-    </ClInclude>
-    <ClInclude Include="Array.h">
-      <Filter>Header Files\DataStructures</Filter>
-    </ClInclude>
-    <ClInclude Include="Button.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="Callback.h">
-      <Filter>Header Files\Helpers</Filter>
-    </ClInclude>
-    <ClInclude Include="Canvas2DExtensions.h">
-      <Filter>Header Files\Canvas2D</Filter>
-    </ClInclude>
-    <ClInclude Include="ColorPalette.h">
-      <Filter>Header Files\Color</Filter>
-    </ClInclude>
-    <ClInclude Include="EventSystem.h">
-      <Filter>Header Files\World</Filter>
-    </ClInclude>
-    <ClInclude Include="Screen.h">
-      <Filter>Header Files\World</Filter>
-    </ClInclude>
-    <ClInclude Include="World.h">
-      <Filter>Header Files\World</Filter>
-    </ClInclude>
-    <ClInclude Include="Serial.h">
-      <Filter>Header Files\Serialization</Filter>
-    </ClInclude>
-    <ClInclude Include="ShapeSerializer.h">
-      <Filter>Header Files\Serialization</Filter>
-    </ClInclude>
-    <ClInclude Include="ShapeTransformer.h">
-      <Filter>Header Files\Shapes</Filter>
-    </ClInclude>
+    <Filter Include="Source Files\Shapes">
+      <UniqueIdentifier>{5f64a157-67c7-4f82-8efa-7a30abe81000}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI">
+      <UniqueIdentifier>{aea6771e-6afe-4823-b06b-699d9d10dade}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\World">
+      <UniqueIdentifier>{cb5c8168-eea9-4a6a-937f-abc841f87a70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Serialization">
+      <UniqueIdentifier>{92ee1139-973e-4fc9-a0c9-336ed1b31cf2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Primitives">
+      <UniqueIdentifier>{03e3848b-179f-45f9-a92b-1198e792be2e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="freeglut.dll" />
     <None Include="glfw3.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\DataStructures\Array.h">
+      <Filter>Header Files\DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UI\Button.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Canvas2D\Canvas2D.h">
+      <Filter>Header Files\Canvas2D</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Canvas2D\Canvas2DExtensions.h">
+      <Filter>Header Files\Canvas2D</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shapes\Circle.h">
+      <Filter>Header Files\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shapes\Shape.h">
+      <Filter>Header Files\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shapes\Polygon.h">
+      <Filter>Header Files\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shapes\Rectangle.h">
+      <Filter>Header Files\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UI\ShapeTransformer.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Serialization\Serial.h">
+      <Filter>Header Files\Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Serialization\ShapeSerializer.h">
+      <Filter>Header Files\Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Primitives\Rect.h">
+      <Filter>Header Files\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Primitives\Int2.h">
+      <Filter>Header Files\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Primitives\Float2.h">
+      <Filter>Header Files\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Primitives\Constants.h">
+      <Filter>Header Files\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Primitives\Types.h">
+      <Filter>Header Files\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Helpers\Callback.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Color\ColorPalette.h">
+      <Filter>Header Files\Color</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Primitives\RGBAFloat.h">
+      <Filter>Header Files\Color</Filter>
+    </ClInclude>
+    <ClInclude Include="src\World\EventSystem.h">
+      <Filter>Header Files\World</Filter>
+    </ClInclude>
+    <ClInclude Include="src\World\Screen.h">
+      <Filter>Header Files\World</Filter>
+    </ClInclude>
+    <ClInclude Include="src\World\World.h">
+      <Filter>Header Files\World</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Interfaces\IRenderable.h">
+      <Filter>Header Files\Interfaces</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\World\World.cpp">
+      <Filter>Source Files\World</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UI\Button.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Canvas2D\Canvas2D.cpp">
+      <Filter>Source Files\Canvas2D</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Canvas2D\Canvas2DExtensions.cpp">
+      <Filter>Source Files\Canvas2D</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Primitives\Float2.cpp">
+      <Filter>Source Files\Primitives</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Primitives\Int2.cpp">
+      <Filter>Source Files\Primitives</Filter>
+    </ClCompile>
+    <ClCompile Include="src\World\EventSystem.cpp">
+      <Filter>Source Files\World</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Color\ColorPalette.cpp">
+      <Filter>Source Files\Color</Filter>
+    </ClCompile>
+    <ClCompile Include="src\World\Main.cpp">
+      <Filter>Source Files\World</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Shapes\Circle.cpp">
+      <Filter>Source Files\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Shapes\Rectangle.cpp">
+      <Filter>Source Files\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Primitives\RGBAFloat.cpp">
+      <Filter>Source Files\Color</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Shapes\Shape.cpp">
+      <Filter>Source Files\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Shapes\Polygon.cpp">
+      <Filter>Source Files\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Helpers\Callback.cpp">
+      <Filter>Source Files\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Primitives\Rect.cpp">
+      <Filter>Source Files\Primitives</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Serialization\ShapeSerializer.cpp">
+      <Filter>Source Files\Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Serialization\Serial.cpp">
+      <Filter>Source Files\Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="src\World\Screen.cpp">
+      <Filter>Source Files\World</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UI\ShapeTransformer.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
