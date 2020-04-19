@@ -96,7 +96,7 @@ void World::ProcessInput(int input)
         case World::Key::B: CurrentInput = Input::SendBackward; break;
         case World::Key::F: CurrentInput = Input::BringForward; break;
         case World::Key::C: CurrentInput = (IsAltPressed) ? Input::ChangeColor : Input::ChangeOutlineColor; break;
-        
+
         case World::Key::G: CurrentInput = Input::Grab; break;
         case World::Key::R: CurrentInput = Input::Rotate; break;
         case World::Key::S: CurrentInput = Input::Scale; break;
@@ -110,7 +110,7 @@ void World::OnRender()
     Canvas2D::ClearScreen(Colors::Background);
     ProcessState();
     RenderShapes();
-    
+
 	Transformer.Render();
 
 	Canvas2D::SetColor(Colors::White);
@@ -128,7 +128,7 @@ void World::ProcessState()
     switch (CurrentState)
     {
         case World::InterfaceState::Grabbing:
-            GrabSelected(); 
+            GrabSelected();
             break;
         case World::InterfaceState::Rotating:
             RotateSelected();
@@ -207,7 +207,7 @@ void World::IdleState()
 
 void World::SelectObject()
 {
-    if (Transformer.IsMouseOver() == false && 
+    if (Transformer.IsMouseOver() == false &&
 		MainColorPalette.IsMouseOver() == false &&
 		OutlineColorPalette.IsMouseOver() == false)
     {
@@ -268,7 +268,7 @@ void World::SendBackward()
 void World::GrabSelected()
 {
     SelectedState();
-    if (SelectedShape == nullptr) 
+    if (SelectedShape == nullptr)
     {
         return;
     }
@@ -336,7 +336,7 @@ void World::OpenFile()
     Shapes.clear();
     Array<Shape*> arr = ShapeSerializer::Deserialize("Shapes.gr");
     Shapes.reserve(arr.size);
-    for (int i = 0; i < arr.size; i++) 
+    for (int i = 0; i < arr.size; i++)
     {
         Shapes.push_back(arr.ptr[i]);
     }
@@ -345,7 +345,7 @@ void World::OpenFile()
 
 void World::SaveFile()
 {
-    ShapeSerializer::Serialize("Shapes.gr", Array(&Shapes[0], Shapes.size()));
+    ShapeSerializer::Serialize("Shapes.gr", Array<Shape*>(&Shapes[0], Shapes.size()));
 }
 
 void World::UpdateMainColor(RGBAFloat color)

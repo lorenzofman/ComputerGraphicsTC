@@ -12,27 +12,27 @@ ColorPalette::ColorPalette(Float2 buttonPosition)
 void ColorPalette::Render()
 {
 	colorButton->Render();
-	for (const auto & [buttonPtr, color] : buttons) 
+	for (const auto & kv : buttons)
 	{
-		buttonPtr->Render();
+		kv.first->Render();
 	}
 }
 
 void ColorPalette::OnOpenPalette()
 {
-	for (const auto& [buttonPtr, color] : buttons)
-	{
-		buttonPtr->active = true;
-	}
+    for (const auto & kv : buttons)
+    {
+        kv.first->active = true;
+    }
 	open = true;
 }
 
 void ColorPalette::ClosePalette()
 {
-	for (const auto& [buttonPtr, color] : buttons)
-	{
-		buttonPtr->active = false;
-	}
+	 for (const auto & kv : buttons)
+    {
+        kv.first->active = false;
+    }
 	open = false;
 }
 
@@ -59,9 +59,9 @@ bool ColorPalette::IsMouseOver()
 	{
 		return false;
 	}
-	for (const auto& [buttonPtr, color] : buttons)
+	for (const auto& kv : buttons)
 	{
-		if (buttonPtr->rect.IsPointInside(EventSystem::MousePosition))
+		if (kv.first->rect.IsPointInside(EventSystem::MousePosition))
 		{
 			return true;
 		}
@@ -86,7 +86,7 @@ void ColorPalette::CreateButtons()
 		}
 	}
 }
-/* 
+/*
 Top -> Down
 Left-> Right
 */

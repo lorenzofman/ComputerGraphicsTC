@@ -22,7 +22,7 @@ void Button::OnMousePositionUpdate(Int2 deltaPos)
 	{
 		DragCallback.Invoke(this);
 	}
-	else 
+	else
 	{
 		totalDelta += deltaPos;
 		//std::cout << totalDelta.x << " " << totalDelta.y << std::endl;

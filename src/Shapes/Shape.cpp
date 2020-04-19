@@ -43,7 +43,6 @@ void Shape::Render()
 		DrawOutlined(outlineColor, outlineThickness);
 		return;
 	}
-
 	DrawFilledOutlined(fillColor, outlineColor, outlineThickness);
 }
 
@@ -70,7 +69,15 @@ float Shape::GetOutlineThickness()
 
 void Shape::SetOutlineThickness(float outlineThickness)
 {
-	outlineThickness = std::clamp(outlineThickness, 0.0f, 1.0f);
+    if (outlineThickness < 0.0f)
+    {
+        outlineThickness = 0.0f;
+    }
+    else if (outlineThickness > 1.0f)
+    {
+        outlineThickness = 1.0f;
+    }
+
 	this->outlineThickness = outlineThickness;
 }
 
@@ -83,7 +90,8 @@ void Shape::DrawFilled(RGBAFloat color)
 void Shape::DrawFilledOutlined(RGBAFloat fillColor, RGBAFloat borderColor, float thickness)
 {
 	float ratio = 1 - thickness;
-	Canvas2D::SetColor(borderColor);
+	//Canvas2D::SetColor(borderColor);
+	Canvas2D::SetColor(RGBAFloat(1,1,1));
 	Draw();
 	Scale(ratio);
 	Canvas2D::SetColor(fillColor);

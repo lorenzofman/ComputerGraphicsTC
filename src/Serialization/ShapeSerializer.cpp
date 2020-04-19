@@ -40,7 +40,7 @@ Array<Shape*> ShapeSerializer::Deserialize(std::ifstream& stream)
 	{
 		shapes[i] = DeserializeShape(stream);
 	}
-	return Array(shapes, elements);
+	return Array<Shape*>(shapes, elements);
 }
 
 Shape* ShapeSerializer::DeserializeShape(std::ifstream& stream)

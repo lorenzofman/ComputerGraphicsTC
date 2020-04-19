@@ -1,4 +1,5 @@
 #pragma once
+#include <algorithm>
 #include <functional>
 #include <vector>
 
@@ -32,7 +33,7 @@ class Callback
 	{
 		for (int i = listeners.size() - 1; i >= 0; i--)
 		{
-			std::invoke(listeners[i], args ...);
+			listeners[i](args ...);
 		}
 
 	}
