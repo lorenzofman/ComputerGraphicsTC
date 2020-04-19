@@ -60,8 +60,7 @@ class World
 		ShapeSelected,
 		Grabbing,
 		Rotating,
-		Scaling,
-		InputListening
+		Scaling
 	};
 
 	enum class Input
@@ -104,9 +103,6 @@ class World
 	static Input CurrentInput;
 	static InterfaceState CurrentState;
 	
-	static std::string InputField;
-	static Callback<> InputCallback;
-
 	static Int2 MousePositionDelta;
 	static Int2 MousePosition;
 	static int MouseScrollDelta;

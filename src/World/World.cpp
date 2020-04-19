@@ -12,11 +12,7 @@ ShapeTransformer World::Transformer = ShapeTransformer();
 ColorPalette World::MainColorPalette = ColorPalette(Float2(Colors::Palette::ButtonHalfSize * 8, Colors::Palette::ButtonHalfSize));
 ColorPalette World::OutlineColorPalette = ColorPalette(Float2 (Colors::Palette::ButtonHalfSize * 20, Colors::Palette::ButtonHalfSize));
 
-
 World::InterfaceState World::CurrentState = World::InterfaceState::Idle;
-Callback<> World::InputCallback;
-
-std::string World::InputField;
 
 void World::BigBang()
 {
@@ -146,8 +142,6 @@ void World::ProcessState()
         case World::InterfaceState::Idle:
             IdleState();
             break;
-        case World::InterfaceState::InputListening:
-            ListenToInput();
         default:
             break;
     }
@@ -197,12 +191,10 @@ void World::IdleState()
             SelectObject();
             break;
         case World::Input::NewCircle:
-            InputCallback.Register(&CreateCircle);
-            CurrentState = World::InterfaceState::InputListening;
+            CreateCircle();
             break;
         case World::Input::NewRectangle:
-            InputCallback.Register(CreateRectangle);
-            CurrentState = World::InterfaceState::InputListening;
+            CreateRectangle();
             break;
         case World::Input::Open:
             OpenFile();
@@ -244,33 +236,6 @@ void World::SetSelectedShape(Shape* selected)
 {
     SelectedShape = selected;
 	Transformer.SetShape(selected);
-}
-
-void World::ListenToInput()
-{
-    switch (CurrentInput)
-    {
-        case World::Input::Num0:
-        case World::Input::Num1:
-        case World::Input::Num2:
-        case World::Input::Num3:
-        case World::Input::Num4:
-        case World::Input::Num5:
-        case World::Input::Num6:
-        case World::Input::Num7:
-        case World::Input::Num8:
-        case World::Input::Num9:
-        case World::Input::Colon:
-            InputField += (char) CurrentInput;
-            break;
-        case World::Input::Confirm:
-            InputCallback.Invoke();
-            InputCallback.Clear();
-            CurrentState = World::InterfaceState::Idle;
-            break;
-        default:
-            break;
-    }
 }
 
 void World::UpdateOutlineThickness()
