@@ -39,6 +39,7 @@ void Polygon::Translate(Float2 translation)
 		vertices.ptr[i] += translation;
 	}
 	center += translation;
+	rect.Translate(translation);
 }
 
 void Polygon::Rotate(float rad)
@@ -49,6 +50,7 @@ void Polygon::Rotate(float rad)
 		vertices[i].Rotate(rad);
 		vertices[i] += center;
 	}
+	rect.Rotate(rad);
 }
 
 void Polygon::Scale(float scale)
@@ -59,6 +61,7 @@ void Polygon::Scale(float scale)
 		vertices[i] *= scale;
 		vertices[i] += center;
 	}
+	rect.Scale(scale);
 }
 
 void Polygon::Scale(float xScale, float yScale)
@@ -70,6 +73,7 @@ void Polygon::Scale(float xScale, float yScale)
 		vertices[i].y *= yScale;
 		vertices[i] += center;
 	}
+	rect.Scale(xScale, yScale);
 }
 
 void Polygon::Draw()
@@ -83,7 +87,7 @@ bool Polygon::IsPointInside(Float2)
 }
 Rect Polygon::GetRect()
 {
-	return Rect(vertices);
+	return rect;
 }
 
 void Polygon::MatchRect(Rect newRect)

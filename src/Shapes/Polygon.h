@@ -33,6 +33,7 @@ class Polygon : public Shape
 	private:
 
 	Array<Float2> vertices;
+	Rect rect;
 
 	static Float2 CalculateCenter(Array<Float2> vertices);
 };
