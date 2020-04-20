@@ -28,7 +28,6 @@ class World
 	enum class Key
 	{
 		Enter = 13,
-		Ctrl_A = 1,
 		Ctrl_C = 3,
 		Ctrl_E = 5,
 		Ctrl_H = 8,
@@ -39,7 +38,6 @@ class World
 		Ctrl_R = 18,
 		Ctrl_S = 19,
 		Ctrl_T = 20,
-		Ctrl_U = 21,
 
 		Num_0 = 48,
 		Num_1 = 49,
@@ -79,7 +77,6 @@ class World
 		Grab,
 		Rotate,
 		Scale,
-		CreateStar,
 		CreateCircle,
 		CreateEquilatereumTriangle,
 		CreateHexagon,
@@ -88,7 +85,6 @@ class World
 		CreatePentagon,
 		CreateRectangle,
 		CreateRectangleTriangle,
-		CreateCross,
 		MouseWheelUpdate,
 		BringForward,
 		SendBackward,
@@ -155,12 +151,10 @@ class World
 	void CreateIsoscelesTriangle();
 	void CreateEquilatereumTriangle();
 	
-	void CreateStar();
-	void CreateCross();
-
 	void CreatePentagon();
 	void CreateHexagon();
 	void CreateOctagon();
+	void CreateRegularPolygon(int vertices);
 	void Message(const char* str);
 };
 

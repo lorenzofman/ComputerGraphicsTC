@@ -114,7 +114,7 @@
 1587307226 source:c:\users\lorenzofman\source\repos\computergraphicsb\src\shapes\polygon.cpp
 	"Polygon.h"
 
-1587307142 c:\users\lorenzofman\source\repos\computergraphicsb\src\shapes\polygon.h
+1587392560 c:\users\lorenzofman\source\repos\computergraphicsb\src\shapes\polygon.h
 	<vector>
 	<iostream>
 	<fstream>
@@ -145,11 +145,11 @@
 	<functional>
 	<vector>
 
-1587332680 source:c:\users\lorenzofman\source\repos\computergraphicsb\src\ui\button.cpp
+1587343386 source:c:\users\lorenzofman\source\repos\computergraphicsb\src\ui\button.cpp
 	"Button.h"
 	<iostream>
 
-1587305622 c:\users\lorenzofman\source\repos\computergraphicsb\src\ui\button.h
+1587339539 c:\users\lorenzofman\source\repos\computergraphicsb\src\ui\button.h
 	"../Interfaces/IRenderable.h"
 	"../Primitives/Rect.h"
 	"../Primitives/RGBAFloat.h"
@@ -158,11 +158,11 @@
 	"../World/EventSystem.h"
 	"../Shapes/Rectangle.h"
 
-1587305288 c:\users\lorenzofman\source\repos\computergraphicsb\src\world\eventsystem.h
+1587339344 c:\users\lorenzofman\source\repos\computergraphicsb\src\world\eventsystem.h
 	"../Helpers/Callback.h"
 	"../Primitives/Int2.h"
 
-1587308937 source:c:\users\lorenzofman\source\repos\computergraphicsb\src\ui\shapetransformer.cpp
+1587344006 source:c:\users\lorenzofman\source\repos\computergraphicsb\src\ui\shapetransformer.cpp
 	"ShapeTransformer.h"
 	<iostream>
 
@@ -172,7 +172,7 @@
 	"../Canvas2D/Canvas2DExtensions.h"
 	"Button.h"
 
-1587225926 source:c:\users\lorenzofman\source\repos\computergraphicsb\src\world\eventsystem.cpp
+1587339350 source:c:\users\lorenzofman\source\repos\computergraphicsb\src\world\eventsystem.cpp
 	"EventSystem.h"
 
 1587330339 source:c:\users\lorenzofman\source\repos\computergraphicsb\src\world\main.cpp
@@ -196,7 +196,7 @@
 	"../Color/ColorPalette.h"
 	"../Serialization/ShapeSerializer.h"
 
-1587338081 c:\users\lorenzofman\source\repos\computergraphicsb\src\color\colorpalette.h
+1587340248 c:\users\lorenzofman\source\repos\computergraphicsb\src\color\colorpalette.h
 	<map>
 	"../Primitives/RGBAFloat.h"
 	"../Primitives/Float2.h"
@@ -227,7 +227,7 @@
 1587337598 source:c:\users\lorenzofman\source\repos\computergraphicsb\src\shapes\shape.cpp
 	"Shape.h"
 
-1587338102 source:c:\users\lorenzofman\source\repos\computergraphicsb\src\color\colorpalette.cpp
+1587344766 source:c:\users\lorenzofman\source\repos\computergraphicsb\src\color\colorpalette.cpp
 	"ColorPalette.h"
 
 1587330247 source:c:\users\lorenzofman\source\repos\computergraphicsb\src\world\world.cpp

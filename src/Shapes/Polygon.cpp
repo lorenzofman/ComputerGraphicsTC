@@ -90,7 +90,20 @@ void Polygon::Draw()
 
 bool Polygon::IsPointInside(Float2 point)
 {
-	return rect.IsPointInside(point);
+	bool result = false;
+	int j = vertices.size - 1;
+	for (int i = 0; i < vertices.size; i++)
+	{
+		if (vertices.ptr[i].y < point.y && vertices.ptr[j].y >= point.y || vertices.ptr[j].y < point.y && vertices.ptr[i].y >= point.y)
+		{
+			if (vertices.ptr[i].x + (point.y - vertices.ptr[i].y) / (vertices.ptr[j].y - vertices.ptr[i].y) * (vertices.ptr[j].x - vertices.ptr[i].x) < point.x)
+			{
+				result = !result;
+			}
+		}
+		j = i;
+	}
+	return result;
 }
 Rect Polygon::GetRect()
 {

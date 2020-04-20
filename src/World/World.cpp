@@ -71,7 +71,6 @@ void World::ProcessInput(int input)
         case World::Key::Enter: CurrentInput = Input::Confirm; break;
         case World::Key::Delete: CurrentInput = Input::Delete; break;
 
-		case World::Key::Ctrl_A: CurrentInput = Input::CreateStar; break;
         case World::Key::Ctrl_C: CurrentInput = Input::CreateCircle; break;
 		case World::Key::Ctrl_E: CurrentInput = Input::CreateEquilatereumTriangle; break;
 		case World::Key::Ctrl_H: CurrentInput = Input::CreateHexagon; break;
@@ -80,7 +79,6 @@ void World::ProcessInput(int input)
 		case World::Key::Ctrl_P: CurrentInput = Input::CreatePentagon; break;
         case World::Key::Ctrl_R: CurrentInput = Input::CreateRectangle; break;
 		case World::Key::Ctrl_T: CurrentInput = Input::CreateRectangleTriangle; break;
-		case World::Key::Ctrl_U: CurrentInput = Input::CreateCross; break;
 
         case World::Key::Ctrl_O: CurrentInput = Input::Open; break;
         case World::Key::Ctrl_S: CurrentInput = Input::Save; break;
@@ -177,9 +175,6 @@ void World::IdleState()
         case World::Input::Select:
             SelectObject();
             break;
-        case World::Input::CreateStar:
-            CreateRectangle();
-            break;
         case World::Input::CreateCircle:
             CreateCircle();
             break;
@@ -197,15 +192,13 @@ void World::IdleState()
 			break;
 		case World::Input::CreatePentagon:
 			CreatePentagon();
+            break;
         case World::Input::CreateRectangleTriangle:
 			CreateRectangleTriangle();
             break;
         case World::Input::CreateRectangle:
             CreateRectangle();
             break;
-		case World::Input::CreateCross:
-			CreateCross();
-			break;
         case World::Input::Open:
             OpenFile();
             break;
@@ -429,32 +422,31 @@ void World::CreateTriangle(Float2* vertices)
 	CreatePolygon(arr);
 }
 
-void World::CreateStar()
-{
-
-}
-
-void World::CreateCross()
-{
-	Float2* vertices = new Float2[12];
-	vertices[0] = Float2(-75, -50);
-	vertices[1] = Float2(0, 50);
-	vertices[2] = Float2(75, -50);
-	Array<Float2> arr = Array<Float2>(vertices, 12);
-	CreatePolygon()
-}
-
 void World::CreatePentagon()
 {
+    CreateRegularPolygon(5);
 }
 
 void World::CreateHexagon()
 {
+    CreateRegularPolygon(6);
 }
 
 void World::CreateOctagon()
 {
+    CreateRegularPolygon(8);
+}
 
+void World::CreateRegularPolygon(int vertices)
+{
+    Float2* arr = new Float2[vertices];
+    float part = (2 * PI) / vertices;
+    for (int i = 1; i <= vertices; i++)
+    {
+        float rad = part * i;
+        arr[vertices - i] = Float2(cos(rad), sin(rad)) * 80;
+    }
+    CreatePolygon(Array<Float2>(arr, vertices));
 }
 
 void World::CreatePolygon(const Array<Float2>& arr)

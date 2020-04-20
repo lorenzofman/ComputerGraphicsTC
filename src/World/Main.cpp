@@ -2,6 +2,7 @@
 #include "World.h"
 #include "../UI/ShapeTransformer.h"
 #include "../Color/ColorPalette.h"
+
 int main()
 {
 	int hs = Colors::Palette::ButtonHalfSize;
