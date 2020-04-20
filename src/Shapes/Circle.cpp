@@ -46,9 +46,7 @@ bool Circle::IsPointInside(Float2 point)
 Rect Circle::GetRect()
 {
 	Rect rect = Rect(center.x - radius, center.y - radius, center.x + radius, center.y + radius);
-	rect.Translate(-center);
 	rect.Rotate(rotation);
-	rect.Translate(center);
 	return rect;
 }
 

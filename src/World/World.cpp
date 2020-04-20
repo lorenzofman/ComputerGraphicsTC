@@ -71,8 +71,16 @@ void World::ProcessInput(int input)
         case World::Key::Enter: CurrentInput = Input::Confirm; break;
         case World::Key::Delete: CurrentInput = Input::Delete; break;
 
-        case World::Key::Ctrl_R: CurrentInput = Input::CreateRectangle; break;
+		case World::Key::Ctrl_A: CurrentInput = Input::CreateStar; break;
         case World::Key::Ctrl_C: CurrentInput = Input::CreateCircle; break;
+		case World::Key::Ctrl_E: CurrentInput = Input::CreateEquilatereumTriangle; break;
+		case World::Key::Ctrl_H: CurrentInput = Input::CreateHexagon; break;
+		case World::Key::Ctrl_I: CurrentInput = Input::CreateIsoscelesTriangle; break;
+		case World::Key::Ctrl_K: CurrentInput = Input::CreateOctagon; break;
+		case World::Key::Ctrl_P: CurrentInput = Input::CreatePentagon; break;
+        case World::Key::Ctrl_R: CurrentInput = Input::CreateRectangle; break;
+		case World::Key::Ctrl_T: CurrentInput = Input::CreateRectangleTriangle; break;
+		case World::Key::Ctrl_U: CurrentInput = Input::CreateCross; break;
 
         case World::Key::Ctrl_O: CurrentInput = Input::Open; break;
         case World::Key::Ctrl_S: CurrentInput = Input::Save; break;
@@ -169,27 +177,35 @@ void World::IdleState()
         case World::Input::Select:
             SelectObject();
             break;
+        case World::Input::CreateStar:
+            CreateRectangle();
+            break;
         case World::Input::CreateCircle:
             CreateCircle();
+            break;
+        case World::Input::CreateEquilatereumTriangle:
+            CreateEquilatereumTriangle();
+            break;
+        case World::Input::CreateHexagon:
+            CreateHexagon();
+            break;
+        case World::Input::CreateIsoscelesTriangle:
+            CreateIsoscelesTriangle();
+            break;
+		case World::Input::CreateOctagon:
+			CreateOctagon();
+			break;
+		case World::Input::CreatePentagon:
+			CreatePentagon();
+        case World::Input::CreateRectangleTriangle:
+			CreateRectangleTriangle();
             break;
         case World::Input::CreateRectangle:
             CreateRectangle();
             break;
-        case World::Input::CreateEquilatereumTriangle:
-            CreateRectangle();
-            break;
-        case World::Input::CreateIsoscelesTriangle:
-            CreateRectangle();
-            break;
-        case World::Input::CreateRectangleTriangle:
-            CreateRectangle();
-            break;
-        case World::Input::CreateStar:
-            CreateRectangle();
-            break;
-        case World::Input::CreateHeart:
-            //CreateRectangle();
-            break;
+		case World::Input::CreateCross:
+			CreateCross();
+			break;
         case World::Input::Open:
             OpenFile();
             break;
@@ -318,6 +334,7 @@ bool World::ResultingRectIsBigEnough(float scaleDelta)
 void World::Delete()
 {
 	RemoveShape(selectedShape);
+	delete selectedShape;
     transformerRef.SetShape(nullptr);
 }
 
@@ -382,24 +399,69 @@ void World::CreateRectangle()
 void World::CreateRectangleTriangle()
 {
     Float2* vertices = new Float2[3];
-    //vertices[0] = Float2()
-    //Shapes.push_back(new class Polygon((rect, mainColorPaletteRef.GetCurrentColor()));
+	vertices[0] = Float2(-80, 100);
+	vertices[1] = Float2(80, -100);
+	vertices[2] = Float2(-80, -100);
+	CreateTriangle(vertices);
 }
 
 void World::CreateIsoscelesTriangle()
 {
+	Float2* vertices = new Float2[3];
+	vertices[0] = Float2(-75, -100);
+	vertices[1] = Float2(0, 100);
+	vertices[2] = Float2(75, -100);
+	CreateTriangle(vertices);
 }
 
 void World::CreateEquilatereumTriangle()
 {
+	Float2* vertices = new Float2[3];
+	vertices[0] = Float2(-75, -50);
+	vertices[1] = Float2(0, 50);
+	vertices[2] = Float2(75, -50);
+	CreateTriangle(vertices);
 }
 
-void World::CreateStart()
+void World::CreateTriangle(Float2* vertices)
+{
+	Array<Float2> arr = Array<Float2>(vertices, 3);
+	CreatePolygon(arr);
+}
+
+void World::CreateStar()
+{
+
+}
+
+void World::CreateCross()
+{
+	Float2* vertices = new Float2[12];
+	vertices[0] = Float2(-75, -50);
+	vertices[1] = Float2(0, 50);
+	vertices[2] = Float2(75, -50);
+	Array<Float2> arr = Array<Float2>(vertices, 12);
+	CreatePolygon()
+}
+
+void World::CreatePentagon()
 {
 }
 
-void World::CreateHeart()
+void World::CreateHexagon()
 {
+}
+
+void World::CreateOctagon()
+{
+
+}
+
+void World::CreatePolygon(const Array<Float2>& arr)
+{
+	class Polygon* rectangleTriangle = new class Polygon(arr, mainColorPaletteRef.GetCurrentColor());
+	rectangleTriangle->Translate(Screen::Center());
+	Shapes.push_back(rectangleTriangle);
 }
 
 void World::RemoveShape(Shape* shape)

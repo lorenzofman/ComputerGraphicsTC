@@ -80,24 +80,32 @@ void Rect::Translate(Float2 translation)
 
 void Rect::Rotate(float rotation)
 {
+	Float2 center = Center();
+	Translate(-center);
 	BottomLeft.Rotate(rotation);
 	TopRight.Rotate(rotation);
 	BottomRight.Rotate(rotation);
 	TopLeft.Rotate(rotation);
 	this->rotation += rotation;
 	this->rotation = fmodf(this->rotation, 2 * PI);
+	Translate(center);
 }
 
 void Rect::Scale(float scale)
 {
+	Float2 center = Center();
+	Translate(-center);
 	BottomLeft *= scale;
 	TopRight *= scale;
 	BottomRight *= scale;
 	TopLeft *= scale;
+	Translate(center);
 }
 
 void Rect::Scale(float x, float y)
 {
+	Float2 center = Center();
+	Translate(-center);
 	BottomLeft.x *= x;
 	TopRight.x *= x;
 	BottomRight.x *= x;
@@ -107,6 +115,7 @@ void Rect::Scale(float x, float y)
 	TopRight.y *= y;
 	BottomRight.y *= y;
 	TopLeft.y *= y;
+	Translate(center);
 }
 
 float Rect::LargestEdge()
@@ -122,7 +131,9 @@ bool Rect::IsPointInside(Float2 point)
 	if (rotation != 0) 
 	{
 		unrotatedRect.Rotate(-this->rotation); // Rollback
+		point -= unrotatedRect.Center();
 		point.Rotate(-this->rotation);
+		point += unrotatedRect.Center();
 	}
 	return unrotatedRect.IsPointInsideUnRotatedRect(point);
 }

@@ -18,6 +18,8 @@ class Polygon : public Shape
 	
 	Polygon(std::ifstream& stream);
 
+	~Polygon();
+
 	virtual void Serialize(std::ofstream&) override;
 	virtual byte GetShapeIdentifier() override;
 	// Inherited via Shape

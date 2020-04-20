@@ -3,6 +3,7 @@ Polygon::Polygon(Array<Float2> vertices, RGBAFloat filledColor, RGBAFloat outlin
 {
 	this->vertices = vertices;
 	this->center = CalculateCenter(vertices);
+	this->rect = Rect(vertices);
 }
 
 Polygon::Polygon(std::ifstream& stream) : Shape(stream)
@@ -15,6 +16,12 @@ Polygon::Polygon(std::ifstream& stream) : Shape(stream)
 	}
 	this->vertices = Array<Float2>(vertices, verticesArraySize);
 	this->center = CalculateCenter(this->vertices);
+	this->rect = Rect(this->vertices);
+}
+
+Polygon::~Polygon()
+{
+	delete[] vertices.ptr;
 }
 
 void Polygon::Serialize(std::ofstream& stream)
@@ -81,9 +88,9 @@ void Polygon::Draw()
 	Canvas2D::DrawFilledPolygon(vertices.ptr, vertices.size);
 }
 
-bool Polygon::IsPointInside(Float2)
+bool Polygon::IsPointInside(Float2 point)
 {
-	return false; // Todo: implement
+	return rect.IsPointInside(point);
 }
 Rect Polygon::GetRect()
 {

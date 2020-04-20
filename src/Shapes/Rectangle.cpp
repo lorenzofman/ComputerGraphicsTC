@@ -29,25 +29,19 @@ bool Rectangle::IsPointInside(Float2 point)
 void Rectangle::Rotate(float rad)
 {
 	Polygon::Rotate(rad);
-	rect.Translate(-center);
 	rect.Rotate(rad);
-	rect.Translate(center);
 }
 
 void Rectangle::Scale(float scale)
 {
 	Polygon::Scale(scale);
-	rect.Translate(-center);
 	rect.Scale(scale);
-	rect.Translate(center);
 }
 
 void Rectangle::Scale(float x, float y)
 {
 	Polygon::Scale(x, y);
-	rect.Translate(-center);
 	rect.Scale(x, y);
-	rect.Translate(center);
 }
 
 void Rectangle::Translate(Float2 translation)

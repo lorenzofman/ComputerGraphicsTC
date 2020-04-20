@@ -33,11 +33,14 @@ class World
 		Ctrl_E = 5,
 		Ctrl_H = 8,
 		Ctrl_I = 9,
+		Ctrl_K = 11,
 		Ctrl_O = 15,
 		Ctrl_P = 16,
 		Ctrl_R = 18,
 		Ctrl_S = 19,
 		Ctrl_T = 20,
+		Ctrl_U = 21,
+
 		Num_0 = 48,
 		Num_1 = 49,
 		Num_2 = 50,
@@ -76,13 +79,16 @@ class World
 		Grab,
 		Rotate,
 		Scale,
-		CreateCircle,
-		CreateRectangle,
 		CreateStar,
-		CreateIsoscelesTriangle,
-		CreateRectangleTriangle,
+		CreateCircle,
 		CreateEquilatereumTriangle,
-		CreateHeart,
+		CreateHexagon,
+		CreateIsoscelesTriangle,
+		CreateOctagon,
+		CreatePentagon,
+		CreateRectangle,
+		CreateRectangleTriangle,
+		CreateCross,
 		MouseWheelUpdate,
 		BringForward,
 		SendBackward,
@@ -144,13 +150,17 @@ class World
 	void CreateRectangle();
 
 	void CreateRectangleTriangle();
+	void CreateTriangle(Float2* vertices);
+	void CreatePolygon(const Array<Float2>& arr);
 	void CreateIsoscelesTriangle();
 	void CreateEquilatereumTriangle();
 	
-	void CreateStart();
+	void CreateStar();
+	void CreateCross();
 
-	void CreateHeart();
-
+	void CreatePentagon();
+	void CreateHexagon();
+	void CreateOctagon();
 	void Message(const char* str);
 };
 
