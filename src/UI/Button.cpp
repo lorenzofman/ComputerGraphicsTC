@@ -3,8 +3,8 @@
 Button* Button::PressedButton;
 Button::Button(RGBAFloat color, Rect rect)
 {
-	EventSystem::LeftMouseButtonDownCallback.Register([this](Int2 arg){ this->OnLeftMouseButtonDown(arg);});
-	EventSystem::LeftMouseButtonUpCallback.Register([this](Int2 arg) {this->OnLeftMouseButtonUp(arg); });
+	EventSystem::LeftMouseButtonDownCallback.Register([this]{ this->OnLeftMouseButtonDown();});
+	EventSystem::LeftMouseButtonUpCallback.Register([this] {this->OnLeftMouseButtonUp(); });
 	this->rect = rect;
 	this->color = color;
 	this->drag = false;
@@ -12,7 +12,7 @@ Button::Button(RGBAFloat color, Rect rect)
 	this->active = true;
 }
 
-void Button::OnMousePositionUpdate(Int2 deltaPos)
+void Button::OnMousePositionUpdate()
 {
 	if (active == false)
 	{
@@ -22,10 +22,9 @@ void Button::OnMousePositionUpdate(Int2 deltaPos)
 	{
 		DragCallback.Invoke(this);
 	}
-	else
+	else 
 	{
-		totalDelta += deltaPos;
-		//std::cout << totalDelta.x << " " << totalDelta.y << std::endl;
+		totalDelta += EventSystem::MousePositionDelta;
 		if (abs(totalDelta.x + totalDelta.y) > DragThreshold)
 		{
 			drag = true;
@@ -34,7 +33,7 @@ void Button::OnMousePositionUpdate(Int2 deltaPos)
 	}
 }
 
-void Button::OnLeftMouseButtonDown(Int2 pos)
+void Button::OnLeftMouseButtonDown()
 {
 	if (active == false)
 	{
@@ -44,16 +43,16 @@ void Button::OnLeftMouseButtonDown(Int2 pos)
 	{
 		return;
 	}
-	if (rect.IsPointInside(pos) == false)
+	if (rect.IsPointInside(EventSystem::MousePosition) == false)
 	{
 		return;
 	}
 	PressedButton = this;
 	totalDelta = Int2::Zero;
-	updateCallbackId =	EventSystem::MouseMovementCallback.Register([this] (Int2 mouseDelta) {this->OnMousePositionUpdate(mouseDelta); });
+	updateCallbackId =	EventSystem::MouseMovementCallback.Register([this] {this->OnMousePositionUpdate(); });
 }
 
-void Button::OnLeftMouseButtonUp(Int2 pos)
+void Button::OnLeftMouseButtonUp()
 {
 	if (active == false)
 	{

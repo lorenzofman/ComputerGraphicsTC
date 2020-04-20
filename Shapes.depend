@@ -34,7 +34,7 @@
 1586794345 c:\users\lorenzofman\source\repos\computergraphicsb\src\primitives\int2.h
 	"Float2.h"
 
-1587143328 c:\users\lorenzofman\source\repos\computergraphicsb\src\primitives\rgbafloat.h
+1587332387 c:\users\lorenzofman\source\repos\computergraphicsb\src\primitives\rgbafloat.h
 
 1587330150 source:c:\users\lorenzofman\source\repos\computergraphicsb\src\canvas2d\canvas2dextensions.cpp
 	"Canvas2DExtensions.h"
@@ -64,13 +64,13 @@
 	"Rect.h"
 	"Constants.h"
 
-1587308404 c:\users\lorenzofman\source\repos\computergraphicsb\src\primitives\constants.h
+1587332326 c:\users\lorenzofman\source\repos\computergraphicsb\src\primitives\constants.h
 	"RGBAFloat.h"
 	"Types.h"
 
 1586737435 c:\users\lorenzofman\source\repos\computergraphicsb\src\primitives\types.h
 
-1587143320 source:c:\users\lorenzofman\source\repos\computergraphicsb\src\primitives\rgbafloat.cpp
+1587332383 source:c:\users\lorenzofman\source\repos\computergraphicsb\src\primitives\rgbafloat.cpp
 	"RGBAFloat.h"
 
 1587235569 source:c:\users\lorenzofman\source\repos\computergraphicsb\src\serialization\serial.cpp
@@ -140,12 +140,12 @@
 1586737361 source:c:\users\lorenzofman\source\repos\computergraphicsb\src\helpers\callback.cpp
 	"Callback.h"
 
-1587328675 c:\users\lorenzofman\source\repos\computergraphicsb\src\helpers\callback.h
+1587337439 c:\users\lorenzofman\source\repos\computergraphicsb\src\helpers\callback.h
 	<algorithm>
 	<functional>
 	<vector>
 
-1587330536 source:c:\users\lorenzofman\source\repos\computergraphicsb\src\ui\button.cpp
+1587332680 source:c:\users\lorenzofman\source\repos\computergraphicsb\src\ui\button.cpp
 	"Button.h"
 	<iostream>
 
@@ -196,7 +196,7 @@
 	"../Color/ColorPalette.h"
 	"../Serialization/ShapeSerializer.h"
 
-1587305623 c:\users\lorenzofman\source\repos\computergraphicsb\src\color\colorpalette.h
+1587338081 c:\users\lorenzofman\source\repos\computergraphicsb\src\color\colorpalette.h
 	<map>
 	"../Primitives/RGBAFloat.h"
 	"../Primitives/Float2.h"
@@ -224,10 +224,10 @@
 1587225926 source:c:\users\lorenzofman\source\repos\computergraphicsb\src\world\screen.cpp
 	"Screen.h"
 
-1587331559 source:c:\users\lorenzofman\source\repos\computergraphicsb\src\shapes\shape.cpp
+1587337598 source:c:\users\lorenzofman\source\repos\computergraphicsb\src\shapes\shape.cpp
 	"Shape.h"
 
-1587330445 source:c:\users\lorenzofman\source\repos\computergraphicsb\src\color\colorpalette.cpp
+1587338102 source:c:\users\lorenzofman\source\repos\computergraphicsb\src\color\colorpalette.cpp
 	"ColorPalette.h"
 
 1587330247 source:c:\users\lorenzofman\source\repos\computergraphicsb\src\world\world.cpp

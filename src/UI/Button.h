@@ -21,7 +21,7 @@ class Button : public IRenderable
 	Callback<Button*> ClickCallback;
 
 	static Button* PressedButton;
-	void OnMousePositionUpdate(Int2 deltaPos);
+	void OnMousePositionUpdate();
 	
 	// Inherited via IRenderable
 	virtual void Render() override;
@@ -35,7 +35,7 @@ class Button : public IRenderable
 	bool drag;
 	int updateCallbackId; /* Saved for later callback deregistering*/
 
-	void OnLeftMouseButtonDown(Int2);
-	void OnLeftMouseButtonUp(Int2);
+	void OnLeftMouseButtonDown();
+	void OnLeftMouseButtonUp();
 
 };

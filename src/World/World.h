@@ -21,7 +21,7 @@ class World
 {
 	public:
 
-	static void BigBang();
+	World(ShapeTransformer&, ColorPalette&, ColorPalette&);
 
 	private:
 
@@ -95,62 +95,60 @@ class World
 		Colon
 	};
 	
-	static bool IsShiftPressed;
-	static bool IsAltPressed;
-	static bool IsCtrlPressed;
+	bool IsShiftPressed;
+	bool IsAltPressed;
+	bool IsCtrlPressed;
 
 	/* If two keys are inputted between two frames the last one will prevail and the former won't have any effect */
-	static Input CurrentInput;
-	static InterfaceState CurrentState;
+	Input CurrentInput;
+	InterfaceState CurrentState;
 	
-	static Int2 MousePositionDelta;
-	static Int2 MousePosition;
-	static int MouseScrollDelta;
-	static Shape* SelectedShape;
-	static std::vector<Shape*> Shapes;
-	static ShapeTransformer Transformer;
-	static ColorPalette MainColorPalette;
-	static ColorPalette OutlineColorPalette;
+	Int2 MousePositionDelta;
+	Int2 MousePosition;
+	Shape* selectedShape;
+	std::vector<Shape*> Shapes;
+	ShapeTransformer& transformerRef;
+	ColorPalette& mainColorPaletteRef;
+	ColorPalette& outlineColorPaletteRef;
 
-	static void OnRender();
-	static void OnKeyDown(int key);
-	static void OnKeyUp(int key);
-	static void OnLeftMouseButtonDown(Int2);
-	static void OnMouseWheelUpdate();
+	void OnRender();
+	void OnKeyDown(int key);
+	void OnKeyUp(int key);
+	void OnLeftMouseButtonDown();
+	void OnMouseWheelUpdate();
 
-	static void RenderShapes();
+	void RenderShapes();
 
-	static void ProcessState();
-	static void ProcessModifiers(int key, bool up);
-	static void ProcessInput(int key);
+	void ProcessState();
+	void ProcessModifiers(int key, bool up);
+	void ProcessInput(int key);
 	
-	static void SelectedState();
-	static void IdleState();
-	static void ListenToInput();
+	void SelectedState();
+	void IdleState();
 	
-	static void SelectObject();
-	static Shape* GetFirstObjectMouseIsInside();
-	static void SetSelectedShape(Shape*);
-	static void UpdateOutlineThickness();
-	static void BringForward();
-	static void SendBackward();
-	static void GrabSelected();
-	static void RotateSelected();
-	static void ScaleSelected();
-	static bool ResultingRectIsBigEnough(float scaleDelta);
-	static void RemoveShape(Shape*);
-	static void Delete();
-	static void OpenFile();
-	static void SaveFile();
-	static void UpdateMainColor(RGBAFloat color);
-	static void UpdateOutlineColor(RGBAFloat color);
+	void SelectObject();
+	Shape* GetFirstObjectMouseIsInside();
+	void SetSelectedShape(Shape*);
+	void UpdateOutlineThickness();
+	void BringForward();
+	void SendBackward();
+	void GrabSelected();
+	void RotateSelected();
+	void ScaleSelected();
+	bool ResultingRectIsBigEnough(float scaleDelta);
+	void RemoveShape(Shape*);
+	void Delete();
+	void OpenFile();
+	void SaveFile();
+	void UpdateMainColor(RGBAFloat color);
+	void UpdateOutlineColor(RGBAFloat color);
 
 
-	static void CreateCircle();
+	void CreateCircle();
 
-	static void CreateRectangle();
+	void CreateRectangle();
 
-	static void Message(const char* str);
+	void Message(const char* str);
 };
 
 void CaseInvariant(int& key);

@@ -26,23 +26,23 @@ class EventSystem
 	static void OnKeyUp(int key);
 	static void OnMouseUpdate(int button, int state, int wheel, int direction, int x, int y);
 
-	static void MouseButtonClick(Callback<Int2> downCallback, Callback<Int2> upCallback, EventSystem::MouseButtonState btnState);
+	static void MouseButtonClick(Callback<> downCallback, Callback<> upCallback, EventSystem::MouseButtonState btnState);
 
 	static Callback<> UpdateCallback;
 	static Callback<int> KeyDownCallback;
 	static Callback<int> KeyUpCallback;
 	static Callback<int, int, int, int, int, int> MouseUpdateCallback;
 
-	static Callback<Int2> LeftMouseButtonDownCallback;
-	static Callback<Int2> LeftMouseButtonUpCallback;
+	static Callback<> LeftMouseButtonDownCallback;
+	static Callback<> LeftMouseButtonUpCallback;
 
-	static Callback<Int2> MiddleMouseButtonDownCallback;
-	static Callback<Int2> MiddleMouseButtonUpCallback;
+	static Callback<> MiddleMouseButtonDownCallback;
+	static Callback<> MiddleMouseButtonUpCallback;
 
-	static Callback<Int2> RightMouseButtonDownCallback;
-	static Callback<Int2> RightMouseButtonUpCallback;
+	static Callback<> RightMouseButtonDownCallback;
+	static Callback<> RightMouseButtonUpCallback;
 
-	static Callback<Int2> MouseMovementCallback;
+	static Callback<> MouseMovementCallback;
 	static Callback<> MouseWheelCallback;
 
 	static Int2 MousePosition;

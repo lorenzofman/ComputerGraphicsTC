@@ -53,7 +53,6 @@
 		<Unit filename="src/Color/ColorPalette.cpp" />
 		<Unit filename="src/Color/ColorPalette.h" />
 		<Unit filename="src/DataStructures/Array.h" />
-		<Unit filename="src/Helpers/Callback.cpp" />
 		<Unit filename="src/Helpers/Callback.h" />
 		<Unit filename="src/Interfaces/IRenderable.h" />
 		<Unit filename="src/Primitives/Constants.h" />

@@ -90,8 +90,7 @@ void Shape::DrawFilled(RGBAFloat color)
 void Shape::DrawFilledOutlined(RGBAFloat fillColor, RGBAFloat borderColor, float thickness)
 {
 	float ratio = 1 - thickness;
-	//Canvas2D::SetColor(borderColor);
-	Canvas2D::SetColor(RGBAFloat(1,1,1));
+	Canvas2D::SetColor(borderColor);
 	Draw();
 	Scale(ratio);
 	Canvas2D::SetColor(fillColor);

@@ -1,11 +1,14 @@
 #include "ColorPalette.h"
 
+
+ColorPalette::ColorPalette() : ColorPalette(Float2()) { }
+
 ColorPalette::ColorPalette(Float2 buttonPosition)
 {
 	this->position = buttonPosition;
 	this->open = false;
-	colorButton = new Button(Colors::Default, Rect(buttonPosition, Colors::Palette::ButtonHalfSize));
-	colorButton->ClickCallback.Register([this](Button* btn) {this->OnOpenPalette(); });
+	this->colorButton = new Button(Colors::Default, Rect(buttonPosition, Colors::Palette::ButtonHalfSize));
+	this->colorButton->ClickCallback.Register([this](Button* btn) {this->OnOpenPalette(); });
 	CreateButtons();
 }
 
@@ -29,7 +32,7 @@ void ColorPalette::OnOpenPalette()
 
 void ColorPalette::ClosePalette()
 {
-	 for (const auto & kv : buttons)
+	for (const auto & kv : buttons)
     {
         kv.first->active = false;
     }

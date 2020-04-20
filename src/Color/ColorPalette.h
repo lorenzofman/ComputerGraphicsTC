@@ -13,6 +13,7 @@
 class ColorPalette : public IRenderable
 {
 	public:
+	ColorPalette();
 	ColorPalette(Float2 buttonPosition);
 	Callback<RGBAFloat> colorUpdateCallback;
 

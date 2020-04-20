@@ -1,28 +1,25 @@
 #include "World.h"
 
-bool World::IsAltPressed = false;
-bool World::IsCtrlPressed = false;
-bool World::IsShiftPressed = false;
-
-World::Input World::CurrentInput = Input::None;
-
-Shape* World::SelectedShape = nullptr;
-std::vector<Shape*> World::Shapes;
-ShapeTransformer World::Transformer = ShapeTransformer();
-ColorPalette World::MainColorPalette = ColorPalette(Float2(Colors::Palette::ButtonHalfSize * 8, Colors::Palette::ButtonHalfSize));
-ColorPalette World::OutlineColorPalette = ColorPalette(Float2 (Colors::Palette::ButtonHalfSize * 20, Colors::Palette::ButtonHalfSize));
-
-World::InterfaceState World::CurrentState = World::InterfaceState::Idle;
-
-void World::BigBang()
+World::World(ShapeTransformer& transformer, ColorPalette& mainColorPalette, ColorPalette& outlineColorPalette) : 
+    transformerRef(transformer),
+    mainColorPaletteRef(mainColorPalette),
+    outlineColorPaletteRef(outlineColorPalette)
 {
-    EventSystem::UpdateCallback.Register(&OnRender);
-    EventSystem::KeyDownCallback.Register(&OnKeyDown);
-    EventSystem::KeyUpCallback.Register(&OnKeyUp);
-    EventSystem::LeftMouseButtonDownCallback.Register(&OnLeftMouseButtonDown);
-	EventSystem::MouseWheelCallback.Register(&OnMouseWheelUpdate);
-    MainColorPalette.colorUpdateCallback.Register(&UpdateMainColor);
-    OutlineColorPalette.colorUpdateCallback.Register(&UpdateOutlineColor);
+    EventSystem::UpdateCallback.Register([this] {this->OnRender(); });
+    EventSystem::KeyDownCallback.Register([this](int key) {this->OnKeyDown(key); });
+    EventSystem::KeyUpCallback.Register([this](int key) {this->OnKeyUp(key); });
+    EventSystem::LeftMouseButtonDownCallback.Register([this] {this->OnLeftMouseButtonDown(); });
+    EventSystem::MouseWheelCallback.Register([this] {this->OnMouseWheelUpdate(); });
+    mainColorPaletteRef.colorUpdateCallback.Register([this] (RGBAFloat color) {this->UpdateMainColor(color);});
+    outlineColorPaletteRef.colorUpdateCallback.Register([this](RGBAFloat color) {this->UpdateOutlineColor(color);});
+    selectedShape = nullptr;
+    
+    IsAltPressed = false;
+    IsCtrlPressed = false;
+    IsShiftPressed = false;
+
+    CurrentInput = Input::None;
+    CurrentState = InterfaceState::Idle;
 }
 
 void World::OnKeyDown(int key)
@@ -36,7 +33,7 @@ void World::OnKeyUp(int key)
 	ProcessModifiers(key, false);
 }
 
-void World::OnLeftMouseButtonDown(Int2 mousePos)
+void World::OnLeftMouseButtonDown()
 {
     CurrentInput = Input::Select;
 }
@@ -111,15 +108,15 @@ void World::OnRender()
     ProcessState();
     RenderShapes();
 
-	Transformer.Render();
+	transformerRef.Render();
 
 	Canvas2D::SetColor(Colors::White);
 	Canvas2D::DrawText(0, Colors::Palette::ButtonHalfSize - 5, "Fill Color:");
-    MainColorPalette.Render();
+    mainColorPaletteRef.Render();
 
 	Canvas2D::SetColor(Colors::White);
 	Canvas2D::DrawText(160, Colors::Palette::ButtonHalfSize - 5, "Outline Color:");
-    OutlineColorPalette.Render();
+    outlineColorPaletteRef.Render();
 
 }
 
@@ -207,9 +204,9 @@ void World::IdleState()
 
 void World::SelectObject()
 {
-    if (Transformer.IsMouseOver() == false &&
-		MainColorPalette.IsMouseOver() == false &&
-		OutlineColorPalette.IsMouseOver() == false)
+    if (transformerRef.IsMouseOver() == false &&
+		mainColorPaletteRef.IsMouseOver() == false &&
+		outlineColorPaletteRef.IsMouseOver() == false)
     {
         SetSelectedShape(GetFirstObjectMouseIsInside());
     }
@@ -234,75 +231,75 @@ Shape* World::GetFirstObjectMouseIsInside()
 
 void World::SetSelectedShape(Shape* selected)
 {
-    SelectedShape = selected;
-	Transformer.SetShape(selected);
+    selectedShape = selected;
+	transformerRef.SetShape(selected);
 }
 
 void World::UpdateOutlineThickness()
 {
-	if (SelectedShape == nullptr)
+	if (selectedShape == nullptr)
 	{
 		return;
 	}
-	float currentThickness = SelectedShape->GetOutlineThickness();
+	float currentThickness = selectedShape->GetOutlineThickness();
 	float change = EventSystem::MouseScrollDelta * OutlineScrollSpeed;
-	SelectedShape->SetOutlineThickness(currentThickness + change);
+	selectedShape->SetOutlineThickness(currentThickness + change);
 }
 
 void World::BringForward()
 {
-	if (SelectedShape == nullptr)
+	if (selectedShape == nullptr)
 	{
 		return;
 	}
-	RemoveShape(SelectedShape);
-	Shapes.insert(Shapes.begin(), SelectedShape);
+	RemoveShape(selectedShape);
+	Shapes.insert(Shapes.begin(), selectedShape);
 }
 
 void World::SendBackward()
 {
-	RemoveShape(SelectedShape);
-	Shapes.push_back(SelectedShape);
+	RemoveShape(selectedShape);
+	Shapes.push_back(selectedShape);
 }
 
 void World::GrabSelected()
 {
     SelectedState();
-    if (SelectedShape == nullptr)
+    if (selectedShape == nullptr)
     {
         return;
     }
-    SelectedShape->Translate(Float2(EventSystem::MousePositionDelta));
+    selectedShape->Translate(Float2(EventSystem::MousePositionDelta));
 }
 
 void World::RotateSelected()
 {
     SelectedState();
-    if (SelectedShape == nullptr)
+    if (selectedShape == nullptr)
     {
         return;
     }
     Float2 lastMousePosition = EventSystem::MousePosition - EventSystem::MousePositionDelta;
 
-    Float2 currentDifToCenter  = SelectedShape->GetCenter() - EventSystem::MousePosition;
-    Float2 previousDifToCenter = SelectedShape->GetCenter() - lastMousePosition;
+    Float2 currentDifToCenter  = selectedShape->GetCenter() - EventSystem::MousePosition;
+    Float2 previousDifToCenter = selectedShape->GetCenter() - lastMousePosition;
 
     float currentAngleToCenter  = atan2f(currentDifToCenter.x, currentDifToCenter.y);
     float previousAngleToCenter = atan2f(previousDifToCenter.x, previousDifToCenter.y);
 
     float rotationDelta = previousAngleToCenter - currentAngleToCenter;
-    SelectedShape->Rotate(rotationDelta);
+    selectedShape->Rotate(rotationDelta);
 }
 
 void World::ScaleSelected()
 {
     SelectedState();
-    if (SelectedShape == nullptr)
+    if (selectedShape == nullptr)
     {
         return;
     }
-    float currentDistance = Float2::Distance(EventSystem::MousePosition, SelectedShape->GetCenter());
-    float previousDistance = Float2::Distance(EventSystem::MousePosition - EventSystem::MousePositionDelta, SelectedShape->GetCenter());
+    float currentDistance = Float2::Distance(EventSystem::MousePosition, selectedShape->GetCenter());
+    float previousDistance = Float2::Distance(EventSystem::MousePosition - EventSystem::MousePositionDelta, selectedShape->GetCenter());
     float scaleDelta = currentDistance / previousDistance;
 
     if (ResultingRectIsBigEnough(scaleDelta) == false)
@@ -310,12 +307,12 @@ void World::ScaleSelected()
         return;
     }
 
-    SelectedShape->Scale(scaleDelta);
+    selectedShape->Scale(scaleDelta);
 }
 
 bool World::ResultingRectIsBigEnough(float scaleDelta)
 {
-    Rect rect = SelectedShape->GetRect();
+    Rect rect = selectedShape->GetRect();
     rect.Scale(scaleDelta);
     Float2 dif = rect.TopRight - rect.BottomLeft;
     return (dif.x >= MinShapeSize || dif.y >= MinShapeSize);
@@ -323,8 +320,8 @@ bool World::ResultingRectIsBigEnough(float scaleDelta)
 
 void World::Delete()
 {
-	RemoveShape(SelectedShape);
-    Transformer.SetShape(nullptr);
+	RemoveShape(selectedShape);
+    transformerRef.SetShape(nullptr);
 }
 
 void World::OpenFile()
@@ -350,20 +347,20 @@ void World::SaveFile()
 
 void World::UpdateMainColor(RGBAFloat color)
 {
-    if (SelectedShape == nullptr)
+    if (selectedShape == nullptr)
     {
         return;
     }
-    SelectedShape->SetMainColor(color);
+    selectedShape->SetMainColor(color);
 }
 
 void World::UpdateOutlineColor(RGBAFloat color)
 {
-	if (SelectedShape == nullptr)
+	if (selectedShape == nullptr)
 	{
 		return;
 	}
-    SelectedShape->SetOutlineColor(color);
+    selectedShape->SetOutlineColor(color);
 }
 
 void World::RenderShapes()
@@ -376,13 +373,13 @@ void World::RenderShapes()
 
 void World::CreateCircle()
 {
-	Shapes.push_back(new Circle(128, MainColorPalette.GetCurrentColor()));
+	Shapes.push_back(new Circle(128, mainColorPaletteRef.GetCurrentColor()));
 }
 
 void World::CreateRectangle()
 {
 	Rect rect = Rect(Float2(Screen::Center()), 128);
-	Shapes.push_back(new class Rectangle(rect, MainColorPalette.GetCurrentColor()));
+	Shapes.push_back(new class Rectangle(rect, mainColorPaletteRef.GetCurrentColor()));
 }
 
 void World::RemoveShape(Shape* shape)

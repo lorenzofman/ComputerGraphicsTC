@@ -9,16 +9,16 @@ Callback<int> EventSystem::KeyDownCallback;
 Callback<int> EventSystem::KeyUpCallback;
 Callback<int, int, int, int, int, int> EventSystem::MouseUpdateCallback;
 
-Callback<Int2> EventSystem::LeftMouseButtonDownCallback;
-Callback<Int2> EventSystem::LeftMouseButtonUpCallback;
+Callback<> EventSystem::LeftMouseButtonDownCallback;
+Callback<> EventSystem::LeftMouseButtonUpCallback;
 
-Callback<Int2> EventSystem::MiddleMouseButtonDownCallback;
-Callback<Int2> EventSystem::MiddleMouseButtonUpCallback;
+Callback<> EventSystem::MiddleMouseButtonDownCallback;
+Callback<> EventSystem::MiddleMouseButtonUpCallback;
 
-Callback<Int2> EventSystem::RightMouseButtonDownCallback;
-Callback<Int2> EventSystem::RightMouseButtonUpCallback;
+Callback<> EventSystem::RightMouseButtonDownCallback;
+Callback<> EventSystem::RightMouseButtonUpCallback;
 
-Callback<Int2> EventSystem::MouseMovementCallback;
+Callback<> EventSystem::MouseMovementCallback;
 Callback<> EventSystem::MouseWheelCallback;
 
 void EventSystem::OnUpdate()
@@ -66,7 +66,7 @@ void EventSystem::OnMouseUpdate(int button, int state, int wheel, int direction,
 	
 	if (MousePositionDelta != Int2(0,0))
 	{
-		MouseMovementCallback.Invoke(MousePositionDelta);
+		MouseMovementCallback.Invoke();
 	}
 
 	if (direction != 0 && direction != -2)
@@ -75,15 +75,15 @@ void EventSystem::OnMouseUpdate(int button, int state, int wheel, int direction,
 	}
 }
 
-void EventSystem::MouseButtonClick(Callback<Int2> downCallback, Callback<Int2> upCallback, EventSystem::MouseButtonState btnState)
+void EventSystem::MouseButtonClick(Callback<> downCallback, Callback<> upCallback, EventSystem::MouseButtonState btnState)
 {
 	switch (btnState)
 	{
 		case EventSystem::MouseButtonState::Down:
-			downCallback.Invoke(MousePosition);
+			downCallback.Invoke();
 			break;
 		case EventSystem::MouseButtonState::Up:
-			upCallback.Invoke(MousePosition);
+			upCallback.Invoke();
 			break;
 		default:
 			break;

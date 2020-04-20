@@ -22,8 +22,8 @@ ShapeTransformer::ShapeTransformer(Shape* shape)
 
 	leftMiddle->DragCallback.Register([this](Button*) {this->OnLeftMiddleDrag(); });
 	rightMiddle->DragCallback.Register([this](Button*) {this->OnRightMiddleDrag(); });
-
 }
+
 
 void ShapeTransformer::SetShape(Shape* shape)
 {
