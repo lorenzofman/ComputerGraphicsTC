@@ -14,7 +14,7 @@ class Polygon : public Shape
 {
 	public:
 
-	Polygon(Array<Float2> vertices, RGBAFloat filledColor, RGBAFloat outlineColor, float outlineThickness = 0);
+	Polygon(Array<Float2> vertices, RGBAFloat filledColor, RGBAFloat outlineColor = Colors::Blank, float outlineThickness = 0);
 	
 	Polygon(std::ifstream& stream);
 

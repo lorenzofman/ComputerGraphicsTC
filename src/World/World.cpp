@@ -70,29 +70,15 @@ void World::ProcessInput(int input)
 	{
         case World::Key::Enter: CurrentInput = Input::Confirm; break;
         case World::Key::Delete: CurrentInput = Input::Delete; break;
-        case World::Key::Colon: CurrentInput = Input::Colon; break;
 
-        case World::Key::Ctrl_P: CurrentInput = Input::NewPolygon; break;
-        case World::Key::Ctrl_R: CurrentInput = Input::NewRectangle; break;
-        case World::Key::Ctrl_C: CurrentInput = (IsCtrlPressed) ? Input::NewCircle : Input::None; break;
+        case World::Key::Ctrl_R: CurrentInput = Input::CreateRectangle; break;
+        case World::Key::Ctrl_C: CurrentInput = Input::CreateCircle; break;
 
         case World::Key::Ctrl_O: CurrentInput = Input::Open; break;
         case World::Key::Ctrl_S: CurrentInput = Input::Save; break;
 
-        case World::Key::Num_0: CurrentInput = Input::Num0; break;
-        case World::Key::Num_1: CurrentInput = Input::Num1; break;
-        case World::Key::Num_2: CurrentInput = Input::Num2; break;
-        case World::Key::Num_3: CurrentInput = Input::Num3; break;
-        case World::Key::Num_4: CurrentInput = Input::Num4; break;
-        case World::Key::Num_5: CurrentInput = Input::Num5; break;
-        case World::Key::Num_6: CurrentInput = Input::Num6; break;
-        case World::Key::Num_7: CurrentInput = Input::Num7; break;
-        case World::Key::Num_8: CurrentInput = Input::Num8; break;
-        case World::Key::Num_9: CurrentInput = Input::Num9; break;
-
         case World::Key::B: CurrentInput = Input::SendBackward; break;
         case World::Key::F: CurrentInput = Input::BringForward; break;
-        case World::Key::C: CurrentInput = (IsAltPressed) ? Input::ChangeColor : Input::ChangeOutlineColor; break;
 
         case World::Key::G: CurrentInput = Input::Grab; break;
         case World::Key::R: CurrentInput = Input::Rotate; break;
@@ -161,10 +147,6 @@ void World::SelectedState()
         case World::Input::MouseWheelUpdate:
             UpdateOutlineThickness();
             break;
-        case World::Input::ChangeColor:
-            break;
-        case World::Input::ChangeOutlineColor:
-            break;
         case World::Input::BringForward:
             BringForward();
             break;
@@ -187,11 +169,26 @@ void World::IdleState()
         case World::Input::Select:
             SelectObject();
             break;
-        case World::Input::NewCircle:
+        case World::Input::CreateCircle:
             CreateCircle();
             break;
-        case World::Input::NewRectangle:
+        case World::Input::CreateRectangle:
             CreateRectangle();
+            break;
+        case World::Input::CreateEquilatereumTriangle:
+            CreateRectangle();
+            break;
+        case World::Input::CreateIsoscelesTriangle:
+            CreateRectangle();
+            break;
+        case World::Input::CreateRectangleTriangle:
+            CreateRectangle();
+            break;
+        case World::Input::CreateStar:
+            CreateRectangle();
+            break;
+        case World::Input::CreateHeart:
+            //CreateRectangle();
             break;
         case World::Input::Open:
             OpenFile();
@@ -380,6 +377,29 @@ void World::CreateRectangle()
 {
 	Rect rect = Rect(Float2(Screen::Center()), 128);
 	Shapes.push_back(new class Rectangle(rect, mainColorPaletteRef.GetCurrentColor()));
+}
+
+void World::CreateRectangleTriangle()
+{
+    Float2* vertices = new Float2[3];
+    //vertices[0] = Float2()
+    //Shapes.push_back(new class Polygon((rect, mainColorPaletteRef.GetCurrentColor()));
+}
+
+void World::CreateIsoscelesTriangle()
+{
+}
+
+void World::CreateEquilatereumTriangle()
+{
+}
+
+void World::CreateStart()
+{
+}
+
+void World::CreateHeart()
+{
 }
 
 void World::RemoveShape(Shape* shape)

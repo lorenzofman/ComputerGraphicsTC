@@ -28,11 +28,16 @@ class World
 	enum class Key
 	{
 		Enter = 13,
+		Ctrl_A = 1,
 		Ctrl_C = 3,
+		Ctrl_E = 5,
+		Ctrl_H = 8,
+		Ctrl_I = 9,
 		Ctrl_O = 15,
 		Ctrl_P = 16,
 		Ctrl_R = 18,
 		Ctrl_S = 19,
+		Ctrl_T = 20,
 		Num_0 = 48,
 		Num_1 = 49,
 		Num_2 = 50,
@@ -71,28 +76,19 @@ class World
 		Grab,
 		Rotate,
 		Scale,
-		NewPolygon,
-		NewCircle,
-		NewRectangle,
+		CreateCircle,
+		CreateRectangle,
+		CreateStar,
+		CreateIsoscelesTriangle,
+		CreateRectangleTriangle,
+		CreateEquilatereumTriangle,
+		CreateHeart,
 		MouseWheelUpdate,
-		ChangeColor,
-		ChangeOutlineColor,
 		BringForward,
 		SendBackward,
 		Delete,
 		Open,
 		Save,
-		Num0,
-		Num1,
-		Num2,
-		Num3,
-		Num4,
-		Num5,
-		Num6,
-		Num7,
-		Num8,
-		Num9,
-		Colon
 	};
 	
 	bool IsShiftPressed;
@@ -143,10 +139,17 @@ class World
 	void UpdateMainColor(RGBAFloat color);
 	void UpdateOutlineColor(RGBAFloat color);
 
-
 	void CreateCircle();
 
 	void CreateRectangle();
+
+	void CreateRectangleTriangle();
+	void CreateIsoscelesTriangle();
+	void CreateEquilatereumTriangle();
+	
+	void CreateStart();
+
+	void CreateHeart();
 
 	void Message(const char* str);
 };
