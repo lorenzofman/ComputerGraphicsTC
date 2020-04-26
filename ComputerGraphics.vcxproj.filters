@@ -16,9 +16,6 @@
     <Filter Include="Header Files\Canvas2D">
       <UniqueIdentifier>{2437f0ef-35ba-40b1-b11e-1c9a86ee2cd7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Color">
-      <UniqueIdentifier>{82ac5cf6-4277-495b-b829-b31fc712eeba}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\DataStructures">
       <UniqueIdentifier>{4fbb72d3-aa97-449e-97c3-e5107fe249e9}</UniqueIdentifier>
     </Filter>
@@ -27,9 +24,6 @@
     </Filter>
     <Filter Include="Header Files\Serialization">
       <UniqueIdentifier>{8ecd6ad3-5a85-48cf-9e8d-c32687fa994e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Shapes">
-      <UniqueIdentifier>{2865995b-fda1-4382-b697-8f8bbdf9f278}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\World">
       <UniqueIdentifier>{a486b065-e992-4a42-8028-4b29c2b599ac}</UniqueIdentifier>
@@ -46,14 +40,8 @@
     <Filter Include="Source Files\Canvas2D">
       <UniqueIdentifier>{b08aa2a8-7ceb-4fb4-ada5-f28a7f0cc653}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Color">
-      <UniqueIdentifier>{f392655b-c5ff-40ff-89f3-fae4795b4c99}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Helpers">
       <UniqueIdentifier>{366b3afc-e437-40f3-b668-4d876f4de80d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Shapes">
-      <UniqueIdentifier>{5f64a157-67c7-4f82-8efa-7a30abe81000}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\UI">
       <UniqueIdentifier>{aea6771e-6afe-4823-b06b-699d9d10dade}</UniqueIdentifier>
@@ -66,6 +54,12 @@
     </Filter>
     <Filter Include="Source Files\Primitives">
       <UniqueIdentifier>{03e3848b-179f-45f9-a92b-1198e792be2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Curves">
+      <UniqueIdentifier>{8c03b1c7-743f-4dab-b893-8c18672cb5dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Curves">
+      <UniqueIdentifier>{7fb34b3e-2d9c-4126-8473-02bda400867a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -85,27 +79,6 @@
     <ClInclude Include="src\Canvas2D\Canvas2DExtensions.h">
       <Filter>Header Files\Canvas2D</Filter>
     </ClInclude>
-    <ClInclude Include="src\Shapes\Circle.h">
-      <Filter>Header Files\Shapes</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Shapes\Shape.h">
-      <Filter>Header Files\Shapes</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Shapes\Polygon.h">
-      <Filter>Header Files\Shapes</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Shapes\Rectangle.h">
-      <Filter>Header Files\Shapes</Filter>
-    </ClInclude>
-    <ClInclude Include="src\UI\ShapeTransformer.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Serialization\Serial.h">
-      <Filter>Header Files\Serialization</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Serialization\ShapeSerializer.h">
-      <Filter>Header Files\Serialization</Filter>
-    </ClInclude>
     <ClInclude Include="src\Primitives\Rect.h">
       <Filter>Header Files\Primitives</Filter>
     </ClInclude>
@@ -124,16 +97,10 @@
     <ClInclude Include="src\Helpers\Callback.h">
       <Filter>Header Files\Helpers</Filter>
     </ClInclude>
-    <ClInclude Include="src\Color\ColorPalette.h">
-      <Filter>Header Files\Color</Filter>
-    </ClInclude>
     <ClInclude Include="src\World\EventSystem.h">
       <Filter>Header Files\World</Filter>
     </ClInclude>
     <ClInclude Include="src\World\Screen.h">
-      <Filter>Header Files\World</Filter>
-    </ClInclude>
-    <ClInclude Include="src\World\World.h">
       <Filter>Header Files\World</Filter>
     </ClInclude>
     <ClInclude Include="src\Interfaces\IRenderable.h">
@@ -142,11 +109,20 @@
     <ClInclude Include="src\Primitives\RGBAFloat.h">
       <Filter>Header Files\Primitives</Filter>
     </ClInclude>
+    <ClInclude Include="src\Serialization\Serial.h">
+      <Filter>Header Files\Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Curves\BezierCurve.h">
+      <Filter>Header Files\Curves</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Helpers\Interpolation.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\World\World.h">
+      <Filter>Header Files\World</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\World\World.cpp">
-      <Filter>Source Files\World</Filter>
-    </ClCompile>
     <ClCompile Include="src\UI\Button.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
@@ -165,23 +141,8 @@
     <ClCompile Include="src\World\EventSystem.cpp">
       <Filter>Source Files\World</Filter>
     </ClCompile>
-    <ClCompile Include="src\Color\ColorPalette.cpp">
-      <Filter>Source Files\Color</Filter>
-    </ClCompile>
     <ClCompile Include="src\World\Main.cpp">
       <Filter>Source Files\World</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Shapes\Circle.cpp">
-      <Filter>Source Files\Shapes</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Shapes\Rectangle.cpp">
-      <Filter>Source Files\Shapes</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Shapes\Shape.cpp">
-      <Filter>Source Files\Shapes</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Shapes\Polygon.cpp">
-      <Filter>Source Files\Shapes</Filter>
     </ClCompile>
     <ClCompile Include="src\Helpers\Callback.cpp">
       <Filter>Source Files\Helpers</Filter>
@@ -189,20 +150,20 @@
     <ClCompile Include="src\Primitives\Rect.cpp">
       <Filter>Source Files\Primitives</Filter>
     </ClCompile>
-    <ClCompile Include="src\Serialization\ShapeSerializer.cpp">
-      <Filter>Source Files\Serialization</Filter>
-    </ClCompile>
     <ClCompile Include="src\Serialization\Serial.cpp">
       <Filter>Source Files\Serialization</Filter>
     </ClCompile>
     <ClCompile Include="src\World\Screen.cpp">
       <Filter>Source Files\World</Filter>
     </ClCompile>
-    <ClCompile Include="src\UI\ShapeTransformer.cpp">
-      <Filter>Source Files\UI</Filter>
-    </ClCompile>
     <ClCompile Include="src\Primitives\RGBAFloat.cpp">
       <Filter>Source Files\Primitives</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Curves\BezierCurve.cpp">
+      <Filter>Source Files\Curves</Filter>
+    </ClCompile>
+    <ClCompile Include="src\World\World.cpp">
+      <Filter>Source Files\World</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

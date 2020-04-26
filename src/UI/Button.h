@@ -6,7 +6,6 @@
 #include "../Canvas2D/Canvas2D.h"
 #include "../Helpers/Callback.h"
 #include "../World/EventSystem.h"
-#include "../Shapes/Rectangle.h"
 
 constexpr int DragThreshold = 2;
 constexpr float ButtonMouseOverColorMultiplier = 0.8f;
