@@ -12,6 +12,6 @@ class World
 
 	private:
 
-	BezierCurve bezier;
+	BezierCurve* bezier;
 	void Update();
 };

@@ -161,3 +161,9 @@ bool Rect::IsPointInsideUnRotatedRect(Float2 point)
 			point.x < TopRight	.x &&
 			point.y < TopRight	.y);
 }
+
+void Rect::Draw(RGBAFloat color)
+{
+	Canvas2D::SetColor(color);
+	Canvas2D::DrawFilledRect((int) BottomLeft.x, (int) BottomLeft.y, (int) TopRight.x, (int) TopRight.y);
+}

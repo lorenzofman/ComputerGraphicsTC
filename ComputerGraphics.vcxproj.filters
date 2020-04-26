@@ -121,6 +121,12 @@
     <ClInclude Include="src\World\World.h">
       <Filter>Header Files\World</Filter>
     </ClInclude>
+    <ClInclude Include="src\Primitives\Circle.h">
+      <Filter>Header Files\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Primitives\Shape.h">
+      <Filter>Header Files\Primitives</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\UI\Button.cpp">
@@ -164,6 +170,9 @@
     </ClCompile>
     <ClCompile Include="src\World\World.cpp">
       <Filter>Source Files\World</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Primitives\Circle.cpp">
+      <Filter>Header Files\Primitives</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

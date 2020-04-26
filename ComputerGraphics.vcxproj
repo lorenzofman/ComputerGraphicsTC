@@ -159,11 +159,13 @@
     <ClInclude Include="src\Helpers\Callback.h" />
     <ClInclude Include="src\Helpers\Interpolation.h" />
     <ClInclude Include="src\Interfaces\IRenderable.h" />
+    <ClInclude Include="src\Primitives\Circle.h" />
     <ClInclude Include="src\Primitives\Constants.h" />
     <ClInclude Include="src\Primitives\Float2.h" />
     <ClInclude Include="src\Primitives\Int2.h" />
     <ClInclude Include="src\Primitives\Rect.h" />
     <ClInclude Include="src\Primitives\RGBAFloat.h" />
+    <ClInclude Include="src\Primitives\Shape.h" />
     <ClInclude Include="src\Primitives\Types.h" />
     <ClInclude Include="src\Serialization\Serial.h" />
     <ClInclude Include="src\UI\Button.h" />
@@ -176,6 +178,7 @@
     <ClCompile Include="src\Canvas2D\Canvas2DExtensions.cpp" />
     <ClCompile Include="src\Curves\BezierCurve.cpp" />
     <ClCompile Include="src\Helpers\Callback.cpp" />
+    <ClCompile Include="src\Primitives\Circle.cpp" />
     <ClCompile Include="src\Primitives\Float2.cpp" />
     <ClCompile Include="src\Primitives\Int2.cpp" />
     <ClCompile Include="src\Primitives\Rect.cpp" />

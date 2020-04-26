@@ -1,15 +1,23 @@
 #include "Button.h"
+
 #include <iostream>
+
 Button* Button::PressedButton;
-Button::Button(RGBAFloat color, Rect rect)
+
+Button::Button(RGBAFloat color, Shape* shape)
 {
 	EventSystem::LeftMouseButtonDownCallback.Register([this]{ this->OnLeftMouseButtonDown();});
 	EventSystem::LeftMouseButtonUpCallback.Register([this] {this->OnLeftMouseButtonUp(); });
-	this->rect = rect;
+	this->shape = shape;
 	this->color = color;
 	this->drag = false;
 	this->updateCallbackId = -1;
 	this->active = true;
+}
+
+bool Button::IsMouseOver()
+{
+	return shape->IsPointInside(EventSystem::MousePosition);
 }
 
 void Button::OnMousePositionUpdate()
@@ -43,7 +51,7 @@ void Button::OnLeftMouseButtonDown()
 	{
 		return;
 	}
-	if (rect.IsPointInside(EventSystem::MousePosition) == false)
+	if (shape->IsPointInside(EventSystem::MousePosition) == false)
 	{
 		return;
 	}
@@ -69,25 +77,4 @@ void Button::OnLeftMouseButtonUp()
 	drag = false;
 	PressedButton = nullptr;
 	EventSystem::MouseMovementCallback.Deregister(updateCallbackId);
-}
-
-void Button::Render()
-{
-	if (active == false)
-	{
-		return;
-	}
-	RGBAFloat color = this->color;
-	bool mouseHover = rect.IsPointInside(EventSystem::MousePosition);
-	if (mouseHover)
-	{
-		MouseOver(color);
-	}
-	Canvas2D::SetColor(color);
-	Canvas2D::DrawFilledRect((int)rect.BottomLeft.x, (int)rect.BottomLeft.y, (int)rect.TopRight.x, (int)rect.TopRight.y);
-}
-
-void Button::MouseOver(RGBAFloat& color)
-{
-	color *= ButtonMouseOverColorMultiplier;
 }

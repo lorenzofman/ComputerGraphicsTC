@@ -2,11 +2,11 @@
 World::World()
 {
 	EventSystem::UpdateCallback.Register([this] {this->Update(); });
-	bezier = BezierCurve();
+	bezier = new BezierCurve();
 }
 
 void World::Update()
 {
 	Canvas2D::ClearScreen(Colors::Background);
-	bezier.Render();
+	bezier->Render();
 }

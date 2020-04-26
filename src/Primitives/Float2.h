@@ -1,6 +1,9 @@
 #pragma once
+
 struct Int2;
+
 #include "Int2.h"
+
 struct Float2
 {
 	float x, y;
