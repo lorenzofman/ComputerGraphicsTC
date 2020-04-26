@@ -31,8 +31,8 @@ void Canvas2DExtensions::DrawRoundedRect(Rect rect, RGBAFloat color, float round
 	vertical.BottomLeft.x += roundness;
 	vertical.TopRight.x -= roundness;
 	int circleSegments = (int) roundness * 2;
-	Canvas2D::DrawFilledRect((int) horizontal.BottomLeft.x, (int) horizontal.BottomLeft.y, (int) horizontal.TopRight.x, (int) horizontal.TopRight.y);
-	Canvas2D::DrawFilledRect((int) vertical.BottomLeft.x, (int) vertical.BottomLeft.y, (int) vertical.TopRight.x, (int) vertical.TopRight.y);
+	Canvas2D::DrawFilledRect(horizontal.BottomLeft, horizontal.TopRight);
+	Canvas2D::DrawFilledRect(vertical.BottomLeft, vertical.TopRight);
 
 	Rect circlesRect = rect;
 	Float2 offset = Float2(roundness, roundness);

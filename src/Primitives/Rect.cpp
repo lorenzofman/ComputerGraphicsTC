@@ -70,6 +70,13 @@ Rect::Rect(Array<Float2> points)
 	rotation = 0;
 }
 
+void Rect::SetPosition(Float2 position)
+{
+	Float2 center = Center();
+	Float2 dif = position - center;
+	Translate(dif);
+}
+
 void Rect::Translate(Float2 translation)
 {
 	BottomLeft += translation;
@@ -165,5 +172,5 @@ bool Rect::IsPointInsideUnRotatedRect(Float2 point)
 void Rect::Draw(RGBAFloat color)
 {
 	Canvas2D::SetColor(color);
-	Canvas2D::DrawFilledRect((int) BottomLeft.x, (int) BottomLeft.y, (int) TopRight.x, (int) TopRight.y);
+	Canvas2D::DrawFilledRect(BottomLeft, TopRight);
 }

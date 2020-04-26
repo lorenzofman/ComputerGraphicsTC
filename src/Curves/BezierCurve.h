@@ -22,6 +22,7 @@ class BezierCurve : public IRenderable
 	void AddSegment(Float2 point);
 	virtual void Render() override;
 	void OnButtonDrag(Button* button);
+	void OnMouseClick();
 	private:
 	
 	std::vector<Float2> points = std::vector<Float2>();
@@ -29,8 +30,14 @@ class BezierCurve : public IRenderable
 	int segmentsCount;
 	RGBAFloat color;
 
+	bool InsideBezier(int idx);
+	bool IsAnchor(int idx);
+	bool IsTangent(int idx);
+	void TranslatePoint(int idx, Float2 delta);
+	void SetPoint(int idx, Float2 delta);
+	bool ButtonClick();
 	int GetButtonIndex(Button* button);
-	void AddPoint(Float2 point);
+	void AddPoint(Float2 point, bool anchor);
 	void DrawBezierSegment(Float2 a, Float2 b, Float2 c, Float2 d);
 
 };

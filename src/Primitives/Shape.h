@@ -9,4 +9,5 @@ class Shape
 	virtual bool IsPointInside(Float2) = 0;
 	virtual void Draw(RGBAFloat) = 0;
 	virtual void Translate(Float2) = 0;
+	virtual void SetPosition(Float2) = 0;
 };

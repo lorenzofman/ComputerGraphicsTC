@@ -71,38 +71,38 @@ Canvas2D::Canvas2D(int* h, int* w, std::string title,
 	RunCanvas();
 }
 
-void Canvas2D::DrawPoint(int x, int y)
+void Canvas2D::DrawPoint(Float2 point)
 {
 	glBegin(GL_POINTS);
-	glVertex2d(x, y);
+	glVertex2d(point.x, point.y);
 	glEnd();
 }
 
-void Canvas2D::DrawLine(int x1, int y1, int x2, int y2)
+void Canvas2D::DrawLine(Float2 start, Float2 end)
 {
 	glBegin(GL_LINES);
-	glVertex2d(x1, y1);
-	glVertex2d(x2, y2);
+	glVertex2d(start.x, start.y);
+	glVertex2d(end.x, end.y);
 	glEnd();
 }
 
-void Canvas2D::DrawRect(int x1, int y1, int x2, int y2)
+void Canvas2D::DrawRect(Float2 bottomLeft, Float2 topRight)
 {
 	glBegin(GL_LINE_LOOP);
-	glVertex2d(x1, y1);
-	glVertex2d(x1, y2);
-	glVertex2d(x2, y2);
-	glVertex2d(x2, y1);
+	glVertex2d(bottomLeft.x, bottomLeft.y);
+	glVertex2d(topRight.x, topRight.y);
+	glVertex2d(topRight.x, topRight.y);
+	glVertex2d(topRight.x, bottomLeft.x);
 	glEnd();
 }
 
-void Canvas2D::DrawFilledRect(int x1, int y1, int x2, int y2)
+void Canvas2D::DrawFilledRect(Float2 bottomLeft, Float2 topRight)
 {
 	glBegin(GL_QUADS);
-	glVertex2d(x1, y1);
-	glVertex2d(x1, y2);
-	glVertex2d(x2, y2);
-	glVertex2d(x2, y1);
+	glVertex2d(bottomLeft.x, bottomLeft.y);
+	glVertex2d(topRight.x, topRight.y);
+	glVertex2d(topRight.x, topRight.y);
+	glVertex2d(topRight.x, bottomLeft.x);
 	glEnd();
 }
 
@@ -159,12 +159,12 @@ void Canvas2D::DrawFilledCircle(Float2 pos, float radius, int divisions)
 	glEnd();
 }
 
-void Canvas2D::DrawText(int x, int y, const char* t)
+void Canvas2D::DrawText(Float2 pos, const char* t)
 {
 	int tam = (int)strlen(t);
 	for (int c = 0; c < tam; c++)
 	{
-		glRasterPos2i(x + c * 10, y);
+		glRasterPos2i((int) pos.x + c * 10, (int) pos.y);
 		glutBitmapCharacter(GLUT_BITMAP_8_BY_13, t[c]);
 	}
 }

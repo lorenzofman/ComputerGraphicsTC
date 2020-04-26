@@ -19,11 +19,11 @@ class Canvas2D
 		void(OnMouseUpdateCallback(int, int, int, int, int, int)),
 		void(OnRender(void)));
 
-	static void DrawPoint(int, int);
-	static void DrawLine(int, int, int, int);
+	static void DrawPoint(Float2);
+	static void DrawLine(Float2, Float2);
 
-	static void DrawRect(int, int, int, int);
-	static void DrawFilledRect(int, int, int, int);
+	static void DrawRect(Float2, Float2);
+	static void DrawFilledRect(Float2, Float2);
 
 	static void DrawPolygon(Float2 vertices[], int);
 	static void DrawFilledPolygon(Float2 vertices[], int);
@@ -31,7 +31,7 @@ class Canvas2D
 	static void DrawCircle(Float2 pos, float radius, int divisions);
 	static void DrawFilledCircle(Float2 pos, float radius, int divisions);
 
-	static void DrawText(int, int, const char*);
+	static void DrawText(Float2 pos, const char*);
 
 	static void SetColor(RGBAFloat color);
 	static void ClearScreen(RGBAFloat color);

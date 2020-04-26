@@ -20,6 +20,7 @@ class Rect : public Shape
 	Rect(Float2 bottomLeft, Float2 topRight);
 	Rect(Array<Float2> points);
 
+	void SetPosition(Float2 position) override;
 	void Translate(Float2 translation) override;
 	void Rotate(float rotation);
 	void Scale(float amount);

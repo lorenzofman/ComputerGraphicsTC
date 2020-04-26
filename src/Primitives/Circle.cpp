@@ -15,10 +15,15 @@ bool Circle::IsPointInside(Float2 point)
 void Circle::Draw(RGBAFloat color)
 {
 	Canvas2D::SetColor(color);
-	Canvas2D::DrawFilledCircle(center, radius, (int)(radius * 1.41f));
+	Canvas2D::DrawFilledCircle(center, radius, 32);
 }
 
 void Circle::Translate(Float2 delta)
 {
 	center += delta;
+}
+
+void Circle::SetPosition(Float2 pos)
+{
+	center = pos;
 }

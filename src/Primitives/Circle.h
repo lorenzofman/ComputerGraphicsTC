@@ -12,6 +12,7 @@ class Circle : public Shape
 	virtual bool IsPointInside(Float2 point) override;
 	virtual void Draw(RGBAFloat color) override;
 	virtual void Translate(Float2 delta) override;
+	virtual void SetPosition(Float2 pos) override;
 	
 	private:
 	float radius;
