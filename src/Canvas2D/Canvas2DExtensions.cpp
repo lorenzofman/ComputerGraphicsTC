@@ -46,3 +46,19 @@ void Canvas2DExtensions::DrawRoundedRect(Rect rect, RGBAFloat color, float round
 	Canvas2D::DrawFilledCircle(circlesRect.TopLeft, roundness, circleSegments);
 
 }
+
+void Canvas2DExtensions::DrawDashedLine(Float2 start, Float2 end, float dash, float space)
+{
+	Float2 dir = end - start;
+	Float2 current = start;
+	float length = dir.GetLength();
+	int segments = (int) (length / (dash + space));
+	float step = 0;
+	for (int i = 0; i < segments; i++)
+	{
+		float t0 = step / length;
+		float t1 = (step + dash) / length;
+		Canvas2D::DrawLine(Interpolation::Linear(start, end, t0), Interpolation::Linear(start, end, t1));
+		step += dash + space;
+	}
+}

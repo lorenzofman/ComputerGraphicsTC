@@ -21,9 +21,9 @@ struct Float2
 	Float2 operator * (float const& constant) const;
 	void operator *= (float const& constant);
 	void Rotate(float rot);
-	float GetLength();
+	float GetLength() const;
 	void Normalize();
-	Float2 GetNormalized();
+	Float2 GetNormalized() const;
 	Float2 PerpendicularClockwise();
 	Float2 PerpendicularCounterClockwise();
 

@@ -14,8 +14,28 @@ void World::OnUpdate()
 
 void World::OnKeyDown(int key)
 {
-	if (key == ' ')
+	switch (key)
+	{
+	case ' ':
 	{
 		bezier->StartAnimation();
+		break;
+	}
+	case 'c':
+	{
+		bezier->SetDrawConstructionGraph();
+		break;
+	}
+	case 'f':
+	{
+		bezier->SetDrawBlendingFunctions();
+		break;
+	}
+	case 'g':
+	{
+		bezier->SetDrawControlGraph();
+		break;
+	}
+	default: break;
 	}
 }

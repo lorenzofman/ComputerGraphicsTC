@@ -63,7 +63,7 @@ void Float2::Rotate(float rot)
 	y = (float) (x0 * sinf(rot) + y * cosf(rot));
 }
 
-float Float2::GetLength()
+float Float2::GetLength() const
 {
 	return Float2::Distance(*this, Float2(0, 0));
 }
@@ -73,7 +73,7 @@ void Float2::Normalize()
 	*this *= 1 / GetLength();
 }
 
-Float2 Float2::GetNormalized()
+Float2 Float2::GetNormalized() const
 {
 	return *this * (1 / GetLength());
 }

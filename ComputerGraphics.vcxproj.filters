@@ -127,6 +127,9 @@
     <ClInclude Include="src\Primitives\Shape.h">
       <Filter>Header Files\Primitives</Filter>
     </ClInclude>
+    <ClInclude Include="src\Helpers\MathExtensions.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\UI\Button.cpp">
