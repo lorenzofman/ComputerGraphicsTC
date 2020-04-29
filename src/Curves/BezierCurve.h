@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <iostream>
 
 #include "../Interfaces/IRenderable.h"
 #include "../Primitives/Float2.h"
@@ -23,22 +24,29 @@ class BezierCurve : public IRenderable
 	virtual void Render() override;
 	void OnButtonDrag(Button* button);
 	void OnMouseClick();
+	void StartAnimation();
+	
 	private:
 	
 	std::vector<Float2> points = std::vector<Float2>();
 	std::vector<Button*> buttons = std::vector<Button*>();
 	int segmentsCount;
 	RGBAFloat color;
-
-	bool InsideBezier(int idx);
-	bool IsAnchor(int idx);
-	bool IsTangent(int idx);
-	void TranslatePoint(int idx, Float2 delta);
-	void SetPoint(int idx, Float2 delta);
+	float animationPercent;
+	bool InsideBezier(uint idx);
+	bool IsAnchor(uint idx);
+	bool IsTangent(uint idx);
+	void TranslatePoint(uint idx, Float2 delta);
+	void SetPoint(uint idx, Float2 delta);
 	bool ButtonClick();
-	int GetButtonIndex(Button* button);
+	uint GetButtonIndex(Button* button);
 	void AddPoint(Float2 point, bool anchor);
-	void DrawBezierSegment(Float2 a, Float2 b, Float2 c, Float2 d);
+	void DrawBezierSegment(Float2 a, Float2 b, Float2 c, Float2 d, float end = 1.0f);
+	void DrawAnimatedCurve(float);
+	void DrawBlendingFunctions(float);
+	void DrawCurve();
+
+	void DrawEditor();
 
 };
 

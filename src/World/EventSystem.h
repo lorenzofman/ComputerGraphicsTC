@@ -1,8 +1,14 @@
 #pragma once
 
+#include <chrono>
+#include <thread>
+#include <iostream>
+
 #include "../Helpers/Callback.h"
 
 #include "../Primitives/Int2.h"
+
+#include "../Primitives/Constants.h"
 
 class EventSystem
 {
@@ -20,7 +26,7 @@ class EventSystem
 		Down = 0,
 		Up = 1
 	};
-
+	static void Configure();
 	static void OnUpdate();
 	static void OnKeyDown(int key);
 	static void OnKeyUp(int key);
