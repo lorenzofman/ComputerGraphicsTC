@@ -333,7 +333,7 @@ void BezierCurve::SetDrawConstructionGraph()
 
 void BezierCurve::SetDrawBlendingFunctions()
 {
-	drawBlendingFunctions != drawBlendingFunctions;
+	drawBlendingFunctions = !drawBlendingFunctions;
 }
 
 void BezierCurve::SetDrawControlGraph()
