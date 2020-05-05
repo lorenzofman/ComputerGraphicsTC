@@ -3,8 +3,6 @@
 #include "RGBAFloat.h"
 #include "Types.h"
 
-const int TargetFramesPerSeconds = 60;
-
 namespace Colors
 {
 	static const RGBAFloat Background = RGBAFloat(0.15f, 0.15f, 0.15f);

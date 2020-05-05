@@ -10,6 +10,15 @@ void World::OnUpdate()
 {
 	Canvas2D::ClearScreen(Colors::Background);
 	bezier->Render();
+	DisplayFramesPerSeconds();
+}
+
+void World::DisplayFramesPerSeconds()
+{
+	int fps = (int) (1.0 / EventSystem::LastFrameDuration);
+	char* str = new char[11];
+	sprintf(str, "%i", fps);
+	Canvas2D::DrawText(Float2::Zero, str);
 }
 
 void World::OnKeyDown(int key)

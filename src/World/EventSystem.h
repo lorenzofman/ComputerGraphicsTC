@@ -54,4 +54,5 @@ class EventSystem
 	static Int2 MousePosition;
 	static Int2 MousePositionDelta;
 	static int MouseScrollDelta;
+	static double LastFrameDuration;
 };

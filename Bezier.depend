@@ -1,0 +1,182 @@
+# depslib dependency file v1.0
+1587929447 source:c:\users\lorenzofman\source\repos\computergraphicstc\src\canvas2d\canvas2d.cpp
+	"Canvas2D.h"
+	<GL/glut.h>
+
+1588693142 c:\users\lorenzofman\source\repos\computergraphicstc\src\canvas2d\canvas2d.h
+	<GL/glut.h>
+	<GL/freeglut_ext.h>
+	<string>
+	<cmath>
+	"../Primitives/Float2.h"
+	"../Primitives/RGBAFloat.h"
+
+1587780527 c:\users\lorenzofman\source\repos\computergraphicstc\include\gl\glut.h
+	"freeglut_std.h"
+
+1587780527 c:\users\lorenzofman\source\repos\computergraphicstc\include\gl\freeglut_std.h
+	<windows.h>
+	<EGL/egl.h>
+	<GLES/gl.h>
+	<GLES2/gl2.h>
+	<OpenGL/gl.h>
+	<OpenGL/glu.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<stdlib.h>
+
+1587780527 c:\users\lorenzofman\source\repos\computergraphicstc\include\gl\freeglut_ext.h
+	<stdarg.h>
+
+1588181608 c:\users\lorenzofman\source\repos\computergraphicstc\src\primitives\float2.h
+	"Int2.h"
+
+1587780527 c:\users\lorenzofman\source\repos\computergraphicstc\src\primitives\int2.h
+	"Float2.h"
+
+1587780527 c:\users\lorenzofman\source\repos\computergraphicstc\src\primitives\rgbafloat.h
+
+1588182162 source:c:\users\lorenzofman\source\repos\computergraphicstc\src\canvas2d\canvas2dextensions.cpp
+	"Canvas2DExtensions.h"
+
+1588183157 c:\users\lorenzofman\source\repos\computergraphicstc\src\canvas2d\canvas2dextensions.h
+	<string>
+	"Canvas2D.h"
+	"../Primitives/Float2.h"
+	"../Primitives/Rect.h"
+	"../Helpers/Interpolation.h"
+
+1587930421 c:\users\lorenzofman\source\repos\computergraphicstc\src\primitives\rect.h
+	"../DataStructures/Array.h"
+	"Float2.h"
+	"Shape.h"
+	"../Canvas2D/Canvas2D.h"
+
+1587780527 c:\users\lorenzofman\source\repos\computergraphicstc\src\datastructures\array.h
+	<vector>
+
+1587930323 c:\users\lorenzofman\source\repos\computergraphicstc\src\primitives\shape.h
+	"Float2.h"
+	"RGBAFloat.h"
+
+1588697392 c:\users\lorenzofman\source\repos\computergraphicstc\src\helpers\interpolation.h
+
+1587780527 source:c:\users\lorenzofman\source\repos\computergraphicstc\src\helpers\callback.cpp
+	"Callback.h"
+
+1587780527 c:\users\lorenzofman\source\repos\computergraphicstc\src\helpers\callback.h
+	<algorithm>
+	<functional>
+	<vector>
+
+1587930363 source:c:\users\lorenzofman\source\repos\computergraphicstc\src\primitives\circle.cpp
+	"Circle.h"
+	"Constants.h"
+
+1587930356 c:\users\lorenzofman\source\repos\computergraphicstc\src\primitives\circle.h
+	"Float2.h"
+	"Shape.h"
+	"RGBAFloat.h"
+	"../Canvas2D/Canvas2D.h"
+
+1588697415 c:\users\lorenzofman\source\repos\computergraphicstc\src\primitives\constants.h
+	"RGBAFloat.h"
+	"Types.h"
+
+1587780527 c:\users\lorenzofman\source\repos\computergraphicstc\src\primitives\types.h
+
+1588181604 source:c:\users\lorenzofman\source\repos\computergraphicstc\src\primitives\float2.cpp
+	<cmath>
+	"Float2.h"
+
+1587780527 source:c:\users\lorenzofman\source\repos\computergraphicstc\src\primitives\int2.cpp
+	<cmath>
+	"Int2.h"
+
+1587930417 source:c:\users\lorenzofman\source\repos\computergraphicstc\src\primitives\rect.cpp
+	<cmath>
+	"Rect.h"
+	"Constants.h"
+
+1587780527 source:c:\users\lorenzofman\source\repos\computergraphicstc\src\primitives\rgbafloat.cpp
+	"RGBAFloat.h"
+
+1587780527 source:c:\users\lorenzofman\source\repos\computergraphicstc\src\serialization\serial.cpp
+	"Serial.h"
+
+1587780527 c:\users\lorenzofman\source\repos\computergraphicstc\src\serialization\serial.h
+	<fstream>
+	<ostream>
+	<vector>
+
+1587924366 source:c:\users\lorenzofman\source\repos\computergraphicstc\src\ui\button.cpp
+	"Button.h"
+	<iostream>
+
+1587924366 c:\users\lorenzofman\source\repos\computergraphicstc\src\ui\button.h
+	"../Interfaces/IRenderable.h"
+	"../Primitives/RGBAFloat.h"
+	"../Primitives/Shape.h"
+	"../Canvas2D/Canvas2D.h"
+	"../Helpers/Callback.h"
+	"../World/EventSystem.h"
+
+1587780527 c:\users\lorenzofman\source\repos\computergraphicstc\src\interfaces\irenderable.h
+
+1588692613 c:\users\lorenzofman\source\repos\computergraphicstc\src\world\eventsystem.h
+	<chrono>
+	<thread>
+	<iostream>
+	"../Helpers/Callback.h"
+	"../Primitives/Int2.h"
+	"../Primitives/Constants.h"
+
+1588693698 source:c:\users\lorenzofman\source\repos\computergraphicstc\src\world\eventsystem.cpp
+	"EventSystem.h"
+
+1588176020 source:c:\users\lorenzofman\source\repos\computergraphicstc\src\world\main.cpp
+	"EventSystem.h"
+	"World.h"
+	"Screen.h"
+	"../Canvas2D/Canvas2D.h"
+
+1588692318 c:\users\lorenzofman\source\repos\computergraphicstc\src\world\world.h
+	"EventSystem.h"
+	"Screen.h"
+	"../Curves/BezierCurve.h"
+	"../Canvas2D/Canvas2D.h"
+	"../Primitives/Constants.h"
+
+1587780527 c:\users\lorenzofman\source\repos\computergraphicstc\src\world\screen.h
+	"../Primitives/Int2.h"
+
+1588182127 c:\users\lorenzofman\source\repos\computergraphicstc\src\curves\beziercurve.h
+	<vector>
+	<iostream>
+	<functional>
+	"../Interfaces/IRenderable.h"
+	"../Primitives/Float2.h"
+	"../Primitives/RGBAFloat.h"
+	"../Primitives/Constants.h"
+	"../Primitives/Types.h"
+	"../Primitives/Circle.h"
+	"../DataStructures/Array.h"
+	"../Helpers/Interpolation.h"
+	"../Helpers/MathExtensions.h"
+	"../Canvas2D/Canvas2D.h"
+	"../Canvas2D/Canvas2DExtensions.h"
+	"../World/Screen.h"
+	"../UI/Button.h"
+	"../Primitives/Rect.h"
+
+1588175792 c:\users\lorenzofman\source\repos\computergraphicstc\src\helpers\mathextensions.h
+
+1587780527 source:c:\users\lorenzofman\source\repos\computergraphicstc\src\world\screen.cpp
+	"Screen.h"
+
+1588693342 source:c:\users\lorenzofman\source\repos\computergraphicstc\src\world\world.cpp
+	"World.h"
+
+1588693463 source:c:\users\lorenzofman\source\repos\computergraphicstc\src\curves\beziercurve.cpp
+	"BezierCurve.h"
+

@@ -50,7 +50,6 @@ void Canvas2DExtensions::DrawRoundedRect(Rect rect, RGBAFloat color, float round
 void Canvas2DExtensions::DrawDashedLine(Float2 start, Float2 end, float dash, float space)
 {
 	Float2 dir = end - start;
-	Float2 current = start;
 	float length = dir.GetLength();
 	int segments = (int) (length / (dash + space));
 	float step = 0;

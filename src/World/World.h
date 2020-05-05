@@ -13,5 +13,6 @@ class World
 	private:
 	BezierCurve* bezier;
 	void OnUpdate();
+	void DisplayFramesPerSeconds();
 	void OnKeyDown(int);
 };

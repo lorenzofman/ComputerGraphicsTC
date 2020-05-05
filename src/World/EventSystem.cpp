@@ -1,12 +1,11 @@
 
 #include "EventSystem.h"
 
-
 std::chrono::steady_clock::time_point lastTime;
 Int2 EventSystem::MousePosition;
 Int2 EventSystem::MousePositionDelta;
 int EventSystem::MouseScrollDelta = 0;
-
+double EventSystem::LastFrameDuration = 0;
 Callback<> EventSystem::UpdateCallback;
 Callback<int> EventSystem::KeyDownCallback;
 Callback<int> EventSystem::KeyUpCallback;
@@ -31,14 +30,8 @@ void EventSystem::Configure()
 
 void EventSystem::OnUpdate()
 {
-	int targetMilisecondsPerFrame = 1000 / TargetFramesPerSeconds;
-	int targetMicrosecondsPerFrame = targetMilisecondsPerFrame * 1000;
 	auto current = std::chrono::steady_clock::now();
-	long long duration = std::chrono::duration_cast<std::chrono::microseconds>(current - lastTime).count();
-	if (duration < targetMicrosecondsPerFrame)
-	{
-		std::this_thread::sleep_for(std::chrono::microseconds(targetMicrosecondsPerFrame - duration));
-	}
+	LastFrameDuration = (double) std::chrono::duration_cast<std::chrono::nanoseconds>(current - lastTime).count() / 1e9;
 	lastTime = std::chrono::steady_clock::now();
 	UpdateCallback.Invoke();
 	MousePositionDelta = Int2(0, 0);
@@ -80,7 +73,7 @@ void EventSystem::OnMouseUpdate(int button, int state, int wheel, int direction,
 		default:
 			break;
 	}
-	
+
 	if (MousePositionDelta != Int2(0,0))
 	{
 		MouseMovementCallback.Invoke();

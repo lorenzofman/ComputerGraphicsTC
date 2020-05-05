@@ -29,12 +29,12 @@ void BezierCurve::AddSegment(const Float2& anchor)
 
 void BezierCurve::Render()
 {
-	if (animationPercent < 1.0f) 
+	if (animationPercent < 1.0f)
 	{
 		DrawAnimatedCurve(animationPercent);
-		animationPercent += 1.0f / (TargetFramesPerSeconds * Bezier::AnimationDurationPerSegment * segmentsCount);
+		animationPercent += EventSystem::LastFrameDuration / (Bezier::AnimationDurationPerSegment * segmentsCount);
 	}
-	else 
+	else
 	{
 		DrawCurve();
 	}
@@ -88,7 +88,7 @@ void BezierCurve::DrawAnimatedCurve(const float& percent)
 		DrawBlendingFunctions(animationPercent);
 	}
 
-	
+
 
 }
 
@@ -102,23 +102,23 @@ void BezierCurve::DrawConstructionGraph(const float& percent)
 	Float2 b = points[currentSegment * 3 + 1];
 	Float2 c = points[currentSegment * 3 + 2];
 	Float2 d = points[currentSegment * 3 + 3];
-	
+
 	Canvas2D::SetColor(Bezier::Colors::Construction::Linear);
-	Float2 ab = Interpolation::Linear(a, b, t); 
-	Float2 bc = Interpolation::Linear(b, c, t); 
+	Float2 ab = Interpolation::Linear(a, b, t);
+	Float2 bc = Interpolation::Linear(b, c, t);
 	Float2 cd = Interpolation::Linear(c, d, t);
 	DrawConstruction(a, ab);
 	DrawConstruction(b, bc);
 	DrawConstruction(c, cd);
 
 	Canvas2D::SetColor(Bezier::Colors::Construction::Quadratic);
-	Float2 abc = Interpolation::Linear(ab, bc, t); 
-	Float2 bcd = Interpolation::Linear(bc, cd, t); 
+	Float2 abc = Interpolation::Linear(ab, bc, t);
+	Float2 bcd = Interpolation::Linear(bc, cd, t);
 	DrawConstruction(ab, abc);
 	DrawConstruction(bc, bcd);
 
 	Canvas2D::SetColor(Bezier::Colors::Construction::Cubic);
-	Float2 abcd = Interpolation::Linear(abc, bcd, t); 
+	Float2 abcd = Interpolation::Linear(abc, bcd, t);
 	DrawConstruction(abc, abcd);
 }
 
@@ -130,7 +130,6 @@ void BezierCurve::DrawBlendingFunctions(const float& percent)
 
 	const int width = Screen::Width/4, height = Screen::Height / 4;
 	const float step = (float)1 / width;
-	Rect drawingRect = Rect(Screen::Width - width, 0, Screen::Width,  height);
 
 	int idx = 0;
 	for (auto&& f : functions)
@@ -188,7 +187,7 @@ void BezierCurve::DrawEditor()
 		color *= (buttons[i]->IsMouseOver() ? 0.7f : 1.0f);
 		buttons[i]->shape->Draw(color);
 	}
-	if (drawControlGraph) 
+	if (drawControlGraph)
 	{
 		DrawControlGraph();
 	}
@@ -217,11 +216,11 @@ void BezierCurve::OnButtonDrag(Button* button)
 		TranslatePoint(idx + 1, EventSystem::MousePositionDelta);
 		TranslatePoint(idx - 1, EventSystem::MousePositionDelta);
 	}
-	else 
+	else
 	{
 		int oppositeTangentIdx = (IsAnchor(idx + 1)) ? idx + 2 : idx - 2;
 		int anchorIdx = (IsAnchor(idx + 1)) ? idx + 1: idx - 1;
-		if (InsideBezier(oppositeTangentIdx)) 
+		if (InsideBezier(oppositeTangentIdx))
 		{
 			Float2 movedPoint = points[idx];
 			Float2 anchor = points[anchorIdx];
